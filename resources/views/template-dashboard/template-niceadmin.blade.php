@@ -36,17 +36,17 @@
     <link href="{{ asset('niceadmin/assets/css/style.css') }}" rel="stylesheet">
 
     {{-- datatables --}}
-    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.bootstrap5.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/datatables.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Buttons-2.4.2/css/buttons.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}">
 
     {{-- select2 --}}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/select2-4.1.0/css/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/select2-4.1.0/css/select2.min.css') }}" rel="stylesheet">
 
     {{-- sweetalert2 --}}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
 
 
 
@@ -83,7 +83,7 @@
             class="bi bi-arrow-up-short"></i></a>
 
     {{-- jquery --}}
-    <script src="{{ asset('assets/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
     <!-- Vendor JS Files -->
     <script src="{{ asset('niceadmin/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('niceadmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -98,28 +98,28 @@
     <script src="{{ asset('niceadmin/assets/js/main.js') }}"></script>
 
     {{-- datatables --}}
-    <script src="{{ asset('assets/datatables/datatables.js') }}"></script>
-    <script src="{{ asset('assets/datatables/datatables-button.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/dataTables.buttons.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.dataTables.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.bootstrap5.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('assets/datatables/JSZip-3.10.1/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets/datatables/pdfmake-0.2.7/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/datatables/pdfmake-0.2.7/vfs_fonts.js') }}"></script>
-    {{-- <script src="{{ asset('assets/datatables/DataTables-1.13.8/js/dataTables.bootstrap5.js') }}"></script> --}}
-    <script src="{{ asset('assets/datatables/Responsive-2.5.0/js/dataTables.responsive.js') }}"></script>
-    <script src="{{ asset('assets/datatables/Responsive-2.5.0/js/responsive.bootstrap5.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/datatables.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/datatables-button.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Buttons-2.4.2/js/dataTables.buttons.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Buttons-2.4.2/js/buttons.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Buttons-2.4.2/js/buttons.bootstrap5.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Buttons-2.4.2/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Buttons-2.4.2/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Buttons-2.4.2/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/JSZip-3.10.1/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/pdfmake-0.2.7/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/pdfmake-0.2.7/vfs_fonts.js') }}"></script>
+    {{-- <script src="{{ asset('assets/vendor/datatables/DataTables-1.13.8/js/dataTables.bootstrap5.js') }}"></script> --}}
+    <script src="{{ asset('assets/vendor/datatables/Responsive-2.5.0/js/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/Responsive-2.5.0/js/responsive.bootstrap5.js') }}"></script>
 
     {{-- select2 --}}
-    <script src="{{ asset('assets/vendor/select2-4.1.0/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/vendor/select2-4.1.0/js/select2.min.js') }}"></script>
 
     {{-- sweetalert2 --}}
-    <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
     {{-- sweetalert costum --}}
-    {{-- <script src="{{ asset('assets/js-costum/costum-sweetalert2.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/vendor/js-costum/costum-sweetalert2.js') }}"></script> --}}
 
     {{-- alert --}}
     @include('template-dashboard.komponen-niceadmin.alert')
