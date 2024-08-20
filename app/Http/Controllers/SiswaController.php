@@ -11,7 +11,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('siswa.siswa-index');
     }
 
     /**
@@ -35,7 +35,7 @@ class SiswaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('siswa.siswa-show');
     }
 
     /**
