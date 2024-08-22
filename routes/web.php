@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [AdminController::class, 'cekdata']);
 Route::get('/mawar-mekar', [AdminController::class, 'dashboard']);
 
 Route::get('/regis', function () {

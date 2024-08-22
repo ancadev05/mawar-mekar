@@ -32,6 +32,15 @@
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <div class="mb-3">
+                            <label class="form-label" for="nik">NIK <span
+                                    class="text-danger fw-bold">*</span></label>
+                            <input class="form-control @error('nik') is-invalid @enderror" type="text" name="nik"
+                                id="nik" value="{{ old('nik') }}">
+                            @error('nik')
+                                <small class="invalid-feedback"> {{ $message }} </small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="nama">Nama Lengkap Siswa <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('nama') is-invalid @enderror" type="text" name="nama"

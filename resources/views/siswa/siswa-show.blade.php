@@ -80,7 +80,7 @@
                     <td>: Perguruan Tinggi</td>
                 </tr>
                 <tr>
-                    <td>Gelar Akademi</td>
+                    <td>Gelar Akademik</td>
                     <td>: S.Pd.</td>
                 </tr>
                 <tr>
