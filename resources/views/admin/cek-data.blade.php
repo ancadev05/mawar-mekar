@@ -61,7 +61,7 @@
   ======================================================== -->
 </head>
 
-<body class="bg-danger">
+<body class="" style="background-image: linear-gradient(to right bottom, #dc3545, #ea503c, #f56a31, #fc8425, #ff9e17, #ff9e17, #ff9e17, #ff9e17, #fc8425, #f56a31, #ea503c, #dc3545);">
 
 
     <main>
@@ -81,7 +81,8 @@
                                 </a>
                             </div><!-- End Logo -->
 
-                            <div class="card px-5 py-5 bg-danger shadow-lg">
+                            <div class="card p-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.18); 
+                            color: rgba(255, 255, 255, 0.18);">
 
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -95,16 +96,16 @@
                                     @csrf
 
                                     <div class="input-group mb-2">
-                                        <input type="text" name="no_registrasi" class="form-control"
+                                        <input type="text" name="no_registrasi" class="form-control shadow"
                                             id="no_registrasi" placeholder="Masukkan No. Registrasi"
                                             value="{{ old('no_registrasi') }}" required>
-                                            <button class="btn btn-warning" type="submit">Cek</button>
+                                            <button class="btn btn-warning shadow" type="submit">Cek</button>
                                             <span class="invalid-feedback text-white">Please enter your no_registrasi!</span>
-                                        </div>
+                                    </div>
 
                                     <div class="col-12">
                                         <a href="{{ url('/registrasi') }}" target="_blank"
-                                            class="btn btn-warning shadow-sm w-100">Registrasi</a>
+                                            class="btn btn-warning shadow w-100">Registrasi</a>
                                     </div>
                                 </form>
 

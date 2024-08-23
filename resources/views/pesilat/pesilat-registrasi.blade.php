@@ -29,7 +29,7 @@
                     <tr>
                         <td>NIK</td>
                         <td>: </td>
-                        <td rowspan="26" colspan="2">
+                        <td rowspan="28" colspan="2">
                             <div class="d-flex flex-column align-items-center mt-2" style="line-height: 1.2em">
                                 {{-- <img src="{{ url('assets/img/tanda-tingkat/s3.png') }}" alt="foto" height="30px" class="mb-2"> --}}
                                 <div class="text-bg-secondary d-flex justify-content-center align-items-center mb-2"
