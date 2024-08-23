@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tingkatans', function (Blueprint $table) {
             $table->id();
             $table->string('tingkatan');
-            $table->string('titel');
+            $table->string('singkatan');
             $table->string('melati');
             $table->text('ket')->nullable();
             $table->timestamps();

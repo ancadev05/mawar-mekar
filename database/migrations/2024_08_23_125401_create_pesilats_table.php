@@ -11,31 +11,35 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('siswas', function (Blueprint $table) {
+        Schema::create('pesilats', function (Blueprint $table) {
             $table->id();
-            $table->string('no_registrasi');
-            $table->string('nik')->nullable();
-            $table->string('nama_siswa');
+            $table->string('nik');
+            $table->string('nama_pesilat');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
+            $table->enum('jk',[1, 2]);
             $table->string('agama');
             $table->text('alamat');
             $table->string('no_hp')->nullable();
+            $table->string('nama_ayah')->nullable();
+            $table->string('nama_ibu')->nullable();
+            $table->string('nama_wali')->nullable();
+            $table->string('pekerjaan_ayah')->nullable();
+            $table->string('pekerjaan_ibu')->nullable();
+            $table->string('pekerjaan_wali')->nullable();
+            $table->text('alamat_orangtua_wali')->nullable();
+            $table->string('hp_orangtua_wali')->nullable();
             $table->string('tingkat_pendidikan')->nullable();
             $table->string('gelar_akademik')->nullable();
             $table->string('asal_sekolah_instansi')->nullable();
-            $table->string('nama_ayah');
-            $table->string('nama_ibu');
-            $table->string('pekerjaan_ayah')->nullable();
-            $table->string('pekerjaan_ibu')->nullable();
-            $table->string('hp_orangtua_wali')->nullable();
-            $table->text('alamat_orangtua_wali')->nullable();
             $table->string('tahun_masuk_ts');
             $table->string('jenjang');
+            $table->string('nbts');
+            $table->string('nbm');
             $table->foreignId('cabang_id')->constrained();
             $table->foreignId('unit_id')->constrained();
             $table->foreignId('tingkatan_id')->constrained();
-            $table->string('ukts_terakhir');
+            $table->string('ukt_terakhir')->nullable();
             $table->text('ket');
             $table->timestamps();
         });
@@ -46,6 +50,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('siswas');
+        Schema::dropIfExists('pesilats');
     }
 };

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PesilatController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AdminController::class, 'cekdata']);
 Route::get('/mawar-mekar', [AdminController::class, 'dashboard']);
+
+Route::get('/registrasi', [PesilatController::class, 'registrasi']);
+Route::resource('/pesilat', PesilatController::class);
 
 Route::get('/regis', function () {
     return view('siswa.siswa-registrasi');

@@ -367,14 +367,14 @@ h6 {
 }
 
 .logo img {
-  max-height: 50px;
-  /* max-height: 26px; */
+  max-height: 26px;
   margin-right: 6px;
 }
 
 #logo-login {
-  max-height: 60px;
-  /* margin-right: 6px; */
+  max-height: 150px;
+  /* max-height: 60px; */
+  /* margin-rig`ht: 6px; */
 }
 
 .logo span {

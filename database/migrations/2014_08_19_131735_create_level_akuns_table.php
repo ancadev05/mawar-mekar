@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kaders', function (Blueprint $table) {
+        Schema::create('level_akuns', function (Blueprint $table) {
             $table->id();
+            $table->string('level');
+            $table->string('ket');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kaders');
+        Schema::dropIfExists('level_akuns');
     }
 };

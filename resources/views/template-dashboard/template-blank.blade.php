@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,18 +36,15 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Buttons-2.4.2/css/buttons.bootstrap5.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}">
 
     {{-- select2 --}}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/select2-4.1.0/css/select2.min.css') }}"
-        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/select2-4.1.0/css/select2.min.css') }}" rel="stylesheet">
 
     {{-- sweetalert2 --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
-
+    
     {{-- costum css --}}
     <link rel="stylesheet" href="{{ asset('assets/costum-css/style.css') }}" rel="stylesheet">
 
@@ -61,64 +59,17 @@
   ======================================================== -->
 </head>
 
-<body class="bg-danger">
+<body>
 
 
     <main>
-        <div class="container">
-
-            <section
-                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
-                            <div class="d-flex justify-content-center py-4">
-                                <a href="#" class="logo d-flex flex-column align-items-center w-auto ">
-                                    <img src="assets/img/logo-ts-gowa.png" alt="" class="mb-2"
-                                        id="logo-login">
-                                    {{-- <span class="text-white d-lg-block">Tapak Suci 177 Gowa</span> --}}
-                                </a>
-                            </div><!-- End Logo -->
-
-                            <div class="card px-5 py-5 bg-danger shadow-lg">
-
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        @foreach ($errors->all() as $item)
-                                            {{ $item }}
-                                        @endforeach
-                                    </div>
-                                @endif
-
-                                <form action="{{ url('siswa/1') }}" method="GET" class="row g-3 needs-validation" novalidate>
-                                    @csrf
-
-                                    <div class="input-group mb-2">
-                                        <input type="text" name="no_registrasi" class="form-control"
-                                            id="no_registrasi" placeholder="Masukkan No. Registrasi"
-                                            value="{{ old('no_registrasi') }}" required>
-                                            <button class="btn btn-warning" type="submit">Cek</button>
-                                            <span class="invalid-feedback text-white">Please enter your no_registrasi!</span>
-                                        </div>
-
-                                    <div class="col-12">
-                                        <a href="{{ url('/registrasi') }}" target="_blank"
-                                            class="btn btn-warning shadow-sm w-100">Registrasi</a>
-                                    </div>
-                                </form>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-        </div>
+        @yield('content')
     </main><!-- End #main -->
+
+    
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     {{-- jquery --}}
     <script src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
