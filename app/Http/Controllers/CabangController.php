@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cabang;
 use Illuminate\Http\Request;
 
 class CabangController extends Controller
@@ -11,7 +12,9 @@ class CabangController extends Controller
      */
     public function index()
     {
-        //
+        $cabangs = Cabang::get();
+
+        return view('cabang.index', compact('cabangs'));
     }
 
     /**

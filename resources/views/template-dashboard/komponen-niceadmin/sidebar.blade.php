@@ -10,8 +10,18 @@
             </a>
         </li>
 
-        <li class="nav-heading">Stok Laptop</li>
-         
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('/cabang') }}">
+                <i class="bi bi-laptop"></i>
+                <span>Cabang</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('siswa') }}">
+                <i class="bi bi-laptop"></i>
+                <span>Unit Latihan</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ url('siswa') }}">
                 <i class="bi bi-laptop"></i>
