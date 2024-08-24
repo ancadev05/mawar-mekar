@@ -4,7 +4,7 @@
     <div class="d-flex align-items-center justify-content-between">
         <a href="#" class="logo d-flex align-items-center">
             <img src="{{ asset('assets/img/logo-ts-gowa.png') }}" alt="">
-            <span class="d-none d-lg-block">Teknisi_ta'</span>
+            <span class="d-none d-lg-block">Mawar</span>
         </a>
     </div><!-- End Logo -->
     <i class="bi bi-list toggle-sidebar-btn"></i>

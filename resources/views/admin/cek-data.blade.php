@@ -92,13 +92,13 @@
                                     </div>
                                 @endif
 
-                                <form action="{{ url('siswa/1') }}" method="GET" class="row g-3 needs-validation" novalidate>
+                                <form action="{{ url('cari-pesilat') }}" method="GET" class="row g-3 needs-validation" novalidate>
                                     @csrf
 
                                     <div class="input-group mb-2">
-                                        <input type="text" name="no_registrasi" class="form-control shadow"
+                                        <input type="search" name="no_registrasi" class="form-control shadow"
                                             id="no_registrasi" placeholder="Masukkan No. Registrasi"
-                                            value="{{ old('no_registrasi') }}" required>
+                                            value="{{ Request::get('registrasi') }}"" required>
                                             <button class="btn btn-warning shadow" type="submit">Cek</button>
                                             <span class="invalid-feedback text-white">Please enter your no_registrasi!</span>
                                     </div>

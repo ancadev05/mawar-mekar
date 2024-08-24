@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tingkatan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,10 +13,10 @@ class TingkatanSeeder extends Seeder
      */
     public function run(): void
     {
-        $tingkat = [
+        $tingkats = [
             [
                 'tingkat' => 'Siswa Dasar',
-                'singkatan' => '-',
+                'singkatan' => 'Siswa Dasar',
                 'melati' => '1.png',
             ],
             [
@@ -89,5 +90,9 @@ class TingkatanSeeder extends Seeder
                 'melati' => '15.png',
             ],
         ];
+
+        foreach ($tingkats as $key => $value) {
+            Tingkatan::create($value);
+        }
     }
 }

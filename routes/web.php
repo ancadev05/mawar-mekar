@@ -21,6 +21,7 @@ Route::get('/', [AdminController::class, 'cekdata']);
 Route::get('/mawar-mekar', [AdminController::class, 'dashboard']);
 
 Route::get('/registrasi', [PesilatController::class, 'registrasi']);
+Route::get('/cari-pesilat', [PesilatController::class, 'caripesilat']);
 Route::resource('/pesilat', PesilatController::class);
 
 // cabang
