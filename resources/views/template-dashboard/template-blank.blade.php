@@ -7,9 +7,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>@yield('title')</title>
-    <meta content="Aplikasi untuk mengelola data laptop" name="description">
-    <meta content="teknisi, laptop, teknisi laptop, teknisi_ku, biner, biner komputer, biner_komputer" name="keywords">
 
+    <meta property="og:title" content="Tapak Suci 177 Gowa" name="title">
+    <meta property="og:description" content="Aplikasi database Tapak Suci 177 Gowa" name="description">
+    <meta property="og:keywords" content="ts, tapak, suci, gowa, tapak gowa, 177, rgc" name="keywords">
+    <meta property="og:image" content="{{ asset('assets/img/logo-ts-gowa.png') }}">
+    <meta property="og:url" content="https://pimda.tapaksuci177gowa.or.id">
+    
     <!-- Favicons -->
     <link href="{{ asset('assets/img/logo-biner.png') }}" rel="icon">
     <link href="{{ asset('assets/img/logo-biner.png') }}" rel="apple-touch-icon">

@@ -5,10 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>@yield('title')</title>
-    <meta content="Aplikasi untuk mengelola data laptop" name="description">
-    <meta content="teknisi, laptop, teknisi laptop, teknisi_ku, biner, biner komputer, biner_komputer" name="keywords">
+    <title>Registrasi</title>
 
+    <meta property="og:title" content="Tapak Suci 177 Gowa" name="title">
+    <meta property="og:description" content="Aplikasi database Tapak Suci 177 Gowa" name="description">
+    <meta property="og:keywords" content="ts, tapak, suci, gowa, tapak gowa, 177, rgc" name="keywords">
+    <meta property="og:image" content="{{ asset('assets/img/logo-ts-gowa.png') }}">
+    <meta property="og:url" content="https://pimda.tapaksuci177gowa.or.id">
+    
     <!-- Favicons -->
     <link href="{{ asset('assets/img/logo-biner.png') }}" rel="icon">
     <link href="{{ asset('assets/img/logo-biner.png') }}" rel="apple-touch-icon">
@@ -35,18 +39,15 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Buttons-2.4.2/css/buttons.bootstrap5.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}">
 
     {{-- select2 --}}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/select2-4.1.0/css/select2.min.css') }}"
-        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/select2-4.1.0/css/select2.min.css') }}" rel="stylesheet">
 
     {{-- sweetalert2 --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
-
+    
     {{-- costum css --}}
     <link rel="stylesheet" href="{{ asset('assets/costum-css/style.css') }}" rel="stylesheet">
 
@@ -84,13 +85,13 @@
                             <div class="card p-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.18); 
                             color: rgba(255, 255, 255, 0.18);">
 
-                                @if ($errors->any())
+                                {{-- @if ($errors->any())
                                     <div class="alert alert-danger">
                                         @foreach ($errors->all() as $item)
                                             {{ $item }}
                                         @endforeach
                                     </div>
-                                @endif
+                                @endif --}}
 
                                 <form action="{{ url('cari-pesilat') }}" method="GET" class="row g-3 needs-validation" novalidate>
                                     @csrf
