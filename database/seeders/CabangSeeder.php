@@ -58,6 +58,10 @@ class CabangSeeder extends Seeder
                 'no_cabang' => '11',
                 'cabang' => 'Tompo Bulu',
             ],
+            [
+                'no_cabang' => '99',
+                'cabang' => 'Cabang Lainnya',
+            ],
         ];
 
         foreach ($cabangs as $key => $value) {

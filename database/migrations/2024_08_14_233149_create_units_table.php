@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('alamat')->nullable();
             $table->string('penanggung_jawab')->nullable();
             $table->text('ket')->nullable();
-            $table->foreignId('cabang_id')->nullable()->constrained('cabangs')->onDelete('set null');
+            $table->foreignId('cabang_id')->nullable()->constrained('cabangs')->onDelete('set null')->default(99);
             $table->timestamps();
         });
     }

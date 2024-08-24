@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cabang;
 use App\Models\Pesilat;
+use App\Models\Tingkatan;
 use Illuminate\Http\Request;
 
 class PesilatController extends Controller
@@ -20,7 +22,10 @@ class PesilatController extends Controller
      */
     public function create()
     {
-        return view('pesilat.pesilat-create');
+        $cabangs = Cabang::get();
+        $tingkatans = Tingkatan::get();
+
+        return view('pesilat.pesilat-create', compact('cabangs', 'tingkatans'));
     }
 
     /**
@@ -28,39 +33,71 @@ class PesilatController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
+        // $request->validate([
+        //     'nik' => 'required',
+        //     'nama_pesilat' => 'required',
+        //     'tempat_lahir' => 'required',
+        //     'tgl_lahir' => 'required',
+        //     'jk' => 'required',
+        //     'agama' => 'required',
+        //     'alamat' => 'required',
+        //     'tahun_masuk_ts' => 'required',
+        //     'cabang_id' => 'required',
+        //     'tingkatan_id' => 'required'
+        // ]);
+
+        // dd($request->all());
+
+        // pembuatan no registrasi
+        // $no_registrasi = Pesilat::max('no_registrasi');
+        // $no_registrasi = (int) $no_registrasi;
+        // $no_registrasi = $no_registrasi + 1;
+        // $no_registrasi = '177.' . $request->cabang_id . '.' . $request->tahun_masuk_ts . '.' . $no_registrasi;
+
         $pesilat = [
-            'no_registrasi' => $request->nik,
+            'no_registrasi' => 500,
             'nik' => $request->nik,
-            'nama_pesilat' => $request->ok,
-            'tempat_lahir' => $request->ok,
-            'tgl_lahir' => $request->ok,
-            'jk' => $request->ok,
-            'agama' => $request->ok,
-            'alamat' => $request->ok,
-            'no_hp' => $request->ok,
-            'nama_ayah' => $request->ok,
-            'nama_ibu' => $request->ok,
-            'nama_wali' => $request->ok,
-            'pekerjaan_ayah' => $request->ok,
-            'pekerjaan_ibu' => $request->ok,
-            'pekerjaan_wali' => $request->ok,
-            'alamat_orangtua_wali' => $request->ok,
-            'hp_orangtua_wali' => $request->ok,
-            'tingkat_pendidikan' => $request->ok,
-            'gelar_akademik' => $request->ok,
-            'asal_sekolah_instansi' => $request->ok,
-            'tahun_masuk_ts' => $request->ok,
-            'jenjang' => $request->ok,
-            'nbts' => $request->ok,
-            'nbm' => $request->ok,
-            'cabang_id' => $request->ok,
-            'unit_id' => $request->ok,
-            'tingkatan_id' => $request->ok,
-            'ukt_terakhir' => $request->ok,
-            'ket' => $request->ok,
+            'nama_pesilat' => $request->nama_pesilat,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'nama_ayah' => $request->nama_ayah,
+            'nama_ibu' => $request->nama_ibu,
+            'nama_wali' => $request->nama_wali,
+            'pekerjaan_ayah' => $request->pekerjaan_ayah,
+            'pekerjaan_ibu' => $request->pekerjaan_ibu,
+            'pekerjaan_wali' => $request->pekerjaan_wali,
+            'alamat_orangtua_wali' => $request->alamat_orangtua_wali,
+            'hp_orangtua_wali' => $request->hp_orangtua_wali,
+            'tingkat_pendidikan' => $request->tingkat_pendidikan,
+            'gelar_akademik' => $request->gelar_akademik,
+            'asal_sekolah_instansi' => $request->asal_sekolah_instansi,
+            'tahun_masuk_ts' => $request->tahun_masuk,
+            'jenjang' => $request->jenjang,
+            'nbts' => $request->nbts,
+            'nbm' => $request->nbm,
+            'cabang_id' => $request->cabang_id,
+            // 'unit_id' => $request->unit_id,
+            'unit_id' => 1,
+            'tingkatan_id' => $request->tingkatan_id,
+            'ukt_terakhir' => $request->ukt_terakhir,
+            'ket' => $request->ket,
         ];
 
         Pesilat::create($pesilat);
+
+        // mencari no registrasi untuk di download setelah data tersimpan
+        // $pesilat = Pesilat::where('no_registrasi', $no_registrasi)->first();
+
+        $pesilat = Pesilat::get()->last();
+        $pesilat_id = $pesilat->id;
+
+        return redirect('/pesilat/' . $pesilat_id);
     }
 
     /**
@@ -68,7 +105,11 @@ class PesilatController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pesilat = Pesilat::find($id);
+
+        return view('pesilat.pesilat-show', compact(
+            'pesilat'
+        ));
     }
 
     /**

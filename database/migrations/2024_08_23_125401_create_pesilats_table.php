@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pesilats', function (Blueprint $table) {
             $table->id();
-            $table->string('no_registrasi');
+            $table->string('no_registrasi')->unique();
             $table->string('nik');
             $table->string('nama_pesilat');
             $table->string('tempat_lahir');
@@ -35,13 +35,13 @@ return new class extends Migration
             $table->string('asal_sekolah_instansi')->nullable();
             $table->string('tahun_masuk_ts');
             $table->string('jenjang');
-            $table->string('nbts');
-            $table->string('nbm');
+            $table->string('nbts')->nullable();
+            $table->string('nbm')->nullable();
             $table->foreignId('cabang_id')->constrained();
-            $table->foreignId('unit_id')->constrained();
+            $table->foreignId('unit_id')->nullable()->constrained()->onDelete('set null')->default(99);
             $table->foreignId('tingkatan_id')->constrained();
             $table->string('ukt_terakhir')->nullable();
-            $table->text('ket');
+            $table->text('ket')->nullable();
             $table->timestamps();
         });
     }
