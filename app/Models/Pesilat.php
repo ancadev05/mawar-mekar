@@ -21,4 +21,10 @@ class Pesilat extends Model
     {
         return $this->belongsTo(Cabang::class);
     }
+
+    // relasi ke tabel unit - satu pesilat hanya memiliki satu unit
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }

@@ -17,77 +17,77 @@ class TingkatanSeeder extends Seeder
             [
                 'tingkat' => 'Siswa Dasar',
                 'singkatan' => 'Siswa Dasar',
-                'melati' => '1.png',
+                'melati' => 's.png',
             ],
             [
                 'tingkat' => 'Siswa Satu',
                 'singkatan' => 'MC1',
-                'melati' => '2.png',
+                'melati' => 's1.png',
             ],
             [
                 'tingkat' => 'Siswa Dua',
                 'singkatan' => 'MC2',
-                'melati' => '3.png',
+                'melati' => 's2.png',
             ],
             [
                 'tingkat' => 'Siswa Tiga',
                 'singkatan' => 'MC3',
-                'melati' => '4.png',
+                'melati' => 's3.png',
             ],
             [
                 'tingkat' => 'Siswa Empat',
                 'singkatan' => 'MC4',
-                'melati' => '5.png',
+                'melati' => 's4.png',
             ],
             [
                 'tingkat' => 'Kader Dasar',
                 'singkatan' => 'K.Da.',
-                'melati' => '6.png',
+                'melati' => 'k.png',
             ],
             [
                 'tingkat' => 'Kader Muda',
                 'singkatan' => 'K.Ma.',
-                'melati' => '7.png',
+                'melati' => 'k1.png',
             ],
             [
                 'tingkat' => 'Kader Madya',
                 'singkatan' => 'K.Mdy.',
-                'melati' => '8.png',
+                'melati' => 'k2.png',
             ],
             [
                 'tingkat' => 'Kader Kepala',
                 'singkatan' => 'K.Ka.',
-                'melati' => '9.png',
+                'melati' => 'k3.png',
             ],
             [
                 'tingkat' => 'Kader Utama',
                 'singkatan' => 'K.Ua.',
-                'melati' => '10.png',
+                'melati' => 'k4.png',
             ],
             [
                 'tingkat' => 'Pendekar Muda',
                 'singkatan' => 'P.Ma.',
-                'melati' => '11.png',
+                'melati' => 'p1.png',
             ],
             [
                 'tingkat' => 'Pendekar Madya',
                 'singkatan' => 'P.Mdy.',
-                'melati' => '12.png',
+                'melati' => 'p2.png',
             ],
             [
                 'tingkat' => 'Pendekar Kepala',
                 'singkatan' => 'P.Ka.',
-                'melati' => '13.png',
+                'melati' => 'p3.png',
             ],
             [
                 'tingkat' => 'Pendekar Utama',
                 'singkatan' => 'P.Ua.',
-                'melati' => '14.png',
+                'melati' => 'p4.png',
             ],
             [
                 'tingkat' => 'Pendekar Besar',
                 'singkatan' => 'P.Br.',
-                'melati' => '15.png',
+                'melati' => 'p5.png',
             ],
         ];
 

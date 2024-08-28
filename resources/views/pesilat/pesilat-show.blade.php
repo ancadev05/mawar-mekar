@@ -27,120 +27,124 @@
                 {{-- judul --}}
                 <div class="text-center mb-3" style="font-size: 16px">
                     <span class="fw-bold">BIODATA</span><br>
-                    <span class="border-top border-1 border-dark">No. Regis : 177.02.2012.0001</span>
+                    <span class="border-top border-1 border-dark">No. Regis : {{ $pesilat->no_registrasi }}</span>
                 </div>
     
                 {{-- biodata --}}
                 <table class="table table-sm" style="font-size: 16px">
                     <tr>
                         <td>NIK</td>
-                        <td>: 1234567890123456</td>
+                        <td>: {{ $pesilat->nik }}</td>
                         <td rowspan="26" colspan="2">
                             <div class="d-flex flex-column align-items-center mt-2" style="line-height: 1.2em">
-                                <img src="{{ url('assets/img/tanda-tingkat/s3.png') }}" alt="foto" height="30px" class="mb-2">
+                                <img src="{{ url('assets/img/tanda-tingkat/' . $pesilat->tingkatan->melati) }}" alt="foto" height="30px" class="mb-2">
                                 <img src="{{ url('assets/img/foto-siswa.jpg') }}" alt="foto" width="113.38px" height="151.18px" class="mb-1">
-                                <span class="fw-bold">Hamzah, K.Ma.</span>
-                                <span>NBTS. NBM</span>
+                                <span class="fw-bold">{{ $pesilat->nama_pesilat }}, {{ $pesilat->gelar_akademik }}, {{ $pesilat->tingkatan->singkatan }}</span>
+                                <span>NBTS. {{ $pesilat->nbts }} NBM. {{ $pesilat->nbm }}</span>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>Nama Siswa</td>
-                        <td>: Muhammad Al Fatih</td>
+                        <td>: {{ $pesilat->nama_pesilat }}</td>
                     </tr>
                     <tr>
                         <td>Tempat Lahir</td>
-                        <td>: Makassar</td>
+                        <td>: {{ $pesilat->tempat_lahir }}</td>
                     </tr>
                     <tr>
                         <td>Tanggal Lahir</td>
-                        <td>: 31 Januari 2000</td>
+                        <td>: {{ tanggalIndonesia($pesilat->tgl_lahir) }}</td>
                     </tr>
                     <tr>
                         <td>Agama</td>
-                        <td>: Islam</td>
+                        <td>: {{ $pesilat->agama }}</td>
                     </tr>
                     <tr>
                         <td>Alamat</td>
-                        <td>: Jl. Monumen Emmy Saelan Makassar</td>
+                        <td>: {{ $pesilat->alamat }}</td>
                     </tr>
                     <tr>
                         <td>No HP</td>
-                        <td>: 085695605182</td>
+                        <td>: {{ $pesilat->no_hp }}</td>
                     </tr>
                     <tr>
                         <td>Tingkat Pendidikan</td>
-                        <td>: Perguruan Tinggi</td>
+                        <td>: {{ $pesilat->tingkat_pendidikan }}</td>
                     </tr>
                     <tr>
                         <td>Gelar Akademik</td>
-                        <td>: S.Pd.</td>
+                        <td>: {{ $pesilat->gelar_akademik }}</td>
                     </tr>
                     <tr>
                         <td>Asal Sekolah / Instansi</td>
-                        <td>: SMK Negeri 1 Takalar</td>
+                        <td>: {{ $pesilat->asal_sekolah_instansi }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"> Orang Tua/Wali :</td>
                     </tr>
                     <tr>
                         <td>&nbsp; &nbsp; &nbsp; a. Ayah</td>
-                        <td>: Hidayat</td>
+                        <td>: {{ $pesilat->nama_ayah }}</td>
                     </tr>
                     <tr>
                         <td>&nbsp; &nbsp; &nbsp; b. Ibu</td>
-                        <td>: Kartini</td>
+                        <td>: {{ $pesilat->nama_ibu }}</td>
                     </tr>
                     <tr>
                         <td>&nbsp; &nbsp; &nbsp; c. Wali</td>
-                        <td>: -</td>
+                        <td>: {{ $pesilat->nama_wali }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">Pekerjaan Orang Tua/Wali :</td>
                     </tr>
                     <tr>
                         <td>&nbsp; &nbsp; &nbsp; a. Ayah</td>
-                        <td>: Petani</td>
+                        <td>: {{ $pesilat->pekerjaan_ayah }}</td>
                     </tr>
                     <tr>
                         <td>&nbsp; &nbsp; &nbsp; b. Ibu</td>
-                        <td>: Ibu Rumah Tangga</td>
+                        <td>: {{ $pesilat->pekerjaan_ibu }}</td>
                     </tr>
                     <tr>
                         <td>&nbsp; &nbsp; &nbsp; c. Wali</td>
-                        <td>: -</td>
+                        <td>: {{ $pesilat->pekerjaan_wali }}</td>
                     </tr>
                     <tr>
                         <td>Alamat Orang Tua/Wali</td>
-                        <td>: Bajeng, Kec. Limbung</td>
+                        <td>: {{ $pesilat->alamat_orangtua_wali }}</td>
                     </tr>
                     <tr>
                         <td>No. HP Orang Tua/Wali</td>
-                        <td>: </td>
+                        <td>: {{ $pesilat->hp_orangtua_wali }}</td>
                     </tr>
                     <tr>
                         <td>Tahun Masuk Tapak Suci</td>
-                        <td>: 2012</td>
+                        <td>: {{ $pesilat->tahun_masuk_ts }}</td>
                     </tr>
                     <tr>
                         <td>Jenjang</td>
-                        <td>: Siswa</td>
+                        <td>
+                            {{ $pesilat->jenjang == 1 ? ': Siswa' : '' }}
+                            {{ $pesilat->jenjang == 2 ? ': Kader' : '' }}
+                            {{ $pesilat->jenjang == 3 ? ': Pendekar' : '' }}
+                        </td>
                     </tr>
                     <tr>
                         <td>Cabang</td>
-                        <td>: Limbung</td>
+                        <td>: {{ $pesilat->cabang->cabang }}</td>
                     </tr>
                     <tr>
                         <td>Unit Latihan</td>
-                        <td>: SMA Muhammadiyah Limbung</td>
+                        <td>: {{ $pesilat->unit->unit }}</td>
                     </tr>
                     <tr>
                         <td>Tingkatan</td>
-                        <td>: Siswa 3 (MC3)</td>
+                        <td>: {{ $pesilat->tingkatan->tingkat }}</td>
                     </tr>
                     <tr>
                         <td>UKT Terakhir</td>
-                        <td>: Malino</td>
+                        <td>: {{ $pesilat->ukt_terakhir }}</td>
                     </tr>
                 </table>
             </div>
@@ -148,7 +152,8 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button class="btn btn-danger">Download</button>
+            <button class="btn btn-danger shadow-sm me-2">Download</button>
+            <button class="btn btn-warning shadow-sm">Edit</button>
         </div>
 
     </div>

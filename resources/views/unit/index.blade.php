@@ -18,7 +18,7 @@
                 <div class="row mb-5">
                     <div class="col-4">
                         <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="file"
-                            name="file" type="file">
+                            name="file" type="file" required>
                         @error('file')
                             <small class="invalid-feedback"> {{ $message }} </small>
                         @enderror

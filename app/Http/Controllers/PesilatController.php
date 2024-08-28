@@ -110,7 +110,7 @@ class PesilatController extends Controller
      */
     public function show(string $id)
     {
-        $pesilat = Pesilat::find($id);
+        $pesilat = Pesilat::where('no_registrasi', $id)->first();
 
         return view('pesilat.pesilat-show', compact(
             'pesilat'
@@ -157,9 +157,7 @@ class PesilatController extends Controller
             $pesilat = Pesilat::where('no_registrasi', 'like', "%$registrasi%")->first();
 
             if ($pesilat) {
-                return view('pesilat.pesilat-show', compact(
-                    'laptop'
-                ));
+                return redirect('/pesilat/' . $pesilat->no_registrasi);
             }
         }
         $pesilat = Pesilat::where('no_registrasi', $registrasi)->first();

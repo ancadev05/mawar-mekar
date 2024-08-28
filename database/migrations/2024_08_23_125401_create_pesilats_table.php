@@ -42,6 +42,7 @@ return new class extends Migration
             $table->foreignId('unit_id')->nullable()->constrained()->onDelete('set null')->default(99);
             $table->foreignId('tingkatan_id')->constrained();
             $table->string('ukt_terakhir')->nullable();
+            $table->string('foto_pesilat')->nullable();
             $table->text('ket')->nullable();
             $table->timestamps();
         });

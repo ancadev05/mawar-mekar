@@ -48,7 +48,8 @@ class PesilatImport implements ToCollection
                     'unit_id'               => !empty($row[27]) ? $row[27] : '',
                     'tingkatan_id'          => !empty($row[28]) ? $row[28] : '',
                     'ukt_terakhir'          => !empty($row[29]) ? $row[29] : '',
-                    'ket'                   => !empty($row[30]) ? $row[30] : '',
+                    'foto_pesilat'          => !empty($row[30]) ? $row[30] : '',
+                    'ket'                   => !empty($row[31]) ? $row[31] : '',
                 ];
 
                 Pesilat::create($pesilats);
