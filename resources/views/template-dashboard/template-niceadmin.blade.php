@@ -118,10 +118,10 @@
     <script src="{{ asset('assets/vendor/datatables/Responsive-2.5.0/js/responsive.bootstrap5.js') }}"></script>
 
     {{-- select2 --}}
-    <script src="{{ asset('assets/vendor/vendor/select2-4.1.0/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/select2-4.1.0/js/select2.min.js') }}"></script>
 
     {{-- sweetalert2 --}}
-    <script src="{{ asset('assets/vendor/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
     {{-- sweetalert costum --}}
     {{-- <script src="{{ asset('assets/vendor/js-costum/costum-sweetalert2.js') }}"></script> --}}
 

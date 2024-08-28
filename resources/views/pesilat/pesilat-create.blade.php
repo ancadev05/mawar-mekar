@@ -55,12 +55,12 @@
                             <div class="d-flex">
                                 <div class="form-check me-3">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="1" {{ old('jk') == 1 ? 'checked' : '' }}>
+                                        name="jk" id="jk1" value="L" {{ old('jk') == 1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk2" value="2" {{ old('jk') == 2 ? 'checked' : '' }}>
+                                        name="jk" id="jk2" value="P" {{ old('jk') == 2 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
                                 @error('jk')
@@ -201,7 +201,6 @@
                                     class="text-danger fw-bold">*</span></label>
                             <select class="form-select @error('jenjang') is-invalid @enderror" name="jenjang"
                                 id="jenjang" required>
-                                <option value="" selected>...</option>
                                 <option value="1" {{ old('jenjang') == '1' ? 'selected' : '' }}>Siswa
                                 <option value="2" {{ old('jenjang') == '2' ? 'selected' : '' }}>Kader
                                 <option value="3" {{ old('jenjang') == '3' ? 'selected' : '' }}>Pendekar
@@ -213,7 +212,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="cabang_id">Cabang <span
                                     class="text-danger fw-bold">*</span></label>
-                            <select class="form-select @error('cabang_id') is-invalid @enderror" name="cabang_id"
+                            <select class="form-select @error('cabang_id') is-invalid @enderror select2" name="cabang_id"
                                 id="cabang_id" required>
                                 <option value="" selected>...</option>
                                 @foreach ($cabangs as $item)
@@ -227,10 +226,12 @@
                         <div class="mb-3">
                             <label class="form-label" for="unit_id">Unit Latihan <span
                                     class="text-danger fw-bold">*</span></label>
-                            <select class="form-select @error('unit_id') is-invalid @enderror" name="unit_id"
-                                id="unit_id" required>
+                            <select class="form-select @error('unit_id') is-invalid @enderror select2" name="unit_id"
+                                id="unit_id">
                                 <option value="" selected>...</option>
-                                <option value="Islam" {{ old('unit_id') == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                @foreach ($units as $item)
+                                    <option value="{{ $item->id }}" {{ old('unit_id') == $item->id ? 'selected' : '' }}>{{ $item->unit }}</option>
+                                @endforeach
                             </select>
                             @error('unit_id')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -307,6 +308,8 @@
 @section('script')
     <script>
         $(document).ready(function() {
+            $('.select2').select2();
+            // menampilkan preview foto
             $('#foto').change(function() {
                 const file = this.files[0];
                 if (file) {
@@ -317,6 +320,14 @@
                     reader.readAsDataURL(file);
                 }
             });
+
+            // pencarian pada inputan select
+            // $('.select2').select2();
         });
     </script>
+    {{-- <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script> --}}
 @endsection

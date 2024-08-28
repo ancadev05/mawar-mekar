@@ -76,7 +76,7 @@
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="#" class="logo d-flex flex-column align-items-center w-auto ">
-                                    <img src="assets/img/logo-ts-gowa.png" alt="" class="mb-2"
+                                    <img src="assets/img/logo-ts.png" alt="" class="mb-2"
                                         id="logo-login">
                                     {{-- <span class="text-white d-lg-block">Tapak Suci 177 Gowa</span> --}}
                                 </a>

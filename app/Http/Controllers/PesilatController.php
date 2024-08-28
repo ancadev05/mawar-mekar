@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\PesilatImport;
+use App\Models\Unit;
 use App\Models\Cabang;
 use App\Models\Pesilat;
 use App\Models\Tingkatan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PesilatController extends Controller
 {
@@ -23,9 +26,10 @@ class PesilatController extends Controller
     public function create()
     {
         $cabangs = Cabang::get();
+        $units = Unit::get();
         $tingkatans = Tingkatan::get();
 
-        return view('pesilat.pesilat-create', compact('cabangs', 'tingkatans'));
+        return view('pesilat.pesilat-create', compact('cabangs', 'units', 'tingkatans'));
     }
 
     /**
@@ -58,6 +62,7 @@ class PesilatController extends Controller
 
         $pesilat = [
             'no_registrasi' => 500,
+            'regis' => 500,
             'nik' => $request->nik,
             'nama_pesilat' => $request->nama_pesilat,
             'tempat_lahir' => $request->tempat_lahir,
@@ -136,11 +141,13 @@ class PesilatController extends Controller
         //
     }
 
+    // registrasi pesilat
     public function registrasi()
     {
         return view('pesilat.pesilat-registrasi');
     }
 
+    // untuk cari data pesilat
     public function caripesilat(Request $request)
     {
         $registrasi = $request->no_registrasi;
@@ -159,4 +166,6 @@ class PesilatController extends Controller
 
         return redirect('/')->with('not', 'Data tidak ditemukan');
     }
+
+   
 }

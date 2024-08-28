@@ -1,24 +1,23 @@
 @extends('template-dashboard.template-niceadmin')
 
 @section('title')
-    Unit
+    Kader
 @endsection
 
 @section('content')
     <div class="pagetitle">
-        <h1>Unit Latihan</h1>
+        <h1>Data Kader</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
-        <div class="card p-3">
-
-            <form action="{{ url('/unit-import') }}" method="post" enctype="multipart/form-data">
+        <div class="card p-3 mb-3">
+            <form action="{{ url('/pesilat-import') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <label for="file" class="form-label form-label-sm">File Excel</label>
-                <div class="row mb-5">
+                <div class="row">
                     <div class="col-4">
                         <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="file"
-                            name="file" type="file">
+                            name="file" type="file" required>
                         @error('file')
                             <small class="invalid-feedback"> {{ $message }} </small>
                         @enderror
@@ -28,34 +27,39 @@
                     </div>
                 </div>
             </form>
+        </div>
 
+        <div class="card p-3">
             <div class="table-responsive">
-                <table class="table table-sm table-striped">
+                <table class="table table-sm table-striped table-hover nowrap">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Unit</th>
-                            <th>Penanggung Jawab</th>
+                            <th>No. Regis</th>
+                            <th>Nama Kader</th>
+                            <th>Tingkatan</th>
                             <th>Cabang</th>
-                            <th>Alamat</th>
-                            <th>Ket</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php
                             $i = 1;
                         @endphp
-                        @foreach ($units as $item)
+                        @foreach ($pesilats as $item)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $item->unit }}</td>
-                                <td>{{ $item->penanggung_jawab }}</td>
+                                <td>{{ $item->no_registrasi }}</td>
+                                <td>{{ $item->nama_pesilat }}</td>
+                                <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
-                                <td>{{ $item->alamat }}</td>
-                                <td>{{ $item->ket }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning shadow-sm">Edit</button>
+                                    <button class="btn btn-sm btn-danger shadow-sm">Hapus</button>
+                                </td>
                             </tr>
                             @php
-                                $i++;
+                                $i++
                             @endphp
                         @endforeach
                     </tbody>
@@ -64,3 +68,4 @@
         </div>
     </section>
 @endsection
+

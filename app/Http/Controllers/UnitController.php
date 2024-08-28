@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UnitsImport;
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UnitController extends Controller
 {
@@ -13,7 +15,7 @@ class UnitController extends Controller
     public function index()
     {
         $units = Unit::get();
-        return view('units.index', compact('units'));
+        return view('unit.index', compact('units'));
     }
 
     /**
@@ -62,5 +64,15 @@ class UnitController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    // untuk import data lewat excel
+    public function unitimport(Request $request)
+    {
+        if ($request) {
+            Excel::import(new UnitsImport(), $request->file('file'));
+        }
+
+        return redirect('/unit');
     }
 }

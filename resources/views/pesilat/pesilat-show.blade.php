@@ -27,7 +27,7 @@
                 {{-- judul --}}
                 <div class="text-center mb-3" style="font-size: 16px">
                     <span class="fw-bold">BIODATA</span><br>
-                    <span class="border-top border-1 border-dark">No. Registrasi : 20240820201023</span>
+                    <span class="border-top border-1 border-dark">No. Regis : 177.02.2012.0001</span>
                 </div>
     
                 {{-- biodata --}}
@@ -145,6 +145,10 @@
                 </table>
             </div>
            
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-danger">Download</button>
         </div>
 
     </div>

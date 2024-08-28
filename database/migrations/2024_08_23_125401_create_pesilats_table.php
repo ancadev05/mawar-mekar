@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('pesilats', function (Blueprint $table) {
             $table->id();
             $table->string('no_registrasi')->unique();
+            $table->string('regis');
             $table->string('nik');
             $table->string('nama_pesilat');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
-            $table->enum('jk',[1, 2]);
+            $table->enum('jk',['L', 'P']);
             $table->string('agama');
             $table->text('alamat');
             $table->string('no_hp')->nullable();
