@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\PesilatImport;
 use App\Models\Unit;
 use App\Models\Cabang;
 use App\Models\Pesilat;
 use App\Models\Tingkatan;
 use Illuminate\Http\Request;
+use App\Imports\PesilatImport;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PesilatController extends Controller
@@ -54,15 +55,19 @@ class PesilatController extends Controller
 
         // dd($request->all());
 
-        // pembuatan no registrasi
-        // $no_registrasi = Pesilat::max('no_registrasi');
-        // $no_registrasi = (int) $no_registrasi;
-        // $no_registrasi = $no_registrasi + 1;
-        // $no_registrasi = '177.' . $request->cabang_id . '.' . $request->tahun_masuk_ts . '.' . $no_registrasi;
+        // mencari no cabang
+        $no_cabang = Cabang::where('id', $request->cabang_id)->first();
+        $cabang = $no_cabang->no_cabang;
+
+        // mencari no regis
+        $regis = $this->generateregis($request->tahun_masuk_ts);
+
+        // generate no registrasi
+        $no_registrasi = '177.' . $cabang . '.' . $request->tahun_masuk_ts . '.' . $regis;
 
         $pesilat = [
-            'no_registrasi' => 500,
-            'regis' => 500,
+            'no_registrasi' => $no_registrasi,
+            'regis' => $regis,
             'nik' => $request->nik,
             'nama_pesilat' => $request->nama_pesilat,
             'tempat_lahir' => $request->tempat_lahir,
@@ -74,7 +79,7 @@ class PesilatController extends Controller
             'nama_ayah' => $request->nama_ayah,
             'nama_ibu' => $request->nama_ibu,
             'nama_wali' => $request->nama_wali,
-            'pekkerjaan_ayah' => $request->pekerjaan_ayah,
+            'pekerjaan_ayah' => $request->pekerjaan_ayah,
             'pekerjaan_ibu' => $request->pekerjaan_ibu,
             'pekerjaan_wali' => $request->pekerjaan_wali,
             'alamat_orangtua_wali' => $request->alamat_orangtua_wali,
@@ -100,9 +105,9 @@ class PesilatController extends Controller
         // $pesilat = Pesilat::where('no_registrasi', $no_registrasi)->first();
 
         $pesilat = Pesilat::get()->last();
-        $pesilat_id = $pesilat->id;
+        $pesilat_registrasi = $pesilat->no_registrasi;
 
-        return redirect('/pesilat/' . $pesilat_id);
+        return redirect('/pesilat/' . $pesilat_registrasi);
     }
 
     /**
@@ -128,7 +133,10 @@ class PesilatController extends Controller
         $pesilat = Pesilat::where('id', $id)->first();
 
         return view('pesilat.pesilat-edit', compact(
-            'cabangs', 'units', 'tingkatans', 'pesilat'
+            'cabangs',
+            'units',
+            'tingkatans',
+            'pesilat'
         ));
     }
 
@@ -172,5 +180,25 @@ class PesilatController extends Controller
         return redirect('/')->with('not', 'Data tidak ditemukan');
     }
 
-   
+    // generate registrasi
+    public function generateregis($tahun_masuk_ts)
+    {
+        // Ambil regi terakhir untuk tahun masuk yang sama
+        $last_pesilat = DB::table('pesilats')
+            ->where('tahun_masuk_ts', $tahun_masuk_ts)
+            ->orderBy('regis', 'desc')
+            ->first();
+
+        if ($last_pesilat) {
+            // Ambil empat digit terakhir dari regis terakhir dan tambahkan 1
+            $last_regis = (int)substr($last_pesilat->regis, -4);
+            $new_regis = $last_regis + 1;
+        } else {
+            // Jika belum ada, mulai dengan 0001
+            $new_regis = 1;
+        }
+
+        // Format NIS baru
+        return str_pad($new_regis, 4, '0', STR_PAD_LEFT);
+    }
 }
