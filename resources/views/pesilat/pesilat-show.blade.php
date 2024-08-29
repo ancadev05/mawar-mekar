@@ -24,6 +24,7 @@
                     </div>
                 </div>
     
+
                 {{-- judul --}}
                 <div class="text-center mb-3" style="font-size: 16px">
                     <span class="fw-bold">BIODATA</span><br>
@@ -38,8 +39,8 @@
                         <td rowspan="26" colspan="2">
                             <div class="d-flex flex-column align-items-center mt-2" style="line-height: 1.2em">
                                 <img src="{{ url('assets/img/tanda-tingkat/' . $pesilat->tingkatan->melati) }}" alt="foto" height="30px" class="mb-2">
-                                <img src="{{ url('assets/img/foto-siswa.jpg') }}" alt="foto" width="113.38px" height="151.18px" class="mb-1">
-                                <span class="fw-bold">{{ $pesilat->nama_pesilat }}, {{ $pesilat->gelar_akademik }}, {{ $pesilat->tingkatan->singkatan }}</span>
+                                <img src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}" alt="foto" width="113.38px" height="151.18px" class="mb-1">
+                                <span class="fw-bold border-bottom border-1 border-black">{{ $pesilat->nama_pesilat }} {{ ','.$pesilat->gelar_akademik }} {{ $pesilat->tingkatan->singkatan }}</span>
                                 <span>NBTS. {{ $pesilat->nbts }} NBM. {{ $pesilat->nbm }}</span>
                             </div>
                         </td>
@@ -153,7 +154,7 @@
 
         <div class="d-flex justify-content-center">
             <button class="btn btn-danger shadow-sm me-2">Download</button>
-            <button class="btn btn-warning shadow-sm">Edit</button>
+            <a href="{{ url('/pesilat/'.$pesilat->id.'/edit') }}" class="btn btn-warning shadow-sm">Edit</a>
         </div>
 
     </div>

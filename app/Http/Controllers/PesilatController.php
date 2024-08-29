@@ -74,7 +74,7 @@ class PesilatController extends Controller
             'nama_ayah' => $request->nama_ayah,
             'nama_ibu' => $request->nama_ibu,
             'nama_wali' => $request->nama_wali,
-            'pekerjaan_ayah' => $request->pekerjaan_ayah,
+            'pekkerjaan_ayah' => $request->pekerjaan_ayah,
             'pekerjaan_ibu' => $request->pekerjaan_ibu,
             'pekerjaan_wali' => $request->pekerjaan_wali,
             'alamat_orangtua_wali' => $request->alamat_orangtua_wali,
@@ -87,10 +87,10 @@ class PesilatController extends Controller
             'nbts' => $request->nbts,
             'nbm' => $request->nbm,
             'cabang_id' => $request->cabang_id,
-            // 'unit_id' => $request->unit_id,
-            'unit_id' => 1,
+            'unit_id' => $request->unit_id,
             'tingkatan_id' => $request->tingkatan_id,
             'ukt_terakhir' => $request->ukt_terakhir,
+            'foto_pesilat' => $request->foto_pesilat,
             'ket' => $request->ket,
         ];
 
