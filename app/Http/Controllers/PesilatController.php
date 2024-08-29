@@ -102,8 +102,6 @@ class PesilatController extends Controller
         Pesilat::create($pesilat);
 
         // mencari no registrasi untuk di download setelah data tersimpan
-        // $pesilat = Pesilat::where('no_registrasi', $no_registrasi)->first();
-
         $pesilat = Pesilat::get()->last();
         $pesilat_registrasi = $pesilat->no_registrasi;
 

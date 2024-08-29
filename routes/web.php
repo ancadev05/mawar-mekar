@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\KaderController;
+use App\Http\Controllers\PendekarController;
 use App\Http\Controllers\PesilatController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\UktController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +28,13 @@ Route::get('/mawar-mekar', [AdminController::class, 'dashboard']);
 Route::get('/registrasi', [PesilatController::class, 'registrasi']);
 Route::get('/cari-pesilat', [PesilatController::class, 'caripesilat']);
 
+// route untuk import data pesilat
 Route::post('/pesilat-import', [KaderController::class, 'pesilatimport']);
-Route::get('/pendekar', [PesilatController::class, 'pendekar']);
+
+Route::get('/pendekar', [PendekarController::class, 'index']);
 Route::get('/kader', [KaderController::class, 'index']);
-Route::get('/siswa', [PesilatController::class, 'siswa']);
+Route::get('/siswa', [SiswaController::class, 'index']);
+
 Route::resource('/pesilat', PesilatController::class);
 
 // cabang
@@ -39,4 +44,6 @@ Route::resource('/cabang', CabangController::class);
 Route::post('/unit-import', [UnitController::class, 'unitimport']);
 Route::resource('/unit', UnitController::class);
 
+// ukt
+Route::resource('/ukt', UktController::class);
 
