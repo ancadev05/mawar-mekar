@@ -17,7 +17,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="nik">NIK <span class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('nik') is-invalid @enderror" type="number" name="nik"
-                                id="nik" maxlength="16" minlength="16" value="{{ old('nik') }}" required>
+                                id="nik" maxlength="16" minlength="16" value="{{ $pesilat->nik }}" required>
                             @error('nik')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -26,7 +26,7 @@
                             <label class="form-label" for="nama_pesilat">Nama Lengkap Tanpa Gelar <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('nama_pesilat') is-invalid @enderror" type="text"
-                                name="nama_pesilat" id="nama_pesilat" value="{{ old('nama_pesilat') }}" required>
+                                name="nama_pesilat" id="nama_pesilat" value="{{ $pesilat->nama_pesilat }}" required>
                             @error('nama_pesilat')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -35,7 +35,7 @@
                             <label class="form-label" for="tempat_lahir">Tempat Lahir <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('tempat_lahir') is-invalid @enderror" type="text"
-                                name="tempat_lahir" id="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
+                                name="tempat_lahir" id="tempat_lahir" value="{{ $pesilat->tempat_lahir }}" required>
                             @error('tempat_lahir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -44,7 +44,7 @@
                             <label class="form-label" for="tgl_lahir">Tanggal Lahir <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('tgl_lahir') is-invalid @enderror" type="date"
-                                name="tgl_lahir" id="tgl_lahir" value="{{ old('tgl_lahir') }}" required>
+                                name="tgl_lahir" id="tgl_lahir" value="{{ $pesilat->tgl_lahir }}" required>
                             @error('tgl_lahir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -55,12 +55,12 @@
                             <div class="d-flex">
                                 <div class="form-check me-3">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="L" {{ old('jk') == 1 ? 'checked' : '' }}>
+                                        name="jk" id="jk1" value="L" {{ $pesilat->jk == 'L' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk2" value="P" {{ old('jk') == 2 ? 'checked' : '' }}>
+                                        name="jk" id="jk2" value="P" {{ $pesilat->jk == 'P' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
                                 @error('jk')
@@ -73,7 +73,7 @@
                                     class="text-danger fw-bold">*</span></label>
                             <select class="form-select @error('agama') is-invalid @enderror" name="agama" id="agama"
                                 required>
-                                <option value="Islam" {{ old('agama') == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                <option value="Islam" {{ $pesilat->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
                             </select>
                             @error('agama')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -83,7 +83,7 @@
                             <label class="form-label" for="alamat">Alamat <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('alamat') is-invalid @enderror" type="text" name="alamat"
-                                id="alamat" value="{{ old('alamat') }}" required>
+                                id="alamat" value="{{ $pesilat->alamat }}" required>
                             @error('alamat')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -91,7 +91,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="nama_ayah">Nama Ayah</label>
                             <input class="form-control @error('nama_ayah') is-invalid @enderror" type="text"
-                                name="nama_ayah" id="nama_ayah" value="{{ old('nama_ayah') }}">
+                                name="nama_ayah" id="nama_ayah" value="{{ $pesilat->nama_ayah }}">
                             @error('nama_ayah')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -99,7 +99,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="nama_ibu">Nama Ibu</label>
                             <input class="form-control @error('nama_ibu') is-invalid @enderror" type="text"
-                                name="nama_ibu" id="nama_ibu" value="{{ old('nama_ibu') }}">
+                                name="nama_ibu" id="nama_ibu" value="{{ $pesilat->nama_ibu }}">
                             @error('nama_ibu')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -107,7 +107,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="nama_wali">Nama Wali</label>
                             <input class="form-control @error('nama_wali') is-invalid @enderror" type="text"
-                                name="nama_wali" id="nama_wali" value="{{ old('nama_wali') }}">
+                                name="nama_wali" id="nama_wali" value="{{ $pesilat->nama_wali }}">
                             @error('nama_wali')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -115,7 +115,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="pekerjaan_ayah">Pekerjaan Ayah</label>
                             <input class="form-control @error('pekerjaan_ayah') is-invalid @enderror" type="text"
-                                name="pekerjaan_ayah" id="pekerjaan_ayah" value="{{ old('pekerjaan_ayah') }}">
+                                name="pekerjaan_ayah" id="pekerjaan_ayah" value="{{ $pesilat->pekerjaan_ayah }}">
                             @error('pekerjaan_ayah')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -123,7 +123,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="pekerjaan_ibu">Pekerjaan Ibu</label>
                             <input class="form-control @error('pekerjaan_ibu') is-invalid @enderror" type="text"
-                                name="pekerjaan_ibu" id="pekerjaan_ibu" value="{{ old('pekerjaan_ibu') }}">
+                                name="pekerjaan_ibu" id="pekerjaan_ibu" value="{{ $pesilat->pekerjaan_ibu }}">
                             @error('pekerjaan_ibu')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -131,7 +131,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="pekerjaan_wali">Pekerjaan Wali</label>
                             <input class="form-control @error('pekerjaan_wali') is-invalid @enderror" type="text"
-                                name="pekerjaan_wali" id="pekerjaan_wali" value="{{ old('pekerjaan_wali') }}">
+                                name="pekerjaan_wali" id="pekerjaan_wali" value="{{ $pesilat->pekerjaan_wali }}">
                             @error('pekerjaan_wali')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -140,7 +140,7 @@
                             <label class="form-label" for="alamat_orangtua_wali">Alamat Orang Tua/Wali</label>
                             <input class="form-control @error('alamat_orangtua_wali') is-invalid @enderror"
                                 type="text" name="alamat_orangtua_wali" id="alamat_orangtua_wali"
-                                value="{{ old('alamat_orangtua_wali') }}">
+                                value="{{ $pesilat->alamat_orangtua_wali }}">
                             @error('alamat_orangtua_wali')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -148,7 +148,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="hp_orangtua_wali">No. HP Orang Tua/Wali</label>
                             <input class="form-control @error('hp_orangtua_wali') is-invalid @enderror" type="text"
-                                name="hp_orangtua_wali" id="hp_orangtua_wali" value="{{ old('hp_orangtua_wali') }}">
+                                name="hp_orangtua_wali" id="hp_orangtua_wali" value="{{ $pesilat->hp_orangtua_wali }}">
                             @error('hp_orangtua_wali')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -174,7 +174,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="gelar_akademk">Gelar Akademik</label>
                             <input class="form-control @error('gelar_akademk') is-invalid @enderror" type="text"
-                                name="gelar_akademk" id="gelar_akademk" value="{{ old('gelar_akademk') }}">
+                                name="gelar_akademk" id="gelar_akademk" value="{{ $pesilat->gelar_akademk }}">
                             @error('gelar_akademk')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -182,17 +182,17 @@
                         <div class="mb-3">
                             <label class="form-label" for="sekolah_instansi">Asal Sekolah / Instansi</label>
                             <input class="form-control @error('sekolah_instansi') is-invalid @enderror" type="text"
-                                name="sekolah_instansi" id="sekolah_instansi" value="{{ old('sekolah_instansi') }}">
+                                name="sekolah_instansi" id="sekolah_instansi" value="{{ $pesilat->sekolah_instansi }}">
                             @error('sekolah_instansi')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="tahun_masuk">Tahun Masuk Tapak Suci <span
+                            <label class="form-label" for="tahun_masuk_ts">Tahun Masuk Tapak Suci <span
                                     class="text-danger fw-bold">*</span></label>
-                            <input class="form-control @error('tahun_masuk') is-invalid @enderror" type="number"
-                                name="tahun_masuk" id="tahun_masuk" value="{{ old('tahun_masuk') }}" required>
-                            @error('tahun_masuk')
+                            <input class="form-control @error('tahun_masuk_ts') is-invalid @enderror" type="number"
+                                name="tahun_masuk_ts" id="tahun_masuk_ts" value="{{ $pesilat->tahun_masuk_ts }}" required>
+                            @error('tahun_masuk_ts')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
@@ -216,7 +216,7 @@
                                 id="cabang_id" required>
                                 <option value="" selected>...</option>
                                 @foreach ($cabangs as $item)
-                                    <option value="{{ $item->id }}" {{ old('cabang_id') == $item->id ? 'selected' : '' }}>{{ $item->cabang }}</option>
+                                    <option value="{{ $item->id }}" {{ $pesilat->cabang_id == $item->id ? 'selected' : '' }}>{{ $item->cabang }}</option>
                                 @endforeach
                             </select>
                             @error('cabang_id')
@@ -230,7 +230,7 @@
                                 id="unit_id">
                                 <option value="" selected>...</option>
                                 @foreach ($units as $item)
-                                    <option value="{{ $item->id }}" {{ old('unit_id') == $item->id ? 'selected' : '' }}>{{ $item->unit }}</option>
+                                    <option value="{{ $item->id }}" {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}</option>
                                 @endforeach
                             </select>
                             @error('unit_id')
@@ -244,7 +244,7 @@
                                 id="tingkatan_id">
                                 <option value="" selected>...</option>
                                 @foreach ($tingkatans as $item)
-                                    <option value="{{ $item->id }}" {{ old('tingkatan_id') == $item->id ? 'selected' : '' }}>{{ $item->tingkat . ' (' . $item->singkatan . ')' }}</option>
+                                    <option value="{{ $item->id }}" {{ $pesilat->tingkatan_id == $item->id ? 'selected' : '' }}>{{ $item->tingkat . ' (' . $item->singkatan . ')' }}</option>
                                 @endforeach
                             </select>
                             @error('tingkatan_id')
@@ -254,7 +254,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="nbts">NBTS</label>
                             <input class="form-control @error('nbts') is-invalid @enderror" type="number"
-                                name="nbts" id="nbts" value="{{ old('nbts') }}">
+                                name="nbts" id="nbts" value="{{ $pesilat->nbts }}">
                             @error('nbts')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -262,7 +262,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="nbm">NBM</label>
                             <input class="form-control @error('nbm') is-invalid @enderror" type="number" name="nbm"
-                                id="nbm" value="{{ old('nbm') }}">
+                                id="nbm" value="{{ $pesilat->nbm }}">
                             @error('nbm')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -270,7 +270,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="ukt_terakhir">UKT Terakhir</label>
                             <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="number" name="ukt_terakhir"
-                                id="ukt_terakhir" value="{{ old('ukt_terakhir') }}">
+                                id="ukt_terakhir" value="{{ $pesilat->ukt_terakhir }}">
                             @error('ukt_terakhir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -295,7 +295,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-danger shadow-sm mb-3 w-50">Submit</button>
+                    <button type="submit" class="btn btn-danger shadow-sm mb-3 w-50">Simpan</button>
                 </div>
 
             </form>

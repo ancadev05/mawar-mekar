@@ -188,11 +188,11 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="tahun_masuk">Tahun Masuk Tapak Suci <span
+                            <label class="form-label" for="tahun_masuk_ts">Tahun Masuk Tapak Suci <span
                                     class="text-danger fw-bold">*</span></label>
-                            <input class="form-control @error('tahun_masuk') is-invalid @enderror" type="number"
-                                name="tahun_masuk" id="tahun_masuk" value="{{ old('tahun_masuk') }}" required>
-                            @error('tahun_masuk')
+                            <input class="form-control @error('tahun_masuk_ts') is-invalid @enderror" type="number"
+                                name="tahun_masuk_ts" id="tahun_masuk_ts" value="{{ old('tahun_masuk_ts') }}" required>
+                            @error('tahun_masuk_ts')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>

@@ -82,7 +82,7 @@ class PesilatController extends Controller
             'tingkat_pendidikan' => $request->tingkat_pendidikan,
             'gelar_akademik' => $request->gelar_akademik,
             'asal_sekolah_instansi' => $request->asal_sekolah_instansi,
-            'tahun_masuk_ts' => $request->tahun_masuk,
+            'tahun_masuk_ts' => $request->tahun_masuk_ts,
             'jenjang' => $request->jenjang,
             'nbts' => $request->nbts,
             'nbm' => $request->nbm,
@@ -122,7 +122,14 @@ class PesilatController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cabangs = Cabang::get();
+        $units = Unit::get();
+        $tingkatans = Tingkatan::get();
+        $pesilat = Pesilat::where('id', $id)->first();
+
+        return view('pesilat.pesilat-edit', compact(
+            'cabangs', 'units', 'tingkatans', 'pesilat'
+        ));
     }
 
     /**
