@@ -7,7 +7,7 @@
 @section('content')
     <div class="container p-3">
 
-        <div class="a4 m-auto">
+        <div class="a4 m-auto" id="document-pdf">
             <div class="card p-1">
     
                 {{-- kop --}}
@@ -153,7 +153,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button class="btn btn-danger shadow-sm me-2">Download</button>
+            <button class="btn btn-danger shadow-sm me-2" id="export-pdf">Download</button>
             <a href="{{ url('/pesilat/'.$pesilat->id.'/edit') }}" class="btn btn-warning shadow-sm">Edit</a>
         </div>
 

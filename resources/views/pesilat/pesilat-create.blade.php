@@ -161,11 +161,9 @@
                             <select class="form-select @error('tingakt_pendidikan') is-invalid @enderror"
                                 name="tingakt_pendidikan" id="tingakt_pendidikan">
                                 <option value="" selected>...</option>
-                                <option value="1" {{ old('tingakt_pendidikan') == '1' ? 'selected' : '' }}>SD
-                                <option value="2" {{ old('tingakt_pendidikan') == '2' ? 'selected' : '' }}>SMP
-                                <option value="3" {{ old('tingakt_pendidikan') == '3' ? 'selected' : '' }}>SMA
-                                <option value="4" {{ old('tingakt_pendidikan') == '4' ? 'selected' : '' }}>Perguruan                                    Tinggi
-                                <option value="5" {{ old('tingakt_pendidikan') == '5' ? 'selected' : '' }}>Lainnya</option>
+                                @foreach ($tingkat_pendidikan as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
                             </select>
                             @error('tingakt_pendidikan')
                                 <small class="invalid-feedback"> {{ $message }} </small>

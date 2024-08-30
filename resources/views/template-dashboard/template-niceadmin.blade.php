@@ -122,8 +122,9 @@
 
     {{-- sweetalert2 --}}
     <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
-    {{-- sweetalert costum --}}
-    {{-- <script src="{{ asset('assets/vendor/js-costum/costum-sweetalert2.js') }}"></script> --}}
+    
+    {{-- coutum js --}}
+    <script src="{{ asset('assets/costum-js/script.js') }}"></script>
 
     {{-- alert --}}
     @include('template-dashboard.komponen-niceadmin.alert')

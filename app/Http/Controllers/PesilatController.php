@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Imports\PesilatImport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class PesilatController extends Controller
 {
@@ -29,8 +30,10 @@ class PesilatController extends Controller
         $cabangs = Cabang::get();
         $units = Unit::get();
         $tingkatans = Tingkatan::get();
+        
+        $tingkat_pendidikan = array('SD/MI', 'SMP/MTs', 'SMA/MA', 'S1', 'S2', 'S3', 'Lainnya');
 
-        return view('pesilat.pesilat-create', compact('cabangs', 'units', 'tingkatans'));
+        return view('pesilat.pesilat-create', compact('cabangs', 'units', 'tingkatans', 'tingkat_pendidikan'));
     }
 
     /**
@@ -53,7 +56,15 @@ class PesilatController extends Controller
         //     'tingkatan_id' => 'required'
         // ]);
 
-        // dd($request->all());
+        // generate foto
+        $file_name = false;
+        // Jika user upload gambar
+        if ($request->hasFile('foto-pesilat')) {
+            // Validasi gambar
+            $file = $request->file('foto-pesilat'); // mengambil file dari form
+            $file_name = date('ymdhis') . '.' . $file->getClientOriginalExtension(); // meriname file, antisipasi nama file double. memberi nama file dengan gabung extensi
+            $file->storeAs('public/foto-pesilat/', $file_name); // memindahkan file ke folder public agar bisa diakses
+        }
 
         // mencari no cabang
         $no_cabang = Cabang::where('id', $request->cabang_id)->first();
@@ -95,7 +106,7 @@ class PesilatController extends Controller
             'unit_id' => $request->unit_id,
             'tingkatan_id' => $request->tingkatan_id,
             'ukt_terakhir' => $request->ukt_terakhir,
-            'foto_pesilat' => $request->foto_pesilat,
+            'foto_pesilat' => $file_name,
             'ket' => $request->ket,
         ];
 
@@ -143,11 +154,65 @@ class PesilatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validasi gambar baru
+        if ($request->hasFile('foto-pesilat')) { // Jika ada gambar baru
+            // Lakukan validasi
+            $file = $request->file('foto-pesilat'); // mengambil file dari form
+            $file_name = date('ymdhis') . '.' . $file->getClientOriginalExtension(); // penamaan file, antisipasi nama file double
+            $file->storeAs('public/foto-pesilat/', $file_name); // memindahkan file ke folder public agar bisa diakses dengan nama yang unik
+            // Hapus foto lama
+            Storage::delete('public/foto-pesilat/' . $request->file_lama);
+            // Masukkan namanya ke dalam database
+            $pesilat['foto-pesilat'] = $file_name;
+            Pesilat::where('id', $id)->update($pesilat);
+        } else {
+            $pesilatata['foto-pesilat'] = $request->file_lama;
+        }
+
+        // ambil data
+        $pesilat = [
+            'nik' => $request->nik,
+            'nama_pesilat' => $request->nama_pesilat,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'nama_ayah' => $request->nama_ayah,
+            'nama_ibu' => $request->nama_ibu,
+            'nama_wali' => $request->nama_wali,
+            'pekerjaan_ayah' => $request->pekerjaan_ayah,
+            'pekerjaan_ibu' => $request->pekerjaan_ibu,
+            'pekerjaan_wali' => $request->pekerjaan_wali,
+            'alamat_orangtua_wali' => $request->alamat_orangtua_wali,
+            'hp_orangtua_wali' => $request->hp_orangtua_wali,
+            'tingkat_pendidikan' => $request->tingkat_pendidikan,
+            'gelar_akademik' => $request->gelar_akademik,
+            'asal_sekolah_instansi' => $request->asal_sekolah_instansi,
+            'tahun_masuk_ts' => $request->tahun_masuk_ts,
+            'jenjang' => $request->jenjang,
+            'nbts' => $request->nbts,
+            'nbm' => $request->nbm,
+            'cabang_id' => $request->cabang_id,
+            'unit_id' => $request->unit_id,
+            'tingkatan_id' => $request->tingkatan_id,
+            'ukt_terakhir' => $request->ukt_terakhir,
+            'foto_pesilat' => $file_name,
+            'ket' => $request->ket,
+        ];
+
+        Pesilat::where('id', $id)->update($pesilat);
+
+        // mengambil no regis
+        $pesilat = Pesilat::where('id', $id)->first();
+        $pesilat_registrasi = $pesilat->no_registrasi;
+
+        return redirect('/pesilat/' . $pesilat_registrasi);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specifiepesilat resource from storage.
      */
     public function destroy(string $id)
     {
