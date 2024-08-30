@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('no_registrasi')->unique();
             $table->string('regis');
-            $table->string('nik');
+            $table->string('nik')->unique();
             $table->string('nama_pesilat');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');

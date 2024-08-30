@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('tempat');
             $table->date('tgl_awal');
             $table->date('tgl_akhir');
+            $table->string('jenis_ukt');
             $table->text('ket');
             $table->timestamps();
         });

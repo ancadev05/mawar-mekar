@@ -89,6 +89,14 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label class="form-label" for="no_hp">No. HP</label>
+                            <input class="form-control @error('no_hp') is-invalid @enderror" type="text" name="no_hp"
+                                id="no_hp" value="{{ old('no_hp') }}" required>
+                            @error('no_hp')
+                                <small class="invalid-feedback"> {{ $message }} </small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="nama_ayah">Nama Ayah</label>
                             <input class="form-control @error('nama_ayah') is-invalid @enderror" type="text"
                                 name="nama_ayah" id="nama_ayah" value="{{ old('nama_ayah') }}">
@@ -157,31 +165,31 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="mb-3">
-                            <label class="form-label" for="tingakt_pendidikan">Tingkat Pendidikan</label>
-                            <select class="form-select @error('tingakt_pendidikan') is-invalid @enderror"
-                                name="tingakt_pendidikan" id="tingakt_pendidikan">
+                            <label class="form-label" for="tingkat_pendidikan">Tingkat Pendidikan</label>
+                            <select class="form-select @error('tingkat_pendidikan') is-invalid @enderror"
+                                name="tingkat_pendidikan" id="tingkat_pendidikan">
                                 <option value="" selected>...</option>
                                 @foreach ($tingkat_pendidikan as $item)
                                     <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
-                            @error('tingakt_pendidikan')
+                            @error('tingkat_pendidikan')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="gelar_akademk">Gelar Akademik</label>
-                            <input class="form-control @error('gelar_akademk') is-invalid @enderror" type="text"
-                                name="gelar_akademk" id="gelar_akademk" value="{{ old('gelar_akademk') }}">
-                            @error('gelar_akademk')
+                            <label class="form-label" for="gelar_akademik">Gelar Akademik</label>
+                            <input class="form-control @error('gelar_akademik') is-invalid @enderror" type="text"
+                                name="gelar_akademik" id="gelar_akademik" value="{{ old('gelar_akademik') }}">
+                            @error('gelar_akademik')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="sekolah_instansi">Asal Sekolah / Instansi</label>
-                            <input class="form-control @error('sekolah_instansi') is-invalid @enderror" type="text"
-                                name="sekolah_instansi" id="sekolah_instansi" value="{{ old('sekolah_instansi') }}">
-                            @error('sekolah_instansi')
+                            <label class="form-label" for="asal_sekolah_instansi">Asal Sekolah / Instansi</label>
+                            <input class="form-control @error('asal_sekolah_instansi') is-invalid @enderror" type="text"
+                                name="asal_sekolah_instansi" id="asal_sekolah_instansi" value="{{ old('asal_sekolah_instansi') }}">
+                            @error('asal_sekolah_instansi')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>

@@ -46,7 +46,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Nama Siswa</td>
+                        <td>Nama Lengkap</td>
                         <td>: {{ $pesilat->nama_pesilat }}</td>
                     </tr>
                     <tr>

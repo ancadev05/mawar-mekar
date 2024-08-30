@@ -154,6 +154,7 @@ class PesilatController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         // Validasi gambar baru
         if ($request->hasFile('foto-pesilat')) { // Jika ada gambar baru
             // Lakukan validasi
@@ -163,11 +164,9 @@ class PesilatController extends Controller
             // Hapus foto lama
             Storage::delete('public/foto-pesilat/' . $request->file_lama);
             // Masukkan namanya ke dalam database
-            $pesilat['foto-pesilat'] = $file_name;
+            $pesilat['foto_pesilat'] = $file_name;
             Pesilat::where('id', $id)->update($pesilat);
-        } else {
-            $pesilatata['foto-pesilat'] = $request->file_lama;
-        }
+        } 
 
         // ambil data
         $pesilat = [
@@ -198,7 +197,6 @@ class PesilatController extends Controller
             'unit_id' => $request->unit_id,
             'tingkatan_id' => $request->tingkatan_id,
             'ukt_terakhir' => $request->ukt_terakhir,
-            'foto_pesilat' => $file_name,
             'ket' => $request->ket,
         ];
 

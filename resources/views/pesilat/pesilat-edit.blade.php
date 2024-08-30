@@ -10,8 +10,9 @@
             <div class="p-2 mb-3 border-bottom border-2 border-dark">
                 <h4 class="text-center">BIODATA</h4>
             </div>
-            <form action="{{ url('pesilat') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('pesilat/' . $pesilat->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <div class="mb-3">
@@ -174,16 +175,16 @@
                         <div class="mb-3">
                             <label class="form-label" for="gelar_akademk">Gelar Akademik</label>
                             <input class="form-control @error('gelar_akademk') is-invalid @enderror" type="text"
-                                name="gelar_akademk" id="gelar_akademk" value="{{ $pesilat->gelar_akademk }}">
+                                name="gelar_akademk" id="gelar_akademk" value="{{ $pesilat->gelar_akademik }}">
                             @error('gelar_akademk')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="sekolah_instansi">Asal Sekolah / Instansi</label>
-                            <input class="form-control @error('sekolah_instansi') is-invalid @enderror" type="text"
-                                name="sekolah_instansi" id="sekolah_instansi" value="{{ $pesilat->sekolah_instansi }}">
-                            @error('sekolah_instansi')
+                            <label class="form-label" for="asal_sekolah_instansi">Asal Sekolah / Instansi</label>
+                            <input class="form-control @error('asal_sekolah_instansi') is-invalid @enderror" type="text"
+                                name="asal_sekolah_instansi" id="asal_sekolah_instansi" value="{{ $pesilat->asal_sekolah_instansi }}">
+                            @error('asal_sekolah_instansi')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
@@ -276,6 +277,9 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            {{-- foto lama --}}
+                            <input type="hidden" name="file_lama" value="{{ $pesilat->foto_pesilat }}">
+
                             <label for="foto-pesilat" class="form-label">Pas Foto <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('foto-pesilat') is-invalid @enderror" id="foto-pesilat"
@@ -283,8 +287,8 @@
                             @error('foto-pesilat')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
-                            <img id="preview_foto" src="#" alt="Image Preview"
-                                style="display: none; width: 200px; height: auto;" class="mt-2">
+                            <img id="preview_foto" src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}" alt="Image Preview"
+                                style="width: 200px; height: auto;" class="mt-2">
                         </div>
                     </div>
                 </div>
