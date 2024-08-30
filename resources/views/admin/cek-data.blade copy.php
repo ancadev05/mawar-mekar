@@ -129,7 +129,6 @@
                         class="btn btn-warning shadow w-100">Registrasi</a>
                 </div>
             </form>
-
         </div>
         {{-- end form --}}
     </div>

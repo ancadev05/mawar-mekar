@@ -16,22 +16,22 @@ class TingkatanSeeder extends Seeder
         $tingkats = [
             [
                 'tingkat' => 'Siswa Dasar',
-                'singkatan' => 'Siswa Dasar',
+                'singkatan' => '',
                 'melati' => 's.png',
             ],
             [
                 'tingkat' => 'Siswa Satu',
-                'singkatan' => 'MC1',
+                'singkatan' => '(MC1)',
                 'melati' => 's1.png',
             ],
             [
                 'tingkat' => 'Siswa Dua',
-                'singkatan' => 'MC2',
+                'singkatan' => '(MC2)',
                 'melati' => 's2.png',
             ],
             [
                 'tingkat' => 'Siswa Tiga',
-                'singkatan' => 'MC3',
+                'singkatan' => '(MC3)',
                 'melati' => 's3.png',
             ],
             [

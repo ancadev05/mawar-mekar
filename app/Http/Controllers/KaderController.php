@@ -9,16 +9,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class KaderController extends Controller
 {
-     // untuk import data lewat excel
-     public function pesilatimport(Request $request)
-     {
-         if ($request) {
-             Excel::import(new PesilatImport(), $request->file('file'));
-         }
- 
-         return redirect('/kader');
-     }
-
     //  menampilkan data kader
     public function index()
     {

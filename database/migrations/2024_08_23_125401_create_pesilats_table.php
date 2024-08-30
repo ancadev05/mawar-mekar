@@ -43,6 +43,7 @@ return new class extends Migration
             $table->foreignId('tingkatan_id')->constrained();
             $table->string('ukt_terakhir')->nullable();
             $table->string('foto_pesilat')->nullable();
+            $table->integer('validasi');
             $table->text('ket')->nullable();
             $table->timestamps();
         });

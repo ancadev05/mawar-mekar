@@ -9,6 +9,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UktController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Row;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +23,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AdminController::class, 'cekdata']);
+Route::post('/', [AdminController::class, 'cekdata']);
 Route::get('/mawar-mekar', [AdminController::class, 'dashboard']);
 
 // registrasi dan cari data pesilat
 Route::get('/registrasi', [PesilatController::class, 'registrasi']);
-Route::get('/cari-pesilat', [PesilatController::class, 'caripesilat']);
+// Route::get('/cari-pesilat', [AdminController::class, 'cekdata']);
+// Route::get('/cari-pesilat', [PesilatController::class, 'caripesilat']);
 
 // route untuk import data pesilat
-Route::post('/pesilat-import', [KaderController::class, 'pesilatimport']);
+Route::post('/pesilat-import', [AdminController::class, 'pesilatimport']);
 
 Route::get('/pendekar', [PendekarController::class, 'index']);
 Route::get('/kader', [KaderController::class, 'index']);

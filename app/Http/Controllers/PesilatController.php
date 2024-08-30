@@ -8,6 +8,7 @@ use App\Models\Pesilat;
 use App\Models\Tingkatan;
 use Illuminate\Http\Request;
 use App\Imports\PesilatImport;
+use App\Models\Ukt;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
@@ -30,10 +31,13 @@ class PesilatController extends Controller
         $cabangs = Cabang::get();
         $units = Unit::get();
         $tingkatans = Tingkatan::get();
+        $ukt = Ukt::get();
         
         $tingkat_pendidikan = array('SD/MI', 'SMP/MTs', 'SMA/MA', 'S1', 'S2', 'S3', 'Lainnya');
 
-        return view('pesilat.pesilat-create', compact('cabangs', 'units', 'tingkatans', 'tingkat_pendidikan'));
+        return view('pesilat.pesilat-create', compact(
+            'cabangs', 'units', 'tingkatans', 'tingkat_pendidikan', 'ukt'
+        ));
     }
 
     /**
@@ -41,20 +45,19 @@ class PesilatController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
 
-        // $request->validate([
-        //     'nik' => 'required',
-        //     'nama_pesilat' => 'required',
-        //     'tempat_lahir' => 'required',
-        //     'tgl_lahir' => 'required',
-        //     'jk' => 'required',
-        //     'agama' => 'required',
-        //     'alamat' => 'required',
-        //     'tahun_masuk_ts' => 'required',
-        //     'cabang_id' => 'required',
-        //     'tingkatan_id' => 'required'
-        // ]);
+        $request->validate([
+            'nik' => 'required',
+            'nama_pesilat' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'tahun_masuk_ts' => 'required',
+            'cabang_id' => 'required',
+            'tingkatan_id' => 'required'
+        ]);
 
         // generate foto
         $file_name = false;
@@ -75,6 +78,14 @@ class PesilatController extends Controller
 
         // generate no registrasi
         $no_registrasi = '177.' . $cabang . '.' . $request->tahun_masuk_ts . '.' . $regis;
+
+        // validasi siswa baru
+        if ($request->tahun_masuk_ts == 2024) {
+            $validasi = 0;
+        } else {
+            $validasi = 1;
+        }
+        
 
         $pesilat = [
             'no_registrasi' => $no_registrasi,
@@ -107,6 +118,7 @@ class PesilatController extends Controller
             'tingkatan_id' => $request->tingkatan_id,
             'ukt_terakhir' => $request->ukt_terakhir,
             'foto_pesilat' => $file_name,
+            'validasi' => $validasi,
             'ket' => $request->ket,
         ];
 
@@ -114,9 +126,9 @@ class PesilatController extends Controller
 
         // mencari no registrasi untuk di download setelah data tersimpan
         $pesilat = Pesilat::get()->last();
-        $pesilat_registrasi = $pesilat->no_registrasi;
+        $pesilat_id = $pesilat->id;
 
-        return redirect('/pesilat/' . $pesilat_registrasi);
+        return redirect('/pesilat/' . $pesilat_id);
     }
 
     /**
@@ -124,7 +136,7 @@ class PesilatController extends Controller
      */
     public function show(string $id)
     {
-        $pesilat = Pesilat::where('no_registrasi', $id)->first();
+        $pesilat = Pesilat::where('id', $id)->first();
 
         return view('pesilat.pesilat-show', compact(
             'pesilat'
@@ -204,9 +216,9 @@ class PesilatController extends Controller
 
         // mengambil no regis
         $pesilat = Pesilat::where('id', $id)->first();
-        $pesilat_registrasi = $pesilat->no_registrasi;
+        $pesilat_id = $pesilat->id;
 
-        return redirect('/pesilat/' . $pesilat_registrasi);
+        return redirect('/pesilat/' . $pesilat_id);
     }
 
     /**

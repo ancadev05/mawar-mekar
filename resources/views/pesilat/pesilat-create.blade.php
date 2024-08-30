@@ -274,9 +274,15 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="ukt_terakhir">UKT Terakhir</label>
-                            <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="number" name="ukt_terakhir"
-                                id="ukt_terakhir" value="{{ old('ukt_terakhir') }}">
+                            <label class="form-label" for="ukt_terakhir">UKT Terakhir <span
+                                    class="text-danger fw-bold">*</span></label>
+                            <select class="form-select @error('ukt_terakhir') is-invalid @enderror" name="ukt_terakhir"
+                                id="ukt_terakhir">
+                                <option value="0" selected>Belum pernah</option>
+                                @foreach ($ukt as $item)
+                                    <option value="{{ $item->id }}" {{ old('ukt_terakhir') == $item->id ? 'selected' : '' }}>{{ $item->tempat . ', ' . $item->tgl_awal . '...' }}</option>
+                                @endforeach
+                            </select>
                             @error('ukt_terakhir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror

@@ -35,8 +35,8 @@
                                 <td>{{ $item->pengurus }}</td>
                                 <td>{{ $item->ket }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm">Edit</button>
-                                    <button class="btn btn-sm btn-danger shadow-sm">Hapus</button>
+                                    <button class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-sm btn-danger shadow-sm"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             @php
