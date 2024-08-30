@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('ukts', function (Blueprint $table) {
             $table->id();
             $table->string('tempat');
+            $table->string('alamat')->nullable();
             $table->date('tgl_awal');
             $table->date('tgl_akhir');
-            $table->string('jenis_ukt');
-            $table->text('ket');
+            $table->string('jenis_ukt')->nullable();
+            $table->text('ket')->nullable();
             $table->timestamps();
         });
     }

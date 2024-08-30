@@ -49,8 +49,8 @@
     {{-- sweetalert2 --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
     
-    {{-- costum css --}}
-    <link rel="stylesheet" href="{{ asset('assets/costum-css/style.css') }}" rel="stylesheet">
+    {{-- coutum js --}}
+    <script src="{{ asset('assets/costum-js/script.js') }}"></script>
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ukt;
 use Illuminate\Http\Request;
 
 class UktController extends Controller
@@ -11,7 +12,8 @@ class UktController extends Controller
      */
     public function index()
     {
-        //
+        $ukt = Ukt::orderBy('tgl_awal', 'desc')->get();
+        return view('ukt.index', compact('ukt'));
     }
 
     /**
