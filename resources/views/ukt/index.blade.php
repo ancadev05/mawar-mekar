@@ -1,71 +1,67 @@
-@extends('template-dashboard.template-niceadmin')
+@extends('template-dashboard.template-adminkit')
 
 @section('title')
     UKT
 @endsection
 
 @section('content')
-    <div class="pagetitle">
-        <h1>Data UKT</h1>
-    </div><!-- End Page Title -->
+    <h1 class="h3 mb-3"><strong>Data UKT</strong></h1>
 
-    <section class="section">
-        <div class="card p-3 mb-3">
-            <form action="{{ url('/pesilat-import') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <label for="file" class="form-label form-label-sm">File Excel</label>
-                <div class="row">
-                    <div class="col-4">
-                        <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="file"
-                            name="file" type="file" required>
-                        @error('file')
-                            <small class="invalid-feedback"> {{ $message }} </small>
-                        @enderror
-                    </div>
-                    <div class="col-1">
-                        <button class="btn btn-sm btn-success shadow-sm" type="submit">Import</button>
-                    </div>
+
+    <div class="card p-3 mb-3">
+        <form action="{{ url('/pesilat-import') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <label for="file" class="form-label form-label-sm">File Excel</label>
+            <div class="row">
+                <div class="col-4">
+                    <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="file"
+                        name="file" type="file" required>
+                    @error('file')
+                        <small class="invalid-feedback"> {{ $message }} </small>
+                    @enderror
                 </div>
-            </form>
-        </div>
-
-        <div class="card p-3">
-            <div class="table-responsive">
-                <table class="table table-sm table-striped table-hover nowrap">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tempat</th>
-                            <th>Alamat</th>
-                            <th>Mulai</th>
-                            <th>Akhir</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $i = 1;
-                        @endphp
-                        @foreach ($ukt as $item)
-                            <tr>
-                                <td>{{ $i }}</td>
-                                <td>{{ $item->tempat }}</td>
-                                <td>{{ $item->alamat }}</td>
-                                <td>{{ $item->tgl_awal }}</td>
-                                <td>{{ $item->tgl_akhir }}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm">Edit</button>
-                                    <button class="btn btn-sm btn-danger shadow-sm">Hapus</button>
-                                </td>
-                            </tr>
-                            @php
-                                $i++
-                            @endphp
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="col-1">
+                    <button class="btn btn-sm btn-success shadow-sm" type="submit">Import</button>
+                </div>
             </div>
-        </div>
-    </section>
-@endsection
+        </form>
+    </div>
 
+    <div class="card p-3">
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover nowrap">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tempat</th>
+                        <th>Alamat</th>
+                        <th>Mulai</th>
+                        <th>Akhir</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach ($ukt as $item)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $item->tempat }}</td>
+                            <td>{{ $item->alamat }}</td>
+                            <td>{{ $item->tgl_awal }}</td>
+                            <td>{{ $item->tgl_akhir }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger shadow-sm"><i class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection

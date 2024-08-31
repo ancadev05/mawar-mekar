@@ -1,15 +1,13 @@
-@extends('template-dashboard.template-niceadmin')
+@extends('template-dashboard.template-adminkit')
 
 @section('title')
     Unit
 @endsection
 
 @section('content')
-    <div class="pagetitle">
-        <h1>Unit Latihan</h1>
-    </div><!-- End Page Title -->
+    
+    <h1 class="h3 mb-3"><strong>Unit Latihan</strong></h1>
 
-    <section class="section">
         <div class="card p-3">
 
             <form action="{{ url('/unit-import') }}" method="post" enctype="multipart/form-data">
@@ -62,5 +60,4 @@
                 </table>
             </div>
         </div>
-    </section>
 @endsection
