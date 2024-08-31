@@ -90,6 +90,14 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label class="form-label" for="no_hp">No. HP</label>
+                            <input class="form-control @error('no_hp') is-invalid @enderror" type="text" name="no_hp"
+                                id="no_hp" value="{{ $pesilat->no_hp }}" required>
+                            @error('no_hp')
+                                <small class="invalid-feedback"> {{ $message }} </small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="nama_ayah">Nama Ayah</label>
                             <input class="form-control @error('nama_ayah') is-invalid @enderror" type="text"
                                 name="nama_ayah" id="nama_ayah" value="{{ $pesilat->nama_ayah }}">
