@@ -36,33 +36,34 @@
                             {{-- car --}}
                             <div class="d-flex justify-content-center">
                                 <div class="shadow p-2 bg-white my-3"
-                                    style="width: 85.60mm; height: 53.98mm; font-size: 10px" id="card">
+                                    style="width: 85.60mm; height: 53.98mm; font-size: 10px; background-color: #dc3545;
+background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="card">
                                     @if ($pesilat->validasi == 0)
                                         <div class="alert alert-danger text-center fw-bold">DATA BELUM DI APPROVE</div>
                                     @else
                                         <div
-                                            class="d-flex align-items-center justify-content-center border-bottom border-1 border-dark py-1 mb-1">
+                                            class="d-flex align-items-center justify-content-center border-bottom border-1 border-white py-1 mb-1">
                                             <div class="ms-2 me-1">
                                                 <img src="{{ asset('assets/img/logo-ts.png') }}" alt=""
                                                     width="40px">
                                             </div>
-                                            <div class="fw-bold">
+                                            <div class="fw-bold text-white">
                                                 <div>PIMDA 177 KABUPATEN GOWA</div>
                                                 <div>TAPAK SUCI PUTERA MUHAMMADIYAH</div>
                                             </div>
                                         </div>
                                     @endif
 
-                                    <div class="d-flex justify-content-between align-items-start mt-2">
+                                    <div class="d-flex justify-content-between align-items-start mt-2 p-1" style="background-color: rgba(255, 255, 255, 0.3);">
                                         <div>
                                             <table>
                                                 <tr>
-                                                    <td>No. Regis</td>
+                                                    <td width="65px">No. Regis</td>
                                                     <td class="align-text-top">:</td>
                                                     <td><b>{{ $pesilat->no_registrasi }}</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Nama Lengkap</td>
+                                                    <td class="align-text-top">Nama</td>
                                                     <td class="align-text-top">:</td>
                                                     <td>
                                                         {{ $pesilat->nama_pesilat }}

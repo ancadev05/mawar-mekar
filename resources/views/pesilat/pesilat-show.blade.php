@@ -17,7 +17,8 @@
             </div>
             {{-- car --}}
             <div class="d-flex justify-content-center">
-                <div class="shadow p-2 bg-white my-3" style="width: 85.60mm; height: 53.98mm; font-size: 10px" id="card">
+                <div class="shadow p-2 bg-white my-3" style="width: 85.60mm; height: 53.98mm; font-size: 10px; background-color: #dc3545;
+background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);" id="card">
                     @if ($pesilat->validasi == 0)
                         <div class="alert alert-danger text-center fw-bold">DATA BELUM DI APPROVE</div>
                     @else
@@ -32,7 +33,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="d-flex justify-content-between align-items-start mt-2">
+                    <div class="d-flex justify-content-between align-items-start mt-2" style="background-color: rgba(255, 255, 255, 0.3);">
                         <div>
                             <table>
                                 <tr>
