@@ -36,7 +36,7 @@ class TingkatanSeeder extends Seeder
             ],
             [
                 'tingkat' => 'Siswa Empat',
-                'singkatan' => 'MC4',
+                'singkatan' => '(MC4)',
                 'melati' => 's4.png',
             ],
             [

@@ -152,12 +152,14 @@ class PesilatController extends Controller
         $units = Unit::get();
         $tingkatans = Tingkatan::get();
         $pesilat = Pesilat::where('id', $id)->first();
+        $tingkat_pendidikan = array('SD/MI', 'SMP/MTs', 'SMA/MA', 'S1', 'S2', 'S3', 'Lainnya');
 
         return view('pesilat.pesilat-edit', compact(
             'cabangs',
             'units',
             'tingkatans',
-            'pesilat'
+            'pesilat',
+            'tingkat_pendidikan'
         ));
     }
 

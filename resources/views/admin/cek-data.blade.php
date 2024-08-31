@@ -98,7 +98,7 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
                                                     <td class="align-text-top">:</td>
                                                     <td>
                                                         {{ $pesilat->tingkatan->tingkat }}
-                                                        {{ $pesilat->jenjang == 1 ? $pesilat->tingkatan->melati : '(' . $pesilat->tingkatan->singkatan . ')' }}
+                                                        {{ $pesilat->jenjang == 1 ? $pesilat->tingkatan->singkatan : '(' . $pesilat->tingkatan->singkatan . ')' }}
                                                     </td>
                                                 </tr>
                                                 <tr>

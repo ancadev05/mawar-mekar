@@ -158,17 +158,14 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="mb-3">
-                            <label class="form-label" for="tingakt_pendidikan">Tingkat Pendidikan</label>
-                            <select class="form-select @error('tingakt_pendidikan') is-invalid @enderror"
-                                name="tingakt_pendidikan" id="tingakt_pendidikan">
-                                <option value="" selected>...</option>
-                                <option value="1" {{ old('tingakt_pendidikan') == '1' ? 'selected' : '' }}>SD
-                                <option value="2" {{ old('tingakt_pendidikan') == '2' ? 'selected' : '' }}>SMP
-                                <option value="3" {{ old('tingakt_pendidikan') == '3' ? 'selected' : '' }}>SMA
-                                <option value="4" {{ old('tingakt_pendidikan') == '4' ? 'selected' : '' }}>Perguruan                                    Tinggi
-                                <option value="5" {{ old('tingakt_pendidikan') == '5' ? 'selected' : '' }}>Lainnya</option>
+                            <label class="form-label" for="tingkat_pendidikan">Tingkat Pendidikan</label>
+                            <select class="form-select @error('tingkat_pendidikan') is-invalid @enderror"
+                                name="tingkat_pendidikan" id="tingkat_pendidikan">
+                                @foreach ($tingkat_pendidikan as $item)
+                                    <option value="{{ $item }}" {{ $pesilat->tingkat_pendidikan == $item ? 'selected' : '' }}>{{ $item }}</option>
+                                @endforeach
                             </select>
-                            @error('tingakt_pendidikan')
+                            @error('tingkat_pendidikan')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
@@ -202,9 +199,12 @@
                                     class="text-danger fw-bold">*</span></label>
                             <select class="form-select @error('jenjang') is-invalid @enderror" name="jenjang"
                                 id="jenjang" required>
-                                <option value="1" {{ old('jenjang') == '1' ? 'selected' : '' }}>Siswa
-                                <option value="2" {{ old('jenjang') == '2' ? 'selected' : '' }}>Kader
-                                <option value="3" {{ old('jenjang') == '3' ? 'selected' : '' }}>Pendekar
+                                @php
+                                    $jenjang = $pesilat->jenjang;
+                                @endphp
+                                <option value="1" {{ $jenjang == '1' ? 'selected' : '' }}>Siswa
+                                <option value="2" {{ $jenjang == '2' ? 'selected' : '' }}>Kader
+                                <option value="3" {{ $jenjang == '3' ? 'selected' : '' }}>Pendekar
                             </select>
                             @error('jenjang')
                                 <small class="invalid-feedback"> {{ $message }} </small>
