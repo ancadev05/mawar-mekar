@@ -170,10 +170,10 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="gelar_akademk">Gelar Akademik</label>
-                            <input class="form-control @error('gelar_akademk') is-invalid @enderror" type="text"
-                                name="gelar_akademk" id="gelar_akademk" value="{{ $pesilat->gelar_akademik }}">
-                            @error('gelar_akademk')
+                            <label class="form-label" for="gelar_akademik">Gelar Akademik</label>
+                            <input class="form-control @error('gelar_akademik') is-invalid @enderror" type="text"
+                                name="gelar_akademik" id="gelar_akademik" value="{{ $pesilat->gelar_akademik }}">
+                            @error('gelar_akademik')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
                         </div>
@@ -270,7 +270,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="ukt_terakhir">UKT Terakhir</label>
-                            <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="number" name="ukt_terakhir"
+                            <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="text" name="ukt_terakhir"
                                 id="ukt_terakhir" value="{{ $pesilat->ukt_terakhir }}">
                             @error('ukt_terakhir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
