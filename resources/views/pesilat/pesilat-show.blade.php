@@ -9,7 +9,7 @@
 
         @if ($pesilat->validasi == 0)
             <div class="d-flex justify-content-center">
-                <div class="alert alert-danger text-center w-50">
+                <div class="alert alert-danger text-center w-100">
                     <b>Menunggu Validasi dari PIMDA Tapak Suci 177 Gowa</b>
                     <p class="m-0">Silahkan koordinasi ke unit latihan atau ke pengurus cabang masing-masing untuk proses
                         registrasi pendaftaran siswa baru</p>

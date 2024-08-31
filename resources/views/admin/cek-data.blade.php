@@ -118,8 +118,10 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
 
                             {{-- tombol --}}
                             <div class="d-flex justify-content-center">
-                                <button class="btn btn-sm btn-danger shadow-sm me-1"
-                                    id="download-card">Download</button>
+                                @if ($pesilat->validasi == 1)
+                                    <button class="btn btn-sm btn-danger shadow-sm me-1"
+                                        id="download-card">Download</button>
+                                @endif
                                 <a href="{{ url('/pesilat/' . $pesilat->id) }}"
                                     class="btn btn-sm btn-success shadow-sm">Detail</a>
                             </div>
@@ -129,13 +131,14 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
                                 $(document).ready(function() {
                                     $("#download-card").on("click", function() {
                                         var card = $("#card");
-                            
+
                                         html2canvas(card[0], {
                                             scale: 3, // Meningkatkan skala untuk kualitas lebih tinggi
                                             useCORS: true // Opsional: gunakan ini jika ada konten dari domain lain
                                         }).then(function(canvas) {
                                             // Buat elemen link untuk mengunduh gambar
-                                            var link = $("<a>").attr("download", "{{ $pesilat->no_registrasi . '.png' }}").attr("href", canvas.toDataURL("image/png"))[0];
+                                            var link = $("<a>").attr("download", "{{ $pesilat->no_registrasi . '.png' }}")
+                                                .attr("href", canvas.toDataURL("image/png"))[0];
                                             link.click();
                                         });
                                     });
