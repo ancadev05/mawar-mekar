@@ -23,6 +23,10 @@
     {{-- bootstrap --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap5/css/bootstrap.min.css') }}">
 
+     {{-- jquery --}}
+     <script src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/html2canvas.min.js') }}"></script>
+
     <style>
         body {
             background-image: linear-gradient(to right bottom, #dc3545, #ea503c, #f56a31, #fc8425, #ff9e17, #ff9e17, #ff9e17, #ff9e17, #fc8425, #f56a31, #ea503c, #dc3545);
