@@ -18,10 +18,8 @@
      <link href="{{ asset('assets/img/logo-ts-gowa.png') }}" rel="icon">
      <link href="{{ asset('assets/img/logo-ts-gowa.png') }}" rel="apple-touch-icon">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
-    <link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
+    {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" /> --}}
 
     <title>Cek Data</title>
 
