@@ -22,10 +22,18 @@
 
     {{-- bootstrap --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap5/css/bootstrap.min.css') }}">
+
+    <style>
+        body {
+            background-image: linear-gradient(to right bottom, #dc3545, #ea503c, #f56a31, #fc8425, #ff9e17, #ff9e17, #ff9e17, #ff9e17, #fc8425, #f56a31, #ea503c, #dc3545);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 
-<body
-    style="background-image: linear-gradient(to right bottom, #dc3545, #ea503c, #f56a31, #fc8425, #ff9e17, #ff9e17, #ff9e17, #ff9e17, #fc8425, #f56a31, #ea503c, #dc3545);">
+<body class="h-100  min-vh-100">
     <main class="d-flex w-100">
         <div class="container d-flex flex-column">
             <div class="row vh-100">
@@ -37,7 +45,8 @@
                             <div class="d-flex justify-content-center">
                                 <div class="shadow p-2 bg-white my-3"
                                     style="width: 85.60mm; height: 53.98mm; font-size: 10px; background-color: #dc3545;
-background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="card">
+background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
+                                    id="card">
                                     @if ($pesilat->validasi == 0)
                                         <div class="alert alert-danger text-center fw-bold">DATA BELUM DI APPROVE</div>
                                     @else
@@ -54,7 +63,8 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="ca
                                         </div>
                                     @endif
 
-                                    <div class="d-flex justify-content-between align-items-start mt-2 p-1" style="background-color: rgba(255, 255, 255, 0.3);">
+                                    <div class="d-flex justify-content-between align-items-start mt-2 p-1"
+                                        style="background-color: rgba(255, 255, 255, 0.3);">
                                         <div>
                                             <table>
                                                 <tr>
@@ -66,14 +76,13 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="ca
                                                     <td class="align-text-top">Nama</td>
                                                     <td class="align-text-top">:</td>
                                                     <td>
-                                                        {{ $pesilat->nama_pesilat }}
-                                                        {{ $pesilat->gelar_akademik == true ? ', ' . $pesilat->gelar_akademik : $pesilat->gelar_akademik }}
+                                                        {{ strtoupper($pesilat->nama_pesilat) }}{{ $pesilat->gelar_akademik == true ? ', ' . $pesilat->gelar_akademik : $pesilat->gelar_akademik }}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tempat Lahir</td>
                                                     <td class="align-text-top">:</td>
-                                                    <td>{{ $pesilat->tempat_lahir }}</td>
+                                                    <td>{{ ucfirst($pesilat->tempat_lahir) }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tanggal Lahir</td>
@@ -115,6 +124,23 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="ca
                                     class="btn btn-sm btn-success shadow-sm">Detail</a>
                             </div>
                             {{-- end tombol --}}
+
+                            <script>
+                                $(document).ready(function() {
+                                    $("#download-card").on("click", function() {
+                                        var card = $("#card");
+                            
+                                        html2canvas(card[0], {
+                                            scale: 3, // Meningkatkan skala untuk kualitas lebih tinggi
+                                            useCORS: true // Opsional: gunakan ini jika ada konten dari domain lain
+                                        }).then(function(canvas) {
+                                            // Buat elemen link untuk mengunduh gambar
+                                            var link = $("<a>").attr("download", "{{ $pesilat->no_registrasi . '.png' }}").attr("href", canvas.toDataURL("image/png"))[0];
+                                            link.click();
+                                        });
+                                    });
+                                });
+                            </script>
                         @endif
 
 
@@ -122,7 +148,7 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="ca
                         {{-- logo --}}
                         <div class="d-flex justify-content-center py-4">
                             <a href="#" class="logo d-flex flex-column align-items-center w-auto ">
-                                <img src="assets/img/logo-ts.png" alt="" class="mb-2" width="100px">
+                                <img src="assets/img/logo-ts.png" alt="" class="mb-2" width="150px">
                             </a>
                         </div>
                         {{-- end logo --}}
@@ -158,7 +184,12 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);    " id="ca
         </div>
     </main>
 
+    {{-- jquery --}}
+    <script src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+    {{-- app --}}
     <script src="{{ asset('adminkit/js/app.js') }}"></script>
+    <script src="{{ asset('assets/vendor/html2canvas.min.js') }}"></script>
+    <script src="{{ asset('assets/costum-js/script.js') }}"></script>
 
 </body>
 
