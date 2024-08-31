@@ -14,6 +14,10 @@
 
     <meta name="author" content="RGC 177">
 
+     <!-- Favicons -->
+     <link href="{{ asset('assets/img/logo-ts-gowa.png') }}" rel="icon">
+     <link href="{{ asset('assets/img/logo-ts-gowa.png') }}" rel="apple-touch-icon">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
