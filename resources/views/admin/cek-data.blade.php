@@ -5,10 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="AdminKit">
-    <meta name="keywords"
-        content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+    <meta property="og:title" content="Tapak Suci 177 Gowa" name="title">
+    <meta property="og:description" content="Aplikasi database Tapak Suci 177 Gowa" name="description">
+    <meta property="og:keywords" content="ts, tapak, suci, gowa, tapak gowa, 177, rgc" name="keywords">
+    <meta property="og:image" content="{{ asset('assets/img/logo-ts-gowa.png') }}">
+    <meta property="og:url" content="https://pimda.tapaksuci177gowa.or.id">
+
+    <meta name="author" content="RGC 177">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
