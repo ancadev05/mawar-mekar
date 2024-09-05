@@ -7,6 +7,8 @@
 @section('content')
     <h1 class="h3 mb-3"><strong>Cabang</strong></h1>
 
+    <a href="{{ url('/cabang/create') }}" class="btn btn-sm btn-primary shadow-sm">Tambah</a>
+
     <div class="card p-3">
         <div class="table-responsive">
             <table class="table table-sm table-striped table-hover nowrap">

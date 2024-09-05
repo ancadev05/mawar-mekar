@@ -22,7 +22,7 @@ class CabangController extends Controller
      */
     public function create()
     {
-        //
+        return view('cabang.cabang-create');
     }
 
     /**

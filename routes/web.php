@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CabangController;
-use App\Http\Controllers\KaderController;
-use App\Http\Controllers\PendekarController;
-use App\Http\Controllers\PesilatController;
-use App\Http\Controllers\SiswaController;
+use Maatwebsite\Excel\Row;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UktController;
 use App\Http\Controllers\UnitController;
-use Illuminate\Support\Facades\Route;
-use Maatwebsite\Excel\Row;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KaderController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\CabangController;
+use App\Http\Controllers\IjazahController;
+use App\Http\Controllers\PesilatController;
+use App\Http\Controllers\PendekarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ use Maatwebsite\Excel\Row;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/login', function () {
+    return view('login');
+});
 
 Route::get('/', [AdminController::class, 'cekdata']);
 Route::post('/', [AdminController::class, 'cekdata']);
@@ -49,4 +54,7 @@ Route::resource('/unit', UnitController::class);
 
 // ukt
 Route::resource('/ukt', UktController::class);
+
+// ijazah
+Route::resource('/ijazah', IjazahController::class);
 

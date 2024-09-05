@@ -160,7 +160,7 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
 
                         {{-- logo --}}
                         <div class="d-flex justify-content-center py-4">
-                            <a href="#" class="logo d-flex flex-column align-items-center w-auto ">
+                            <a href="{{ url('/mawar-mekar') }}" class="logo d-flex flex-column align-items-center w-auto ">
                                 <img src="assets/img/logo-ts.png" alt="" class="mb-2" width="150px">
                             </a>
                         </div>
@@ -183,9 +183,10 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
                                     <span class="invalid-feedback text-white">Please enter your no_registrasi!</span>
                                 </div>
 
-                                <div class="col-12">
+                                <div class="col-12 d-flex justify-content-center flex-column align-items-center">
                                     <a href="{{ url('/registrasi') }}" target="_blank"
                                         class="btn btn-warning shadow w-100">Registrasi</a>
+                                        <a href="{{ url('/login') }}" class="btn btn-danger shadow  w-50 mt-3">Login</a>
                                 </div>
                             </form>
                         </div>

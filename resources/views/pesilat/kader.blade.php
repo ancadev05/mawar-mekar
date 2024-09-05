@@ -1,13 +1,24 @@
-@extends('template-dashboard.template-niceadmin')
+@extends('template-dashboard.template-tabler')
 
 @section('title')
     Kader
 @endsection
 
 @section('content')
-    <div class="pagetitle">
-        <h1>Data Kader</h1>
-    </div><!-- End Page Title -->
+    <!-- Page header -->
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    <h2 class="page-title">
+                        Ijazah UKT
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <section class="section">
         <div class="card p-3 mb-3">
@@ -54,8 +65,8 @@
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm">Edit</button>
-                                    <button class="btn btn-sm btn-danger shadow-sm">Hapus</button>
+                                    <button class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger shadow-sm"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                             @php
