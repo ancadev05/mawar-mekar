@@ -12,7 +12,7 @@
                 <div class="col">
                     <!-- Page pre-title -->
                     <h2 class="page-title">
-                        Ijazah UKT
+                        Kader
                     </h2>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></button>
+                                    <a href="{{ url('/pesilat/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></a>
                                     <button class="btn btn-sm btn-danger shadow-sm"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>

@@ -1,4 +1,4 @@
-@extends('template-dashboard.template-adminkit')
+@extends('template-dashboard.template-tabler')
 
 @section('title')
     Unit
@@ -6,7 +6,19 @@
 
 @section('content')
     
-    <h1 class="h3 mb-3"><strong>Unit Latihan</strong></h1>
+     <!-- Page header -->
+     <div class="page-header d-print-none mb-3">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    <h2 class="page-title">
+                        Unit Latihan
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <div class="card p-3">
 
@@ -28,7 +40,7 @@
             </form>
 
             <div class="table-responsive">
-                <table class="table table-sm table-striped">
+                <table class="table table-sm table-striped table-hover">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -37,6 +49,7 @@
                             <th>Cabang</th>
                             <th>Alamat</th>
                             <th>Ket</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +64,10 @@
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->ket }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger shadow-sm"><i class="far fa-trash-alt"></i></button>
+                                </td>
                             </tr>
                             @php
                                 $i++;

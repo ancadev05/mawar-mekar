@@ -1,13 +1,27 @@
-@extends('template-dashboard.template-adminkit')
+@extends('template-dashboard.template-tabler')
 
 @section('title')
     Cabang
 @endsection
 
 @section('content')
-    <h1 class="h3 mb-3"><strong>Cabang</strong></h1>
+     <!-- Page header -->
+     <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    <h2 class="page-title">
+                        Cabang
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ url('/cabang/create') }}" class="btn btn-sm btn-primary shadow-sm">Tambah</a>
+    <div class="d-flex justify-content-end mb-2">
+        <a href="{{ url('/cabang/create') }}" class="btn btn-sm btn-primary shadow-sm">+ Tambah</a>
+    </div>
 
     <div class="card p-3">
         <div class="table-responsive">
