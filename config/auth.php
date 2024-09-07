@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'pesilat' => [
+            'driver' => 'session',
+            'provider' => 'pesilats',
+        ],
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'pesilats' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pesilat::class,
         ],
 
         // 'users' => [

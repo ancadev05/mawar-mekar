@@ -31,7 +31,23 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $unit = [
+            'unit' => $request->unit,
+            'alamat' => $request->alamat,
+            'penanggung_jawab' => $request->penanggung_jawab,
+            'ket' => $request->ket,
+            'cabang_id' => $request->cabang_id,
+        ];
+
+        Unit::create($unit);
+
+        return redirect('/unit')->with('success', 'Berhasil tambah unit latihan!');
     }
 
     /**

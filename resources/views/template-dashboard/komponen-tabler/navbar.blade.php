@@ -6,7 +6,7 @@
                     <li class="nav-item {{ Request::is('mawar-mekar') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/mawar-mekar') }}">
                             <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                class="nav-link-icon d-md-none d-lg-inline-block text-center"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <i class="fas fa-home"></i>
                             </span>
                             <span class="nav-link-title">
@@ -17,7 +17,7 @@
                     <li class="nav-item {{ Request::is('cabang') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/cabang') }}">
                             <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                class="nav-link-icon d-md-none d-lg-inline-block text-center"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <i class="fas fa-network-wired"></i>
                             </span>
                             <span class="nav-link-title">
@@ -28,7 +28,7 @@
                     <li class="nav-item {{ Request::is('unit') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/unit') }}">
                             <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                class="nav-link-icon d-md-none d-lg-inline-block text-center"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <i class="fas fa-project-diagram"></i>
                             </span>
                             <span class="nav-link-title">
@@ -40,7 +40,7 @@
                         <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
+                                class="nav-link-icon d-md-none d-lg-inline-block text-center"><!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
                                 <i class="fas fa-running"></i>
                             </span>
                             <span class="nav-link-title">
@@ -68,7 +68,7 @@
                     <li class="nav-item {{ Request::is('ukt') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/ukt') }}">
                             <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                class="nav-link-icon d-md-none d-lg-inline-block text-center"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <i class="fas fa-clipboard-list"></i>
                             </span>
                             <span class="nav-link-title">
@@ -79,7 +79,7 @@
                     <li class="nav-item {{ Request::is('ijazah') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/ijazah') }}">
                             <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                class="nav-link-icon d-md-none d-lg-inline-block text-center"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <i class="fas fa-folder-open"></i>
                             </span>
                             <span class="nav-link-title">

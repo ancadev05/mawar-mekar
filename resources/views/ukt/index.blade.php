@@ -20,7 +20,7 @@
     </div>
 
     <div class="d-flex justify-content-end mb-2">
-        <button class="btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#ukt-create">+ Tambah</button>
+        <button class="btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#ukt-create"><i class="fas fa-plus"></i> &nbsp Tambah</button>
     </div>
 
     <div class="card p-3">
@@ -74,7 +74,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label" for="tempat">Tempat</label>
-                            <input class="form-control form-control-sm @error('tempat') is-invalid @enderror" type="text"
+                            <input class="form-control @error('tempat') is-invalid @enderror" type="text"
                                 name="tempat" id="tempat" value="{{ old('tempat') }}" required>
                             @error('tempat')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="alamat">Alamat</label>
-                            <input class="form-control form-control-sm @error('alamat') is-invalid @enderror" type="text"
+                            <input class="form-control @error('alamat') is-invalid @enderror" type="text"
                                 name="alamat" id="alamat" value="{{ old('alamat') }}">
                             @error('alamat')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="tgl_awal">Mulai</label>
-                            <input class="form-control form-control-sm @error('tgl_awal') is-invalid @enderror"
+                            <input class="form-control @error('tgl_awal') is-invalid @enderror"
                                 type="date" name="tgl_awal" id="tgl_awal" value="{{ old('tgl_awal') }}">
                             @error('tgl_awal')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="tgl_akhir">Selesai</label>
-                            <input class="form-control form-control-sm @error('tgl_akhir') is-invalid @enderror"
+                            <input class="form-control @error('tgl_akhir') is-invalid @enderror"
                                 type="date" name="tgl_akhir" id="tgl_akhir" value="{{ old('tgl_akhir') }}">
                             @error('tgl_akhir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
