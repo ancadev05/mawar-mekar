@@ -29,21 +29,43 @@ class AdminLoginController extends Controller
             'password' => $request->password
         ];
 
-        // dd($infologin);
-
-        //  proses pengecekan jika email dan password terdaftar
-        if (Auth::guard()->attempt($infologin)) {
-            // mengarahkan kehalaman sesuai level username
-            return redirect('/mawar-mekar');
-        } else {
-            return redirect('/login')->withErrors('username dan password tidak sesuai')->withInput();
+        //  proses pengecekan jika email dan password terdaftar pada tabel user default
+        if ($request->login == 1) {
+            if (Auth::guard('web')->attempt($infologin)) {
+                // mengarahkan kehalaman sesuai level username
+                return redirect('/mawar-mekar');
+            }
         }
+
+        // pengecekan jika login sebagai pesilat
+        if ($request->login == 2) {
+            if (Auth::guard('pesilat')->attempt($infologin)) {
+                // mengarahkan kehalaman sesuai level username
+
+                // dd('ok');
+                return redirect('/mawar-mekar');
+            }
+        }
+
+        return redirect('/login')->withErrors('username dan password tidak sesuai')->withInput();
     }
 
     // function logout
     public function logout()
     {
-        Auth::logout();
-        return redirect('/');
+        // Auth::logout();
+        // return redirect('/');
+
+        // logout untuk admin
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+            return redirect('/');
+        }
+
+        // logout untuk pesilat
+        if (Auth::guard('pesilat')->check()) {
+            Auth::guard('pesilat')->logout();
+            return redirect('/');
+        }
     }
 }

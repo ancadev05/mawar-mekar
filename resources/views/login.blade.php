@@ -59,6 +59,8 @@
                         </div>
                         {{-- end logo --}}
 
+
+
                         {{-- form --}}
                         <div class="card p-4 shadow-lg"
                             style="background-color: rgba(255, 255, 255, 0.18); 
@@ -76,21 +78,22 @@
                                 @csrf
 
                                 {{-- login sebagai --}}
-                                <div class="text-bg-white">
-                                    <div class="d-flex">
-                                        <div class="form-check me-3">
-                                            <input class="form-check-input" type="radio"
-                                                name="login" id="login1" value="1" checked>
+                                <div class="card p-2 mb-0 mt-3 text-bg-warning">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <span class="">Login Sebagai :</span>
+                                        <div class="form-check mx-3">
+                                            <input class="form-check-input" type="radio" name="login" id="login1"
+                                                value="1" checked>
                                             <label class="form-check-label" for="login1">Admin</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio"
-                                                name="login" id="login2" value="2">
+                                            <input class="form-check-input" type="radio" name="login" id="login2"
+                                                value="2">
                                             <label class="form-check-label" for="login2">Pesilat</label>
                                         </div>
                                     </div>
                                 </div>
-                                
+
 
                                 <div class="col-12">
                                     {{-- <label for="username" class="form-label">Username</label> --}}
