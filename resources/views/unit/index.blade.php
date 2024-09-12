@@ -75,8 +75,12 @@
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->ket }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger shadow-sm"><i class="far fa-trash-alt"></i></button>
+                                    <a href="{{ url('unit/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></a>
+                                    <form action="{{ url('unit/' . $item->id) }}" method="post" class="d-inline-block">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-sm btn-danger shadow-sm delete-btn" type="submit" data-bs-toggle="tooltip" data-bs-placment="top" title="Hapus"><i class="far fa-trash-alt"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @php
@@ -100,12 +104,15 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
+                            <label class="form-label" for="cabang_id">Cabang</label>
+                            <input class="form-control @error('cabang_id') is-invalid @enderror" type="text"
+                                name="cabang_id" id="cabang_id" value="{{ $cabang }}" disabled>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="unit">Nama Unit Latihan</label>
                             <input class="form-control @error('unit') is-invalid @enderror" type="text"
                                 name="unit" id="unit" value="{{ old('unit') }}" required>
-                            @error('unit')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
+                            <div class="invalid-feedback">Masukkan nama unit latihan</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="alamat">Alamat</label>
@@ -134,7 +141,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>

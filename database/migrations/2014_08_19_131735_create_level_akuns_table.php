@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('level_akuns', function (Blueprint $table) {
             $table->id();
             $table->string('level');
-            $table->string('ket');
+            $table->string('ket')->nullable();
             $table->timestamps();
         });
     }

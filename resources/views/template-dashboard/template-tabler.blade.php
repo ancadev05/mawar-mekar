@@ -35,6 +35,9 @@
     {{-- font awesome --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome-free/css/all.css') }}">
 
+    {{-- sweetalert2 --}}
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+
     {{-- datatables --}}
     @yield('datatables-css')
 
@@ -64,9 +67,7 @@
         </div>
     </div>
 
-    {{-- alert --}}
-    @include('template-dashboard.komponen-tabler.alert')
-    {{-- /alert --}}
+    
 
     <!-- Libs JS -->
     <script src="{{ asset('tabler/dist/libs/apexcharts/dist/apexcharts.min.js') }}" defer></script>
@@ -76,9 +77,15 @@
     <!-- Tabler Core -->
     <script src="{{ asset('tabler/dist/js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('tabler/dist/js/demo.min.js') }}" defer></script>
+    {{-- sweetalert2 --}}
+    <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
 
     {{-- data tables --}}
     @yield('datatables-js')
+
+    {{-- alert --}}
+    @include('template-dashboard.komponen-tabler.alert')
+    {{-- /alert --}}
     
 </body>
 

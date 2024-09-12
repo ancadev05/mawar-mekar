@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             TingkatanSeeder::class,
             CabangSeeder::class,
             UktSeeder::class,
+            LevelAkunSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

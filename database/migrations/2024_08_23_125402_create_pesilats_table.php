@@ -45,6 +45,9 @@ return new class extends Migration
             $table->string('foto_pesilat')->nullable();
             $table->integer('validasi');
             $table->text('ket')->nullable();
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -12,6 +12,11 @@ class Pesilat extends Authenticatable
 
     protected $guarded = [];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     public function tingkatan()
     {
         return $this->belongsTo(Tingkatan::class);

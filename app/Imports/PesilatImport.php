@@ -51,6 +51,8 @@ class PesilatImport implements ToCollection
                     'foto_pesilat'          => !empty($row[30]) ? $row[30] : '',
                     'validasi'              => !empty($row[31]) ? $row[31] : '',
                     'ket'                   => !empty($row[32]) ? $row[32] : '',
+                    'username'              => !empty($row[33]) ? $row[33] : '',
+                    'password'              => !empty($row[34]) ? bcrypt($row[34]) : '',
                 ];
 
                 Pesilat::create($pesilats);

@@ -18,7 +18,7 @@
                     toast: true,
                     position: "top-end",
                     showConfirmButton: false,
-                    timer: 3500,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -28,6 +28,27 @@
                 Toast.fire({
                     icon: "success",
                     title: "{{ Session::get('success') }}"
+                });
+            }
+        @endif
+
+        // alert error jika gagal menambah atau update data
+        @if (session('error'))
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: "{{ Session::get('error') }}"
                 });
             }
         @endif
