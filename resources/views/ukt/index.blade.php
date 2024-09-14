@@ -1,4 +1,4 @@
-@extends('template-dashboard.template-tabler')
+@extends('template-dashboard.template-niceadmin')
 
 @section('title')
     UKT

@@ -11,16 +11,48 @@
             }
         @endif
 
-        // alert jika berhasil tambah data
-        @if (session("success")) {
-                Swal.fire({
-                    title: "Succss!",
-                    text: "Berhasil tambah data.",
+        // alert sukses jika berhasil menambah atau update data
+        @if (session('success'))
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
                     icon: "success",
-                    timer: 2000,
+                    title: "{{ Session::get('success') }}"
                 });
             }
         @endif
+
+        // alert error jika gagal menambah atau update data
+        @if (session('error'))
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: "{{ Session::get('error') }}"
+                });
+            }
+        @endif
+
 
         // confirm hapus data
         $(".delete-btn").on("click", function(event) {
@@ -44,15 +76,6 @@
             });
         });
 
-        // alert jika data telah dihapus
-        @if (session("delete")) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success",
-                    timer: 3000,
-                });
-            }
-        @endif
+
     });
 </script>

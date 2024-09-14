@@ -25,7 +25,8 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        $cabang = 1;
+        return view('unit.unit-create', compact('cabang'));
     }
 
     /**
@@ -91,7 +92,7 @@ class UnitController extends Controller
 
         Unit::where('id', $id)->update($unit);
 
-        return redirect('/unit')->with('success', 'Berhasil edit unit latihan!');
+        return redirect('/unit')->with('success', 'Berhasil update unit latihan!');
     }
 
     /**

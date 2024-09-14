@@ -1,27 +1,17 @@
-@extends('template-dashboard.template-tabler')
+@extends('template-dashboard.template-niceadmin')
 
 @section('title')
-    Cabang
+    Ijazah
 @endsection
 
 @section('content')
-    <!-- Page header -->
-    <div class="page-header d-print-none">
-        <div class="container-xl">
-            <div class="row g-2 align-items-center">
-                <div class="col">
-                    <!-- Page pre-title -->
-                    <h2 class="page-title">
-                        Ijazah UKT
-                    </h2>
-                </div>
-            </div>
-        </div>
+
+    <div class="pagetitle">
+        <h1>Ijazah UKT</h1>
     </div>
 
     <!-- Page body -->
-    <div class="page-body">
-        <div class="container-xl">
+    <section class="section">
 
             <div class="card p-3">
                 <div class="d-flex justify-content-end mb-3">
@@ -52,6 +42,5 @@
                 </table>
             </div>
             
-        </div>
-    </div>
+    </section>
 @endsection

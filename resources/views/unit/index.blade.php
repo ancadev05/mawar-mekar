@@ -1,4 +1,4 @@
-@extends('template-dashboard.template-tabler')
+@extends('template-dashboard.template-niceadmin')
 
 @section('title')
     Unit
@@ -10,24 +10,15 @@
 @endsection
 
 @section('content')
-    
-     <!-- Page header -->
-     <div class="page-header d-print-none mb-3">
-        <div class="container-xl">
-            <div class="row g-2 align-items-center">
-                <div class="col">
-                    <!-- Page pre-title -->
-                    <h2 class="page-title">
-                        Unit Latihan
-                    </h2>
-                </div>
-            </div>
-        </div>
+    <div class="pagetitle">
+        <h1>Unit Latihan</h1>
     </div>
 
     {{-- konten --}}
-        <div class="card p-3">
+    <section class="section">
 
+
+        <div class="card p-3">
             <form action="{{ url('/unit-import') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <label for="file" class="form-label form-label-sm">File Excel</label>
@@ -44,13 +35,19 @@
                     </div>
                 </div>
             </form>
+        </div>
+
+
+        <div class="card p-3">
 
             <div class="d-flex justify-content-end">
-                <button class="btn btn-sm btn-primary shadow-sm mb-3" data-bs-toggle="modal" data-bs-target="#unit-create"><i class="fas fa-plus"></i> &nbsp Tambah Unit</button>
+                <button class="btn btn-sm btn-primary shadow-sm" onclick="create()"><i class="bi bi-plus-lg"></i>
+                    Tambah</button>
             </div>
 
+
             <div class="table-responsive">
-                <table class="table table-sm table-striped table-hover" id="dataTable">
+                <table class="table table-sm table-striped table-hover nowrap w-100 datatable" id="read">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -75,11 +72,15 @@
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->ket }}</td>
                                 <td>
-                                    <a href="{{ url('unit/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></a>
+                                    <button onclick="edit({{ $item->id }})" class="btn btn-sm btn-warning shadow-sm"
+                                        data-bs-toggle="tooltip" data-bs-placment="top" title="Edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <form action="{{ url('unit/' . $item->id) }}" method="post" class="d-inline-block">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-sm btn-danger shadow-sm delete-btn" type="submit" data-bs-toggle="tooltip" data-bs-placment="top" title="Hapus"><i class="far fa-trash-alt"></i></button>
+                                        <button class="btn btn-sm btn-danger shadow-sm delete-btn" type="submit"
+                                            data-bs-toggle="tooltip" data-bs-placment="top" title="Hapus"><i
+                                                class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
@@ -90,73 +91,87 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-        {{-- modal --}}
-    <div class="modal modal-blur fade" id="unit-create" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="unit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Unit Latihan</h5>
+                    <h1 class="modal-title fs-5" id="title">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('unit') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label" for="cabang_id">Cabang</label>
-                            <input class="form-control @error('cabang_id') is-invalid @enderror" type="text"
-                                name="cabang_id" id="cabang_id" value="{{ $cabang }}" disabled>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="unit">Nama Unit Latihan</label>
-                            <input class="form-control @error('unit') is-invalid @enderror" type="text"
-                                name="unit" id="unit" value="{{ old('unit') }}" required>
-                            <div class="invalid-feedback">Masukkan nama unit latihan</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="alamat">Alamat</label>
-                            <input class="form-control @error('alamat') is-invalid @enderror" type="text"
-                                name="alamat" id="alamat" value="{{ old('alamat') }}" required>
-                            @error('alamat')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="penanggung_jawab">Penanggung Jawab</label>
-                            <input class="form-control @error('penanggung_jawab') is-invalid @enderror"
-                                type="text" name="penanggung_jawab" id="penanggung_jawab" value="{{ old('penanggung_jawab') }}" required>
-                            @error('penanggung_jawab')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="ket">Keterangan</label>
-                            <input class="form-control @error('ket') is-invalid @enderror" type="text" name="ket"
-                                id="ket" value="{{ old('ket') }}">
-                            @error('ket')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+
+                <div id="page"></div>
+
             </div>
         </div>
     </div>
-    {{-- /modal --}}
 @endsection
 
-@section('datatables-js')
-    {{-- datatables --}}
-    <script src="{{ asset('assets/vendor/datatables/datatables.js') }}"></script>
-
+@section('script')
     <script>
         $(document).ready(function() {
-            $('#dataTable').DataTable();
+
         })
+        // create data
+        function create() {
+            $.get("{{ url('unit/create') }}", {}, function(data, status) {
+                $('#title').html('Tambah Unit')
+                $('#page').html(data)
+                $('#unit').modal('show')
+            });
+        }
+
+        // store unit
+        function store() {
+            e.preventDefault();
+            // mengambil semua nilai inputan pada tag form
+            let data = $('#form').serialize()
+
+            // proses pengiriman data ke controller untuk disimpan
+            $.ajax({
+                type: 'post',
+                url: "{{ url('unit') }}",
+                data: data,
+                success: function(data) {
+                    $('.btn-close').click()
+                },
+                error: function(response) {
+                    alert('Terjadi kesalahan, silakan coba lagi.')
+                }
+            })
+        }
+
+        // menampilkan data yang ingin diedit
+        function edit(id) {
+            $.get("{{ url('unit') }}/" + id + "/edit", {}, function(data, status) {
+                $('#title').html('Edit unit latihan');
+                $('#page').html(data);
+                $('#unit').modal('show');
+            });
+        }
+
+        // proses update data
+        function update(id) {
+            // mengambil semua nilai inputan pada tag form
+            let data = $('#form').serialize()
+
+            // proses pengiriman data ke controller untuk diupdate
+            $.ajax({
+                type: 'put',
+                url: "{{ url('unit') }}/" + id,
+                data: data,
+                success: function(data) {
+                    $('.btn-close').click()
+                },
+                error: function(response) {
+                    alert('Terjadi kesalahan, silakan coba lagi.')
+                }
+            })
+        }
     </script>
 @endsection
