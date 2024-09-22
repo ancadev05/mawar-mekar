@@ -40,21 +40,22 @@
                     <li class="dropdown-header">
                         @if (Auth::guard('web')->check())
                             <h6>{{ Auth::guard('web')->user()->name }}</h6>
+                            <span>Admin {{ Auth::guard('web')->user()->cabang->cabang }}</span>
                         @else
                             <h6>{{ Auth::guard('pesilat')->user()->nama_pesilat }}</h6>
+                            <span>{{ Auth::guard('pesilat')->user()->jenjang }}</span>
                         @endif
-                        {{-- <span>{{ $user->levelakun->level }}</span> --}}
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{ url('/profil') }}">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <hr class="dropdown-divider">
                     </li>
