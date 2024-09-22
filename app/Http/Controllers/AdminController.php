@@ -46,28 +46,32 @@ class AdminController extends Controller
 
      public function pesilat_approve_selesai()
      {
-        $pesilats = Pesilat::where('validasi', 1)->where('tahun_masuk_ts', 2024)->get();
+        $pesilats = Pesilat::where('validasi', 1)->where('tahun_masuk_ts', '>=', 2024)->get();
 
         return view('pesilat.pesilat-approve-selesai', compact('pesilats'));
      }
 
     //  funsi approve pesilat
-     public function approve(string $no_registrasi) 
+     public function approve(string $id) 
      {
         $pesilat = [
             'validasi' => 1,
         ];
 
-        Pesilat::where('no_registrasi', $no_registrasi)->update($pesilat);
+        Pesilat::where('id', $id)->update($pesilat);
+
+        return redirect('/pesilat-approve')->with('success', 'Approve siswa berhasil');
      }
 
     //  batalkan approve pesilat
-    public function approve_batal(string $no_registrasi) 
+    public function approve_batal(string $id) 
      {
         $pesilat = [
             'validasi' => 0,
         ];
 
-        Pesilat::where('no_registrasi', $no_registrasi)->update($pesilat);
+        Pesilat::where('id', $id)->update($pesilat);
+
+        return redirect('/pesilat-approve-selesai')->with('success', 'Approve berhasil dibatalkan');
      }
 }

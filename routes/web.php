@@ -54,8 +54,8 @@ Route::middleware(['general'])->group(function () {
 
     // approve pesilat
     Route::get('/pesilat-approve', [AdminController::class, 'pesilatapprove']);
-    Route::post('/pesilat-approve/{no_registrasi}', [AdminController::class, 'approve']);
-    Route::post('/pesilat-approve/{no_registrasi}', [AdminController::class, 'approve_batal']);
+    Route::put('/pesilat-approve/{id}', [AdminController::class, 'approve']);
+    Route::put('/pesilat-approve-batal/{id}', [AdminController::class, 'approve_batal']);
     Route::get('/pesilat-approve-selesai', [AdminController::class, 'pesilat_approve_selesai']);
 
     // cabang

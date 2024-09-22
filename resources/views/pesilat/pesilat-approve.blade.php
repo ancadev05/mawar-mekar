@@ -43,8 +43,12 @@
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>{{ $item->unit->unit }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-success shadow-sm">Approve</button>
-                                </td>
+                                    <form action="{{ url('pesilat-approve/' . $item->id) }}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit" class="btn btn-sm btn-success shadow-sm">Approve</button>
+                                    </form>
+                                </td> 
                             </tr>
                             @php
                                 $i++;

@@ -10,28 +10,10 @@
     </div>
 
     <section class="section">
-        <div class="card p-3 mb-3">
-            <form action="{{ url('/pesilat-import') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <label for="file" class="form-label form-label-sm">File Excel</label>
-                <div class="row">
-                    <div class="col-4">
-                        <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="file"
-                            name="file" type="file" required>
-                        @error('file')
-                            <small class="invalid-feedback"> {{ $message }} </small>
-                        @enderror
-                    </div>
-                    <div class="col-1">
-                        <button class="btn btn-sm btn-success shadow-sm" type="submit">Import</button>
-                    </div>
-                </div>
-            </form>
-        </div>
 
         <div class="card p-3">
             <div class="table-responsive">
-                <table class="table table-sm table-striped table-hover nowrap">
+                <table class="table table-sm table-striped table-hover nowrap datatable">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -55,7 +37,6 @@
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>
                                     <a href="{{ url('/pesilat/' . $item->id) }}" target="_blank" class="btn btn-sm btn-secondary shadow-sm"><i class="bi bi-eye"></i></a>
-                                    <button class="btn btn-sm btn-danger shadow-sm"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             @php

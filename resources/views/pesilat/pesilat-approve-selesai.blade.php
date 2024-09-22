@@ -41,7 +41,11 @@
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>{{ $item->unit->unit }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-x-lg"></i></button>
+                                    <form action="{{ url('pesilat-approve-batal/' . $item->id) }}" method="post" class="d-inline-block">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit" class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-x-lg"></i></button>
+                                    </form>
                                     <button class="btn btn-sm btn-danger shadow-sm"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
