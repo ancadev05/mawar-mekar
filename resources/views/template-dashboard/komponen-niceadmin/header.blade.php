@@ -29,12 +29,20 @@
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+                    @if (Auth::guard('web')->check())
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::guard('web')->user()->name }}</span>
+                    @else
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::guard('pesilat')->user()->nama_pesilat }}</span>
+                    @endif
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Admin</h6>
+                        @if (Auth::guard('web')->check())
+                            <h6>{{ Auth::guard('web')->user()->name }}</h6>
+                        @else
+                            <h6>{{ Auth::guard('pesilat')->user()->nama_pesilat }}</h6>
+                        @endif
                         {{-- <span>{{ $user->levelakun->level }}</span> --}}
                     </li>
                     <li>

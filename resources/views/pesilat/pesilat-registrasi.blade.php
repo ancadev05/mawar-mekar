@@ -155,7 +155,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <a href="{{ url('/pesilat/create') }}" target="_blank" class="btn btn-sm btn-warning shadow-sm mb-3 w-50">Registrasi Sekarang</a>
+                <a href="{{ url('/pesilat-create2') }}" target="_blank" class="btn btn-sm btn-warning shadow-sm mb-3 w-50">Registrasi Sekarang</a>
             </div>
 
             

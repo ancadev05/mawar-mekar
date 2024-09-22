@@ -12,6 +12,7 @@ use App\Http\Controllers\CabangController;
 use App\Http\Controllers\IjazahController;
 use App\Http\Controllers\PesilatController;
 use App\Http\Controllers\PendekarController;
+use App\Http\Controllers\UserAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ use App\Http\Controllers\PendekarController;
 Route::get('/', [AdminController::class, 'cekdata']);
 Route::post('/', [AdminController::class, 'cekdata']);
 Route::get('/registrasi', [PesilatController::class, 'registrasi']);
+Route::get('/pesilat-create2', [PesilatController::class, 'create2']);
+Route::post('/pesilat-store2', [PesilatController::class, 'store2']);
+Route::get('/pesilat-show2/{id}', [PesilatController::class, 'show2']);
 
 // route bagi yang belum login
 Route::middleware(['guest'])->group(function () {
@@ -48,18 +52,27 @@ Route::middleware(['general'])->group(function () {
 
     Route::resource('/pesilat', PesilatController::class);
 
+    // approve pesilat
+    Route::get('/pesilat-approve', [AdminController::class, 'pesilatapprove']);
+    Route::post('/pesilat-approve/{no_registrasi}', [AdminController::class, 'approve']);
+    Route::post('/pesilat-approve/{no_registrasi}', [AdminController::class, 'approve_batal']);
+    Route::get('/pesilat-approve-selesai', [AdminController::class, 'pesilat_approve_selesai']);
+
     // cabang
-    Route::resource('/cabang', CabangController::class);
+    Route::resource('/cabang', CabangController::class)->middleware('user.akses:2');
 
     // unit
     Route::post('/unit-import', [UnitController::class, 'unitimport']);
     Route::resource('/unit', UnitController::class);
 
     // ukt
-    Route::resource('/ukt', UktController::class);
+    Route::resource('/ukt', UktController::class)->middleware('user.akses:2');
 
     // ijazah
-    Route::resource('/ijazah', IjazahController::class);
+    Route::resource('/ijazah', IjazahController::class)->middleware('pesilat.akses:1');
+
+    // user admin 
+    Route::resource('/user', UserAdminController::class);
 
     // logout
     Route::get('/logout', [AdminLoginController::class, 'logout']);

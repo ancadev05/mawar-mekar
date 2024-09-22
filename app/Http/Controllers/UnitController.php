@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\UnitsImport;
-use App\Models\Cabang;
 use App\Models\Unit;
+use App\Models\Cabang;
+use App\Imports\UnitsImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UnitController extends Controller
@@ -15,9 +16,17 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $cabang = 1;
+        if (Auth::guard('web')->user()->level_akun_id == 3) {
+            $cabang = Auth::guard('web')->user()->cabang_id;
+
+            $units = Unit::where('cabang_id', $cabang)->get();
+
+            return view('unit.index', compact('units', 'cabang'));
+        } 
+
         $units = Unit::get();
-        return view('unit.index', compact('units', 'cabang'));
+
+        return view('unit.index', compact('units',));
     }
 
     /**
@@ -25,8 +34,11 @@ class UnitController extends Controller
      */
     public function create()
     {
-        $cabang = 1;
-        return view('unit.unit-create', compact('cabang'));
+        if (Auth::guard('web')->user()->level_akun_id == 3) {
+            $cabang_id = Auth::guard('web')->user()->cabang_id;
+            $cabang = Cabang::where('id', $cabang_id)->first()->cabang;
+            return view('unit.unit-create', compact('cabang'));
+        } 
     }
 
     /**
@@ -43,7 +55,7 @@ class UnitController extends Controller
             return redirect('/unit')->with('error', 'Gagal tambah unit latihan!');
         }
 
-        $cabang_id = 1;
+        $cabang_id = Auth::guard('web')->user()->cabang_id;
 
         $unit = [
             'unit' => $request->unit,
@@ -81,7 +93,7 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $cabang = 1;
+        $cabang = Auth::guard('web')->user()->cabang_id;
         $unit = [
             'cabang_id' => $cabang,
             'unit' => $request->unit,

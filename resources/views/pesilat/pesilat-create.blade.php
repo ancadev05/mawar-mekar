@@ -10,7 +10,7 @@
             <div class="p-2 mb-3 border-bottom border-2 border-dark">
                 <h4 class="text-center">BIODATA</h4>
             </div>
-            <form action="{{ url('pesilat') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('pesilat-store2') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-12 col-lg-6">

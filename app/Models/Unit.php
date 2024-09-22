@@ -12,12 +12,14 @@ class Unit extends Model
     protected $guarded = [];
 
     // relasi ke tabel cabang banyak ke satu
+    // satu unit memiliki satu cabang
     public function cabang()
     {
         return $this->belongsTo(Cabang::class);
     }
 
     // relasi ketabel pesilat satu ke banyak
+    // satu unit dimiliki banyak pesilat
     public function units()
     {
         return $this->hasMany(Pesilat::class);

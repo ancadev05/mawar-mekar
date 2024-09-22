@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'level_akun_id',
         'cabang_id',
+        'ket',
     ];
 
     /**
@@ -44,4 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // relasi ke tabel cabang
+    public function cabang()
+    {
+        return $this->belongsTo(Cabang::class);
+    }
+
+    // relasi ke tabel level akun
+    // satu user satu level
+    public function level_akun()
+    {
+        return $this->belongsTo(LevelAkun::class);
+    }
 }

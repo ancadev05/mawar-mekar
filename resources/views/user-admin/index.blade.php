@@ -1,7 +1,7 @@
 @extends('template-dashboard.template-niceadmin')
 
 @section('title')
-    Unit
+    User
 @endsection
 
 @section('datatables-css')
@@ -11,38 +11,16 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Unit Latihan</h1>
+        <h1>User Admin</h1>
     </div>
 
     {{-- konten --}}
     <section class="section">
 
-        @if (Auth::guard('web')->user()->level_akun_id == 2)
-            <div class="card p-3">
-                <form action="{{ url('/unit-import') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <label for="file" class="form-label form-label-sm">File Excel</label>
-                    <div class="row mb-5">
-                        <div class="col-4">
-                            <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="file"
-                                name="file" type="file" required>
-                            @error('file')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </div>
-                        <div class="col-1">
-                            <button class="btn btn-sm btn-success shadow-sm" type="submit">Import</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        @endif
-
-
 
         <div class="card p-3">
 
-            <div class="d-flex justify-content-end mb-3">
+            <div class="d-flex justify-content-end">
                 <button class="btn btn-sm btn-primary shadow-sm" onclick="create()"><i class="bi bi-plus-lg"></i>
                     Tambah</button>
             </div>
@@ -53,10 +31,10 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Unit</th>
-                            <th>Penanggung Jawab</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Level</th>
                             <th>Cabang</th>
-                            <th>Alamat</th>
                             <th>Ket</th>
                             <th>Aksi</th>
                         </tr>
@@ -65,19 +43,19 @@
                         @php
                             $i = 1;
                         @endphp
-                        @foreach ($units as $item)
+                        @foreach ($users as $item)
                             <tr>
-                                <td>{{ $i }}</td>
-                                <td>{{ $item->unit }}</td>
-                                <td>{{ $item->penanggung_jawab }}</td>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->username }}</td>
+                                <td>{{ $item->level_akun->level }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
-                                <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->ket }}</td>
                                 <td>
                                     <button onclick="edit({{ $item->id }})" class="btn btn-sm btn-warning shadow-sm"
                                         data-bs-toggle="tooltip" data-bs-placment="top" title="Edit"><i
                                             class="bi bi-pencil-square"></i></button>
-                                    <form action="{{ url('unit/' . $item->id) }}" method="post" class="d-inline-block">
+                                    <form action="{{ url('user/' . $item->id) }}" method="post" class="d-inline-block">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-sm btn-danger shadow-sm delete-btn" type="submit"
@@ -86,9 +64,6 @@
                                     </form>
                                 </td>
                             </tr>
-                            @php
-                                $i++;
-                            @endphp
                         @endforeach
                     </tbody>
                 </table>
@@ -99,8 +74,8 @@
     </section>
 
     <!-- Modal -->
-    <div class="modal fade" id="unit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="title">Modal title</h1>
@@ -117,14 +92,15 @@
 @section('script')
     <script>
         $(document).ready(function() {
-
+            // ok()
         })
+
         // create data
         function create() {
-            $.get("{{ url('unit/create') }}", {}, function(data, status) {
-                $('#title').html('Tambah Unit')
+            $.get("{{ url('user/create') }}", {}, function(data, status) {
+                $('#title').html('Tambah User')
                 $('#page').html(data)
-                $('#unit').modal('show')
+                $('#modal').modal('show')
             });
         }
 
@@ -136,10 +112,10 @@
             // proses pengiriman data ke controller untuk disimpan
             $.ajax({
                 type: 'get',
-                url: "{{ url('unit') }}",
+                url: "{{ url('user') }}",
                 data: data,
                 success: function(data) {
-                    $('.btn-close').click()
+                    $('.btn-close').click();
                 },
                 error: function(response) {
                     alert('Terjadi kesalahan, silakan coba lagi.')
@@ -149,10 +125,10 @@
 
         // menampilkan data yang ingin diedit
         function edit(id) {
-            $.get("{{ url('unit') }}/" + id + "/edit", {}, function(data, status) {
-                $('#title').html('Edit unit latihan');
+            $.get("{{ url('user') }}/" + id + "/edit", {}, function(data, status) {
+                $('#title').html('Edit akun');
                 $('#page').html(data);
-                $('#unit').modal('show');
+                $('#modal').modal('show');
             });
         }
 
@@ -163,8 +139,8 @@
 
             // proses pengiriman data ke controller untuk diupdate
             $.ajax({
-                type: 'put',
-                url: "{{ url('unit') }}/" + id,
+                type: 'get',
+                url: "{{ url('user') }}/" + id,
                 data: data,
                 success: function(data) {
                     $('.btn-close').click()

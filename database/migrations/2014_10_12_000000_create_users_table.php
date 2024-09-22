@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('level_akun_id')->constrained();
             $table->foreignId('cabang_id')->constrained();
+            $table->text('ket')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

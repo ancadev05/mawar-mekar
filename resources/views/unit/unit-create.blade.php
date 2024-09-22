@@ -1,4 +1,4 @@
-<form action="" id="form">
+<form action="" id="form" method="POST">
     @csrf
     <div class="modal-body">
         <div class="mb-3">

@@ -85,6 +85,13 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);" id="card">
                 </div>
             </div>
             {{-- end card --}}
+
+            {{-- no registrasi --}}
+            <div class="alert alert-danger mt-3 text-center">
+                <h5>No. Registrasi Anda:</h5>
+                <h1><b>{{ $pesilat->no_registrasi }}</b></h1>
+            </div>
+
         @else
             <div class="a4 m-auto" id="document-pdf">
                 <div class="card p-1">
