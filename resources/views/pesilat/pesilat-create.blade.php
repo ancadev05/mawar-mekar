@@ -248,7 +248,6 @@
                                     class="text-danger fw-bold">*</span></label>
                             <select class="form-select @error('tingkatan_id') is-invalid @enderror" name="tingkatan_id"
                                 id="tingkatan_id">
-                                <option value="" selected>...</option>
                                 @foreach ($tingkatans as $item)
                                     <option value="{{ $item->id }}" {{ old('tingkatan_id') == $item->id ? 'selected' : '' }}>{{ $item->tingkat . ' (' . $item->singkatan . ')' }}</option>
                                 @endforeach

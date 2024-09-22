@@ -1,22 +1,12 @@
-@extends('template-dashboard.template-tabler')
+@extends('template-dashboard.template-niceadmin')
 
 @section('title')
     Siswa
 @endsection
 
 @section('content')
-    <!-- Page header -->
-    <div class="page-header d-print-none mb-3">
-        <div class="container-xl">
-            <div class="row g-2 align-items-center">
-                <div class="col">
-                    <!-- Page pre-title -->
-                    <h2 class="page-title">
-                        Siswa
-                    </h2>
-                </div>
-            </div>
-        </div>
+    <div class="pagetitle">
+        <h1>Daftar Siswa</h1>
     </div>
 
     <section class="section">
@@ -56,7 +46,7 @@
                         @php
                             $i = 1;
                         @endphp
-                        @foreach ($pesilats as $item)
+                        @foreach ($siswa as $item)
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $item->no_registrasi }}</td>
@@ -64,8 +54,8 @@
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning shadow-sm">Edit</button>
-                                    <button class="btn btn-sm btn-danger shadow-sm">Hapus</button>
+                                    <a href="{{ url('/pesilat/' . $item->id) }}" target="_blank" class="btn btn-sm btn-secondary shadow-sm"><i class="bi bi-eye"></i></a>
+                                    <button class="btn btn-sm btn-danger shadow-sm"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             @php
