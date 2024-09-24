@@ -46,17 +46,17 @@ Route::middleware(['general'])->group(function () {
     // route untuk import data pesilat
     Route::post('/pesilat-import', [AdminController::class, 'pesilatimport']);
 
-    Route::get('/pendekar', [PendekarController::class, 'index']);
+    Route::get('/pendekar', [PendekarController::class, 'index'])->middleware('user.akses:2');
     Route::get('/kader', [KaderController::class, 'index']);
     Route::get('/siswa', [SiswaController::class, 'index']);
 
     Route::resource('/pesilat', PesilatController::class);
 
     // approve pesilat
-    Route::get('/pesilat-approve', [AdminController::class, 'pesilatapprove']);
-    Route::put('/pesilat-approve/{id}', [AdminController::class, 'approve']);
-    Route::put('/pesilat-approve-batal/{id}', [AdminController::class, 'approve_batal']);
-    Route::get('/pesilat-approve-selesai', [AdminController::class, 'pesilat_approve_selesai']);
+    Route::get('/pesilat-approve', [AdminController::class, 'pesilatapprove'])->middleware('user.akses:2');
+    Route::put('/pesilat-approve/{id}', [AdminController::class, 'approve'])->middleware('user.akses:2');
+    Route::put('/pesilat-approve-batal/{id}', [AdminController::class, 'approve_batal'])->middleware('user.akses:2');
+    Route::get('/pesilat-approve-selesai', [AdminController::class, 'pesilat_approve_selesai'])->middleware('user.akses:2');
 
     // cabang
     Route::resource('/cabang', CabangController::class)->middleware('user.akses:2');

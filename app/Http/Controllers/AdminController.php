@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Pesilat;
 use Illuminate\Http\Request;
 use App\Imports\PesilatImport;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $pesilat_total = Pesilat::select('jk', 'jenjang', DB::raw('count(*) as total'))
+        ->groupBy('jk', 'jenjang')
+        ->orderBy('jenjang', 'desc')
+        ->get();
+
+        return view('admin.dashboard', compact('pesilat_total'));
     }
 
     public function cekdata(Request $request)

@@ -1,22 +1,12 @@
-@extends('template-dashboard.template-tabler')
+@extends('template-dashboard.template-niceadmin')
 
 @section('title')
     Pendekar
 @endsection
 
 @section('content')
-    <!-- Page header -->
-    <div class="page-header d-print-none mb-3">
-        <div class="container-xl">
-            <div class="row g-2 align-items-center">
-                <div class="col">
-                    <!-- Page pre-title -->
-                    <h2 class="page-title">
-                        Pendekar
-                    </h2>
-                </div>
-            </div>
-        </div>
+    <div class="pagetitle">
+        <h1>Daftar Pendekar</h1>
     </div>
 
     <section class="section">

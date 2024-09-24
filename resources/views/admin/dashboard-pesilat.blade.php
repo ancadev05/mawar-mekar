@@ -23,28 +23,18 @@
                     <thead>
                         <tr>
                             <th>Jenjang</th>
-                            <th>L</th>
-                            <th>P</th>
                             <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pesilat_total->groupBy('jenjang') as $jenjang => $data_jenjang)
-                            <tr>
-                                <td>
-                                    {{ $jenjang == 3 ? 'Pendekar' : ''}}
-                                    {{ $jenjang == 2 ? 'Kader' : ''}}
-                                    {{ $jenjang == 1 ? 'Siswa' : ''}}
-                                </td>
-                                @foreach ($data_jenjang as $item)
-                                    <td>{{ $item->jk . ' : ' . $item->total }}</td>
-                                    @php
-                                        $total[] = $item->total
-                                    @endphp
-                                    <td>{{ array_sum($total) }}</td>
-                                @endforeach
-                            </tr>    
-                        @endforeach
+                        <tr>
+                            <td>Kader</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>Siswa</td>
+                            <td>20</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
