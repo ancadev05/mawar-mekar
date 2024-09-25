@@ -20,7 +20,7 @@
     </div>
 
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ url('/cabang/create') }}" class="btn btn-sm btn-primary shadow-sm">+ Tambah</a>
+        <a href="{{ url('/cabang/create') }}" class="btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-lg"></i> Tambah</a>
     </div>
 
     <div class="card p-3">
@@ -48,8 +48,8 @@
                             <td>{{ $item->pengurus }}</td>
                             <td>{{ $item->ket }}</td>
                             <td>
-                                <button class="btn btn-sm btn-warning shadow-sm"><i class="far fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger shadow-sm"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-sm btn-danger shadow-sm"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                         @php

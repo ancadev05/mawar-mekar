@@ -20,9 +20,12 @@
         </div>
         <div class="mb-3">
             <label class="form-label" for="penanggung_jawab">Penanggung Jawab</label>
-            <input class="form-control @error('penanggung_jawab') is-invalid @enderror" type="text"
-                name="penanggung_jawab" id="penanggung_jawab" value="{{ old('penanggung_jawab') }}" required>
-
+            <select class="form-select" name="penanggung_jawab" id="pananggung_jawab">
+                <option value="">...</option>
+                @foreach ($kaders as $item)
+                    <option value="{{ $item->nama_pesilat . ', ' . $item->tingkatan->singkatan }}">{{ $item->nama_pesilat . ', ' . $item->tingkatan->singkatan }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label" for="ket">Keterangan</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Unit;
 use App\Models\Cabang;
 use App\Imports\UnitsImport;
+use App\Models\Pesilat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,7 +25,7 @@ class UnitController extends Controller
             return view('unit.index', compact('units', 'cabang'));
         } 
 
-        $units = Unit::get();
+        $units = Unit::orderBy('cabang_id', 'asc')->get();
 
         return view('unit.index', compact('units',));
     }
@@ -37,7 +38,8 @@ class UnitController extends Controller
         if (Auth::guard('web')->user()->level_akun_id == 3) {
             $cabang_id = Auth::guard('web')->user()->cabang_id;
             $cabang = Cabang::where('id', $cabang_id)->first()->cabang;
-            return view('unit.unit-create', compact('cabang'));
+            $kaders = Pesilat::where('cabang_id', $cabang_id)->get();
+            return view('unit.unit-create', compact('cabang', 'kaders'));
         } 
     }
 

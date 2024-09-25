@@ -11,6 +11,11 @@
 
     <section class="section">
 
+        <button class="btn btn-sm btn-outline-secondary shadow-sm mb-3" id="copy-button"><i class="bi bi-copy"></i> Copy link
+            registrasi</button>
+        {{-- <input type="hidden"  value=""> --}}
+         <div class="d-none" id="copy-text">https://pimda.tapaksuci177gowa.or.id/registrasi</div>
+
         <div class="card p-3">
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-hover nowrap datatable">
@@ -36,11 +41,12 @@
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>
-                                    <a href="{{ url('/pesilat/' . $item->id) }}" target="_blank" class="btn btn-sm btn-secondary shadow-sm"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ url('/pesilat/' . $item->id) }}" target="_blank"
+                                        class="btn btn-sm btn-secondary shadow-sm"><i class="bi bi-eye"></i></a>
                                 </td>
                             </tr>
                             @php
-                                $i++
+                                $i++;
                             @endphp
                         @endforeach
                     </tbody>
@@ -50,3 +56,18 @@
     </section>
 @endsection
 
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#copy-button').click(function() {
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val($('#copy-text').text()).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                alert("Teks berhasil disalin!");
+            });
+        });
+    </script>
+@endsection
