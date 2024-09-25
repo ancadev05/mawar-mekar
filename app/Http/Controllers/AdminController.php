@@ -12,12 +12,19 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+        // total laki-laki dan perempuna setiap jenjang
         $pesilat_total = Pesilat::select('jk', 'jenjang', DB::raw('count(*) as total'))
         ->groupBy('jk', 'jenjang')
         ->orderBy('jenjang', 'desc')
         ->get();
 
-        return view('admin.dashboard', compact('pesilat_total'));
+        // totoal pesilat setiap jenjang
+        $pesilat_jenjang = Pesilat::select('jenjang', DB::raw('count(*) as total'))
+        ->groupBy('jenjang')
+        ->orderBy('jenjang', 'desc')
+        ->get();
+
+        return view('admin.dashboard', compact('pesilat_total', 'pesilat_jenjang'));
     }
 
     public function cekdata(Request $request)
