@@ -23,7 +23,7 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        $level_akun = LevelAkun::all();
+        $level_akun = LevelAkun::orderBy('id', 'desc')->take(2)->get();
         $cabangs = Cabang::all();
         return view('user-admin.user-create', compact('level_akun', 'cabangs'));
     }

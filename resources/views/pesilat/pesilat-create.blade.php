@@ -232,9 +232,9 @@
                         <div class="mb-3">
                             <label class="form-label" for="unit_id">Unit Latihan <span
                                     class="text-danger fw-bold">*</span></label>
-                            <select class="form-select @error('unit_id') is-invalid @enderror select2" name="unit_id"
+                            <select class="form-select @error('unit_id') is-invalid @enderror select2" name="unit_id" multiple="multiple"
                                 id="unit_id">
-                                <option value="" selected>...</option>
+                                {{-- <option value="" selected>...</option> --}}
                                 @foreach ($units as $item)
                                     <option value="{{ $item->id }}" {{ old('unit_id') == $item->id ? 'selected' : '' }}>{{ $item->unit }}</option>
                                 @endforeach

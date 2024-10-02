@@ -39,7 +39,7 @@ class UnitController extends Controller
             $cabang_id = Auth::guard('web')->user()->cabang_id;
             $cabang = Cabang::where('id', $cabang_id)->first()->cabang;
             $kaders = Pesilat::where('cabang_id', $cabang_id)->get();
-            return view('unit.unit-create', compact('cabang', 'kaders'));
+            return view('unit.unit-create-2', compact('cabang', 'kaders'));
         } 
     }
 
@@ -48,7 +48,6 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'unit' => 'required',
         ]);
@@ -59,10 +58,13 @@ class UnitController extends Controller
 
         $cabang_id = Auth::guard('web')->user()->cabang_id;
 
+        $penanggung_jawab = $request->penanggung_jawab;
+        $pelatih = implode(', ', $penanggung_jawab);
+
         $unit = [
             'unit' => $request->unit,
             'alamat' => $request->alamat,
-            'penanggung_jawab' => $request->penanggung_jawab,
+            'penanggung_jawab' => $pelatih,
             'ket' => $request->ket,
             'cabang_id' => $cabang_id,
         ];

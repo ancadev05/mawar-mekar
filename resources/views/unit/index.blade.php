@@ -43,9 +43,13 @@
         <div class="card p-3">
 
             <div class="d-flex justify-content-end mb-3">
+                <a href="{{ url('unit/create') }}" class="btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-lg"></i>
+                    Tambah</a>
+            </div>
+            {{-- <div class="d-flex justify-content-end mb-3">
                 <button class="btn btn-sm btn-primary shadow-sm" onclick="create()"><i class="bi bi-plus-lg"></i>
                     Tambah</button>
-            </div>
+            </div> --}}
 
 
             <div class="table-responsive">
@@ -74,9 +78,12 @@
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->ket }}</td>
                                 <td>
-                                    <button onclick="edit({{ $item->id }})" class="btn btn-sm btn-warning shadow-sm"
+                                    <a href="{{ url('unit/' . $item->id . '/edit') }}" onclick="edit({{ $item->id }})" class="btn btn-sm btn-warning shadow-sm"
                                         data-bs-toggle="tooltip" data-bs-placment="top" title="Edit"><i
-                                            class="bi bi-pencil-square"></i></button>
+                                            class="bi bi-pencil-square"></i></a>
+                                    {{-- <button onclick="edit({{ $item->id }})" class="btn btn-sm btn-warning shadow-sm"
+                                        data-bs-toggle="tooltip" data-bs-placment="top" title="Edit"><i
+                                            class="bi bi-pencil-square"></i></button> --}}
                                     <form action="{{ url('unit/' . $item->id) }}" method="post" class="d-inline-block">
                                         @csrf
                                         @method('delete')
@@ -112,12 +119,77 @@
             </div>
         </div>
     </div>
+
+    {{-- coba --}}
+    {{-- <hr>
+    <div id="unitLatihan">
+        <div class="unit">
+            <label for="unit_latihan1">Unit Latihan:</label>
+            <input type="text" id="unit_latihan1" name="unit_latihan">
+            <label for="alamat1">Alamat:</label>
+            <input type="text" id="alamat1" name="alamat">
+            <div class="penanggung_jawab">
+                <input type="text" name="penanggung_jawab[]">
+                <button type="button" class="tambahPenanggungJawab">Tambah</button>
+            </div>
+        </div>
+        <button type="button" id="tambahUnit">Tambah Unit Latihan</button>
+        <button type="button" id="simpanData">Simpan Data</button>
+    </div> --}}
 @endsection
 
-@section('script')
+{{-- @section('script')
     <script>
         $(document).ready(function() {
+            // Fungsi untuk menambahkan input penanggung jawab baru
+            function tambahPenanggungJawab(container) {
+                var newInput = $('<input type="text" name="penanggung_jawab[]">');
+                container.find('.penanggung_jawab').append(newInput);
+            }
 
+            // Ketika tombol "Tambah Penanggung Jawab" diklik
+            $(document).on('click', '.tambahPenanggungJawab', function() {
+                tambahPenanggungJawab($(this).closest('.unit'));
+            });
+
+            // Ketika tombol "Simpan Data" diklik
+            $('#simpanData').click(function() {
+                var data = [];
+                $('#unitLatihan .unit').each(function() {
+                    var unitData = {
+                        unit_latihan: $(this).find('input[name="unit_latihan"]').val(),
+                        alamat: $(this).find('input[name="alamat"]').val(),
+                        penanggung_jawab: []
+                    };
+                    $(this).find('input[name="penanggung_jawab[]"]').each(function() {
+                        unitData.penanggung_jawab.push($(this).val());
+                    });
+                    data.push(unitData);
+                });
+
+                // Kirim data ke PHP menggunakan AJAX
+                $.ajax({
+                    // ... (sama seperti sebelumnya)
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Fungsi untuk menambahkan input penanggung jawab baru
+            function tambahPenanggungJawab(container) {
+                // var newInput = $('<input type="text" name="penanggung_jawab[]">');
+                var newInput = $('#form .penanggung_jawab').clone();
+                container.find('.penanggung_jawab').append(newInput);
+            }
+
+            // Ketika tombol "Tambah Penanggung Jawab" diklik
+            $(document).on('click', '.tambah-penanggung-jawab', function() {
+                // tambahPenanggungJawab($(this).closest('.unit'));
+                tambahPenanggungJawab($(this));
+            });
+
+            $('.multiple-select').select2();
         })
         // create data
         function create() {
@@ -175,4 +247,4 @@
             })
         }
     </script>
-@endsection
+@endsection --}}

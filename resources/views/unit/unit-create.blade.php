@@ -1,3 +1,7 @@
+
+ {{-- select2 --}}
+ {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/select2-4.1.0/css/select2.min.css') }}" rel="stylesheet"> --}}
+
 <form action="" id="form" method="POST">
     @csrf
     <div class="modal-body">
@@ -18,14 +22,18 @@
                 id="alamat" value="{{ old('alamat') }}" required>
 
         </div>
-        <div class="mb-3">
+        <div class="mb-3 penanggung_jawab">
             <label class="form-label" for="penanggung_jawab">Penanggung Jawab</label>
-            <select class="form-select" name="penanggung_jawab" id="pananggung_jawab">
-                <option value="">...</option>
-                @foreach ($kaders as $item)
-                    <option value="{{ $item->nama_pesilat . ', ' . $item->tingkatan->singkatan }}">{{ $item->nama_pesilat . ', ' . $item->tingkatan->singkatan }}</option>
-                @endforeach
-            </select>
+            {{-- <div class="input-group"> --}}
+                <select class="form-select multiple-select" name="penanggung_jawab[]" id="pananggung_jawab" multiple="multiple">
+                    <option value="">...</option>
+                    @foreach ($kaders as $item)
+                        <option value="{{ $item->nama_pesilat . ', ' . $item->tingkatan->singkatan }}">
+                            {{ $item->nama_pesilat . ', ' . $item->tingkatan->singkatan }}</option>
+                    @endforeach
+                </select>
+                {{-- <button type="button" class="btn btn-sm btn-primary shadow-sm tambah-penanggung-jawab"><i class="bi bi-plus-lg"></i></button> --}}
+            {{-- </div> --}}
         </div>
         <div class="mb-3">
             <label class="form-label" for="ket">Keterangan</label>
@@ -38,3 +46,13 @@
         <button type="submit" class="btn btn-primary" onclick="store()">Save changes</button>
     </div>
 </form>
+
+ {{-- select2 --}}
+ {{-- <script src="{{ asset('assets/vendor/select2-4.1.0/js/select2.min.js') }}"></script> --}}
+<script>
+     $(document).ready(function() {
+            
+
+            $('.multiple-select').select2();
+        })
+</script>
