@@ -6,6 +6,7 @@ use App\Models\Pesilat;
 use Illuminate\Http\Request;
 use App\Imports\PesilatImport;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
@@ -29,14 +30,19 @@ class AdminController extends Controller
 
     public function dashboard_cabang()
     {
+        // data yang ditampilkan sesuai dengan cabang masing-masing
+        $cabang = Auth::guard('web')->user()->cabang_id;
+        
         // total laki-laki dan perempuna setiap jenjang
-        $pesilat_total = Pesilat::whereNotIn('jenjang', [3])->select('jk', 'jenjang', DB::raw('count(*) as total'))
+        $pesilat_total = Pesilat::whereNotIn('jenjang', [3])->where('cabang_id', $cabang)
+        ->select('jk', 'jenjang', DB::raw('count(*) as total'))
         ->groupBy('jk', 'jenjang')
         ->orderBy('jenjang', 'desc')
         ->get();
 
         // totoal pesilat setiap jenjang
-        $pesilat_jenjang = Pesilat::whereNotIn('jenjang', [3])->select('jenjang', DB::raw('count(*) as total'))
+        $pesilat_jenjang = Pesilat::whereNotIn('jenjang', [3])->where('cabang_id', $cabang)
+        ->select('jenjang', DB::raw('count(*) as total'))
         ->groupBy('jenjang')
         ->orderBy('jenjang', 'desc')
         ->get();
