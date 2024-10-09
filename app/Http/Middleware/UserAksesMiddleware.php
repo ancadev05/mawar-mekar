@@ -20,11 +20,20 @@ class UserAksesMiddleware
         if (Auth::guard('web')->check()) {
             if (Auth::guard('web')->user()->level_akun_id == $level_akun_id) {
                 return $next($request);
-            } else {
-                return redirect('/mawar-mekar');
-            }
-        } else {
-            return redirect('/mawar-mekar');
+            } 
+            // else {
+            //     return redirect('/mawar-mekar');
+            // }
+        } 
+        // else {
+        //     return redirect('/mawar-mekar');
+        // }
+
+        // pengaturan halaman cabang dan pimda
+        if (Auth::guard('web')->user()->level_akun_id == 2) {
+            return redirect('/mawar-mekar/pimda');
+        } elseif (Auth::guard('web')->user()->level_akun_id == 3) {
+            return redirect('/mawar-mekar/cabang');
         }
     }
 }

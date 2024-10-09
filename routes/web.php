@@ -41,7 +41,8 @@ Route::middleware(['guest'])->group(function () {
 // route yang hanya bisa diakses setelah login
 Route::middleware(['general'])->group(function () {
 
-    Route::get('/mawar-mekar', [AdminController::class, 'dashboard']);
+    Route::get('/mawar-mekar', [AdminController::class, 'dashboard'])->middleware('user.akses:2');
+    Route::get('/mawar-mekar/cabang', [AdminController::class, 'dashboard_cabang'])->middleware('user.akses:3');
 
     // route untuk import data pesilat
     Route::post('/pesilat-import', [AdminController::class, 'pesilatimport']);

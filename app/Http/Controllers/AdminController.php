@@ -27,6 +27,23 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('pesilat_total', 'pesilat_jenjang'));
     }
 
+    public function dashboard_cabang()
+    {
+        // total laki-laki dan perempuna setiap jenjang
+        $pesilat_total = Pesilat::whereNotIn('jenjang', [3])->select('jk', 'jenjang', DB::raw('count(*) as total'))
+        ->groupBy('jk', 'jenjang')
+        ->orderBy('jenjang', 'desc')
+        ->get();
+
+        // totoal pesilat setiap jenjang
+        $pesilat_jenjang = Pesilat::whereNotIn('jenjang', [3])->select('jenjang', DB::raw('count(*) as total'))
+        ->groupBy('jenjang')
+        ->orderBy('jenjang', 'desc')
+        ->get();
+
+        return view('admin.dashboard-cabang', compact('pesilat_total', 'pesilat_jenjang'));
+    }
+
     public function cekdata(Request $request)
     {
        

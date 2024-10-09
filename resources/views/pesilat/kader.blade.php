@@ -57,8 +57,11 @@
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
                                 <td>
-                                    <a href="{{ url('/pesilat/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-eye"></i></a>
-                                    {{-- <button class="btn btn-sm btn-danger shadow-sm"><i class="bi bi-trash"></i></button> --}}
+                                    @if (Auth::guard('web')->user()->level_akun_id == 2)
+                                        <a href="{{ url('/pesilat/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-eye"></i></a>
+                                    @else
+                                        -
+                                    @endif
                                 </td>
                             </tr>
                             @php

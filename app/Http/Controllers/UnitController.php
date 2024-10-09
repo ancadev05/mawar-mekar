@@ -87,9 +87,11 @@ class UnitController extends Controller
      */
     public function edit(string $id)
     {
+        $cabang_id = Auth::guard('web')->user()->cabang_id;
         $unit = Unit::where('id', $id)->first();
+        $kaders = Pesilat::where('cabang_id', $cabang_id)->get();
 
-        return view('unit.unit-edit', compact('unit'));
+        return view('unit.unit-edit-2', compact('unit', 'kaders'));
     }
 
     /**
@@ -97,12 +99,19 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if($request->penanggung_jawab) {
+            $penanggung_jawab = $request->penanggung_jawab;
+            $pelatih = $request->pelatih_lama . implode(' | ', $penanggung_jawab);
+        } else {
+            $pelatih = $request->pelatih_lama;
+        }
+
         $cabang = Auth::guard('web')->user()->cabang_id;
         $unit = [
             'cabang_id' => $cabang,
             'unit' => $request->unit,
             'alamat' => $request->alamat,
-            'penanggung_jawab' => $request->penanggung_jawab,
+            'penanggung_jawab' => $pelatih,
             'ket' => $request->ket,
         ];
 
