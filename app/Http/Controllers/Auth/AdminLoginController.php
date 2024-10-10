@@ -32,18 +32,21 @@ class AdminLoginController extends Controller
         //  proses pengecekan jika email dan password terdaftar pada tabel user default
         if ($request->login == 1) {
             if (Auth::guard('web')->attempt($infologin)) {
-                // mengarahkan kehalaman sesuai level username
-                return redirect('/mawar-mekar');
+                // mengarahkan kehalaman dashboard sesuai level username atau jenis akun
+                // admin pimda
+                if (Auth::guard('web')->user()->level_akun_id == 2) {
+                    return redirect('/mawar-mekar/pimda');
+                } elseif (Auth::guard('web')->user()->level_akun_id == 3) { // jika level cabang
+                    return redirect('/mawar-mekar/cabang');
+                }
             }
         }
 
         // pengecekan jika login sebagai pesilat
         if ($request->login == 2) {
             if (Auth::guard('pesilat')->attempt($infologin)) {
-                // mengarahkan kehalaman sesuai level username
-
-                // dd('ok');
-                return redirect('/mawar-mekar');
+                // mengarahkan kehalaman dashboar pesilat sesuai level username atau jenis akun
+                return redirect('/mawar-mekar/pesilat');
             }
         }
 

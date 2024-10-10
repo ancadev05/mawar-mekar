@@ -50,6 +50,12 @@ class AdminController extends Controller
         return view('admin.dashboard-cabang', compact('pesilat_total', 'pesilat_jenjang'));
     }
 
+    public function dashboard_pesilat()
+    {
+        $pesilat = Pesilat::get();
+        return view('admin.dashboard-pesilat', compact('pesilat'));
+    }
+
     public function cekdata(Request $request)
     {
        

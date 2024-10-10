@@ -22,7 +22,25 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 // return redirect(RouteServiceProvider::HOME);
-                return redirect('/');
+
+                // pengecekan status login
+                // jika sudah login lalu ingin akses ke halaman login
+                // maka akan diarahkan kembali ke dashboardnya masing-masing
+                if (Auth::guard('web')->check()) {
+                    // mengarahkan kehalaman dashboard sesuai level username atau jenis akun
+                    // admin pimda
+                    if (Auth::guard('web')->user()->level_akun_id == 2) {
+                        return redirect('/mawar-mekar/pimda');
+                    } elseif (Auth::guard('web')->user()->level_akun_id == 3) { // jika level cabang
+                        return redirect('/mawar-mekar/cabang');
+                    }
+                }
+
+                if (Auth::guard('pesilat')->check()) {
+                    // mengarahkan kehalaman dashboar pesilat sesuai level username atau jenis akun
+                    return redirect('/mawar-mekar/pesilat');
+                }
+                // return redirect('/');
             }
         }
 

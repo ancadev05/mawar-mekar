@@ -3,15 +3,20 @@
 
      <ul class="sidebar-nav" id="sidebar-nav">
 
-         <li class="nav-item">
-             <a class="nav-link {{ Request::is('mawar-mekar') ? '' : 'collapsed' }}" href="{{ url('/mawar-mekar') }}">
-                 <i class="bi bi-house-door"></i>
-                 <span>Home</span>
-             </a>
-         </li>
+        {{-- ################################################ --}}
+        {{-- menu pimda --}}
+        
 
+         {{-- pengecekan apakah yang login admin pimda atau cabang --}}
          @if (Auth::guard('web')->check())
+         {{-- menu yang ditampilkan hanya untuk admin pimda --}}
              @if (Auth::guard('web')->user()->level_akun_id == 2)
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('mawar-mekar/pimda') ? '' : 'collapsed' }}" href="{{ url('/mawar-mekar/pimda') }}">
+                        <i class="bi bi-house-door"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
                  <li class="nav-item">
                      <a class="nav-link {{ Request::is('cabang') ? '' : 'collapsed' }}" href="{{ url('/cabang') }}">
                          <i class="bi bi-diagram-2"></i>
@@ -77,8 +82,16 @@
 {{-- ################################################### --}}
 
          {{-- menu untuk admin cabang --}}
+         {{-- pengecekan apakah yang login admin pimda atau cabang --}}
          @if (Auth::guard('web')->check())
+            {{-- menu yang ditampilkan hanya untuk admin pimda --}}
              @if (Auth::guard('web')->user()->level_akun_id == 3)
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('mawar-mekar/cabang') ? '' : 'collapsed' }}" href="{{ url('/mawar-mekar/cabang') }}">
+                        <i class="bi bi-house-door"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
                  <li class="nav-item">
                      <a class="nav-link {{ Request::is('unit') ? '' : 'collapsed' }}" href="{{ url('/unit') }}">
                          <i class="bi bi-diagram-3"></i>
@@ -109,7 +122,14 @@
          @endif
 
          {{-- manu untuk pesilat --}}
+         {{-- pengecekana apakah yang login pesilat --}}
          @if (Auth::guard('pesilat')->check())
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('mawar-mekar/pesilat') ? '' : 'collapsed' }}" href="{{ url('/mawar-mekar/pesilat') }}">
+                    <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+            </li>
              <li class="nav-item">
                  <a class="nav-link {{ Request::is('ijazah') ? '' : 'collapsed' }}" href="{{ url('/ijazah') }}">
                      <i class="bi bi-folder2-open"></i>
