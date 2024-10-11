@@ -142,6 +142,12 @@
                      <span>Ijazah</span>
                  </a>
              </li>
+             <li class="nav-item">
+                 <a class="nav-link {{ Request::is('#') ? '' : 'collapsed' }}" href="{{ url('/#') }}">
+                     <i class="bi bi-folder2-open"></i>
+                     <span>Materi</span>
+                 </a>
+             </li>
          @endif
 
 
