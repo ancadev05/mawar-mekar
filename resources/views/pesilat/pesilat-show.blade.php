@@ -246,8 +246,11 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);" id="card">
 
             <div class="d-flex justify-content-center">
                 {{-- <button class="btn btn-danger shadow-sm me-2" id="export-pdf">Kembali</button> --}}
-                <a href="{{ url('/') }}" class="btn btn-danger shadow-sm me-2">Kembali</a>
-                <a href="{{ url('/pesilat/' . $pesilat->id . '/edit') }}" class="btn btn-warning shadow-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                <a href="{{ url('/mawar-mekar/pesilat') }}" class="btn btn-danger shadow-sm me-2">Kembali</a>
+
+                @if (Auth::guard('pesilat')->check())
+                    <a href="{{ url('/pesilat/' . $pesilat->id . '/edit') }}" class="btn btn-warning shadow-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                @endif
             </div>
         @endif
 

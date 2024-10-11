@@ -9,7 +9,8 @@
     <div class="pagetitle">
         @if (Auth::guard('web')->check())
             <h1>Selamat datang, {{ Auth::guard('web')->user()->name }}</h1>
-            <span>(Cabang {{Auth::guard('web')->user()->cabang->no_cabang . ' ' . Auth::guard('web')->user()->cabang->cabang }})</span>
+            <span>(Cabang
+                {{ Auth::guard('web')->user()->cabang->no_cabang . ' ' . Auth::guard('web')->user()->cabang->cabang }})</span>
         @else
             <h1>Selamat datang, {{ Auth::guard('pesilat')->user()->nama_pesilat }}</h1>
         @endif
@@ -29,8 +30,7 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
                     <div
                         class="d-flex align-items-center justify-content-center border-bottom border-1 border-white py-1 mb-1">
                         <div class="ms-2 me-1">
-                            <img src="{{ asset('assets/img/logo-ts.png') }}" alt=""
-                                width="40px">
+                            <img src="{{ asset('assets/img/logo-ts.png') }}" alt="" width="40px">
                         </div>
                         <div class="fw-bold text-white">
                             <div>PIMDA 177 KABUPATEN GOWA</div>
@@ -82,14 +82,41 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
                     </div>
 
                     <div class="d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ url('assets/img/tanda-tingkat/' . $pesilat->tingkatan->melati) }}"
-                            alt="foto" height="12px" class="mb-1">
-                        <img src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}"
-                            alt="foto" width="56.69px" height="75.59px" class="mb-1">
+                        <img src="{{ url('assets/img/tanda-tingkat/' . $pesilat->tingkatan->melati) }}" alt="foto"
+                            height="12px" class="mb-1">
+                        <img src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}" alt="foto"
+                            width="56.69px" height="75.59px" class="mb-1">
                     </div>
                 </div>
             </div>
         </div>
         {{-- end card --}}
+
+        {{-- tombol --}}
+        <div class="d-flex justify-content-center">
+            @if ($pesilat->validasi == 1)
+                <button class="btn btn-sm btn-danger shadow-sm me-1" id="download-card">Download</button>
+            @endif
+            <a href="{{ url('/pesilat/' . $pesilat->id) }}" class="btn btn-sm btn-success shadow-sm">Detail</a>
+        </div>
+        {{-- end tombol --}}
+
+        <script>
+            $(document).ready(function() {
+                $("#download-card").on("click", function() {
+                    var card = $("#card");
+
+                    html2canvas(card[0], {
+                        scale: 3, // Meningkatkan skala untuk kualitas lebih tinggi
+                        useCORS: true // Opsional: gunakan ini jika ada konten dari domain lain
+                    }).then(function(canvas) {
+                        // Buat elemen link untuk mengunduh gambar
+                        var link = $("<a>").attr("download", "{{ $pesilat->no_registrasi . '.png' }}")
+                            .attr("href", canvas.toDataURL("image/png"))[0];
+                        link.click();
+                    });
+                });
+            });
+        </script>
     </section>
 @endsection

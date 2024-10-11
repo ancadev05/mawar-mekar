@@ -127,14 +127,14 @@ background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
                             {{-- end card --}}
 
                             {{-- tombol --}}
-                            <div class="d-flex justify-content-center">
+                            {{-- <div class="d-flex justify-content-center">
                                 @if ($pesilat->validasi == 1)
                                     <button class="btn btn-sm btn-danger shadow-sm me-1"
                                         id="download-card">Download</button>
                                 @endif
                                 <a href="{{ url('/pesilat/' . $pesilat->id) }}"
                                     class="btn btn-sm btn-success shadow-sm">Detail</a>
-                            </div>
+                            </div> --}}
                             {{-- end tombol --}}
 
                             <script>
