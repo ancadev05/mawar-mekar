@@ -52,7 +52,8 @@ class AdminController extends Controller
 
     public function dashboard_pesilat()
     {
-        $pesilat = Pesilat::get();
+        $pesilat_id = Auth::guard('pesilat')->user()->id;
+        $pesilat = Pesilat::where('id', $pesilat_id)->first();
         return view('admin.dashboard-pesilat', compact('pesilat'));
     }
 

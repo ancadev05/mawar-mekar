@@ -131,6 +131,12 @@
                 </a>
             </li>
              <li class="nav-item">
+                 <a class="nav-link {{ Request::is('ijazah') ? '' : 'collapsed' }}" href="{{ url('#') }}">
+                     <i class="bi bi-clipboard-data"></i>
+                     <span>UKT</span>
+                 </a>
+             </li>
+             <li class="nav-item">
                  <a class="nav-link {{ Request::is('ijazah') ? '' : 'collapsed' }}" href="{{ url('/ijazah') }}">
                      <i class="bi bi-folder2-open"></i>
                      <span>Ijazah</span>

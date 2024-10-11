@@ -17,99 +17,79 @@
 
     {{-- konten --}}
     <section class="section dashboard">
-        <div class="card p-3 mb-3">
-            <div class="table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>Jenjang</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kader</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>Siswa</td>
-                            <td>20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        {{-- car --}}
+        <div class="d-flex justify-content-center">
+            <div class="shadow p-2 bg-white my-3"
+                style="width: 85.60mm; height: 53.98mm; font-size: 10px; background-color: #dc3545;
+background-image: linear-gradient(180deg, #dc3545 0%, #ffc107 100%);"
+                id="card">
+                @if ($pesilat->validasi == 0)
+                    <div class="alert alert-danger text-center fw-bold">DATA BELUM DI APPROVE</div>
+                @else
+                    <div
+                        class="d-flex align-items-center justify-content-center border-bottom border-1 border-white py-1 mb-1">
+                        <div class="ms-2 me-1">
+                            <img src="{{ asset('assets/img/logo-ts.png') }}" alt=""
+                                width="40px">
+                        </div>
+                        <div class="fw-bold text-white">
+                            <div>PIMDA 177 KABUPATEN GOWA</div>
+                            <div>TAPAK SUCI PUTERA MUHAMMADIYAH</div>
+                        </div>
+                    </div>
+                @endif
 
-        <div class="card p-3 mb-3">
-            <h5 class="text-bg-dark text-center p-2">Pendekar</h5>
-            <div class="table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>Tingkat</th>
-                            <th>L</th>
-                            <th>P</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kader</td>
-                            <td>20</td>
-                            <td>20</td>
-                            <td>20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                <div class="d-flex justify-content-between align-items-start mt-2 p-1"
+                    style="background-color: rgba(255, 255, 255, 0.3);">
+                    <div>
+                        <table>
+                            <tr>
+                                <td width="65px">No. Regis</td>
+                                <td class="align-text-top">:</td>
+                                <td><b>{{ $pesilat->no_registrasi }}</b></td>
+                            </tr>
+                            <tr>
+                                <td class="align-text-top">Nama</td>
+                                <td class="align-text-top">:</td>
+                                <td>
+                                    {{ strtoupper($pesilat->nama_pesilat) }}{{ $pesilat->gelar_akademik == true ? ', ' . $pesilat->gelar_akademik : $pesilat->gelar_akademik }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tempat Lahir</td>
+                                <td class="align-text-top">:</td>
+                                <td>{{ ucfirst($pesilat->tempat_lahir) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Lahir</td>
+                                <td class="align-text-top">:</td>
+                                <td>{{ tanggalIndonesia($pesilat->tgl_lahir) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tingkat</td>
+                                <td class="align-text-top">:</td>
+                                <td>
+                                    {{ $pesilat->tingkatan->tingkat }}
+                                    {{ $pesilat->jenjang == 1 ? $pesilat->tingkatan->singkatan : '(' . $pesilat->tingkatan->singkatan . ')' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cabang</td>
+                                <td class="align-text-top">:</td>
+                                <td>{{ $pesilat->cabang->cabang }}</td>
+                            </tr>
+                        </table>
+                    </div>
 
-        <div class="card p-3 mb-3">
-            <h5 class="text-bg-primary text-center p-2">Kader</h5>
-            <div class="table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>Tingkat</th>
-                            <th>L</th>
-                            <th>P</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kader</td>
-                            <td>20</td>
-                            <td>20</td>
-                            <td>20</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ url('assets/img/tanda-tingkat/' . $pesilat->tingkatan->melati) }}"
+                            alt="foto" height="12px" class="mb-1">
+                        <img src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}"
+                            alt="foto" width="56.69px" height="75.59px" class="mb-1">
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="card p-3 mb-3">
-            <h5 class="text-bg-warning text-center p-2">Siswa</h5>
-            <div class="table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>Tingkat</th>
-                            <th>L</th>
-                            <th>P</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Siswa 4</td>
-                            <td>20</td>
-                            <td>20</td>
-                            <td>20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        {{-- end card --}}
     </section>
 @endsection
