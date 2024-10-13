@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
+    // dashboard pimda
     public function dashboard()
     {
         // total laki-laki dan perempuna setiap jenjang
@@ -25,7 +26,48 @@ class AdminController extends Controller
         ->orderBy('jenjang', 'desc')
         ->get();
 
-        return view('admin.dashboard', compact('pesilat_total', 'pesilat_jenjang'));
+        // detail total tingkat siswa
+        // mc 4
+        $mc4_l = DB::table('pesilats')->where('jk', 'L')->where('tingkatan_id', 5)->get()->count();
+        $mc4_p = DB::table('pesilats')->where('jk', 'P')->where('tingkatan_id', 5)->get()->count();
+        $mc4_jml = $mc4_l + $mc4_p;
+        // mc 3
+        $mc3_l = DB::table('pesilats')->where('jk', 'L')->where('tingkatan_id', 4)->get()->count();
+        $mc3_p = DB::table('pesilats')->where('jk', 'P')->where('tingkatan_id', 4)->get()->count();
+        $mc3_jml = $mc3_l + $mc3_p;
+        // mc 2
+        $mc2_l = DB::table('pesilats')->where('jk', 'L')->where('tingkatan_id', 3)->get()->count();
+        $mc2_p = DB::table('pesilats')->where('jk', 'P')->where('tingkatan_id', 3)->get()->count();
+        $mc2_jml = $mc2_l + $mc2_p;
+        // mc 1
+        $mc1_l = DB::table('pesilats')->where('jk', 'L')->where('tingkatan_id', 2)->get()->count();
+        $mc1_p = DB::table('pesilats')->where('jk', 'P')->where('tingkatan_id', 2)->get()->count();
+        $mc1_jml = $mc1_l + $mc1_p;
+        // mc dasar
+        $mc_dasar_l = DB::table('pesilats')->where('jk', 'L')->where('tingkatan_id', 1)->get()->count();
+        $mc_dasar_p = DB::table('pesilats')->where('jk', 'P')->where('tingkatan_id', 1)->get()->count();
+        $mc_dasar_jml = $mc_dasar_l + $mc_dasar_p;
+
+        return view('admin.dashboard', compact(
+            'pesilat_total', 
+            'pesilat_jenjang',
+            // data siswa
+            'mc4_l',
+            'mc4_p',
+            'mc4_jml',
+            'mc3_l',
+            'mc3_p',
+            'mc3_jml',
+            'mc2_l',
+            'mc2_p',
+            'mc2_jml',
+            'mc1_l',
+            'mc1_p',
+            'mc1_jml',
+            'mc_dasar_l',
+            'mc_dasar_p',
+            'mc_dasar_jml',
+        ));
     }
 
     public function dashboard_cabang()
@@ -47,7 +89,48 @@ class AdminController extends Controller
         ->orderBy('jenjang', 'desc')
         ->get();
 
-        return view('admin.dashboard-cabang', compact('pesilat_total', 'pesilat_jenjang'));
+        // detail total tingkat siswa
+        // mc 4
+        $mc4_l = DB::table('pesilats')->where('jk', 'L')->where('cabang_id', $cabang)->where('tingkatan_id', 5)->get()->count();
+        $mc4_p = DB::table('pesilats')->where('jk', 'P')->where('cabang_id', $cabang)->where('tingkatan_id', 5)->get()->count();
+        $mc4_jml = $mc4_l + $mc4_p;
+        // mc 3
+        $mc3_l = DB::table('pesilats')->where('jk', 'L')->where('cabang_id', $cabang)->where('tingkatan_id', 4)->get()->count();
+        $mc3_p = DB::table('pesilats')->where('jk', 'P')->where('cabang_id', $cabang)->where('tingkatan_id', 4)->get()->count();
+        $mc3_jml = $mc3_l + $mc3_p;
+        // mc 2
+        $mc2_l = DB::table('pesilats')->where('jk', 'L')->where('cabang_id', $cabang)->where('tingkatan_id', 3)->get()->count();
+        $mc2_p = DB::table('pesilats')->where('jk', 'P')->where('cabang_id', $cabang)->where('tingkatan_id', 3)->get()->count();
+        $mc2_jml = $mc2_l + $mc2_p;
+        // mc 1
+        $mc1_l = DB::table('pesilats')->where('jk', 'L')->where('cabang_id', $cabang)->where('tingkatan_id', 2)->get()->count();
+        $mc1_p = DB::table('pesilats')->where('jk', 'P')->where('cabang_id', $cabang)->where('tingkatan_id', 2)->get()->count();
+        $mc1_jml = $mc1_l + $mc1_p;
+        // mc dasar
+        $mc_dasar_l = DB::table('pesilats')->where('jk', 'L')->where('cabang_id', $cabang)->where('tingkatan_id', 1)->get()->count();
+        $mc_dasar_p = DB::table('pesilats')->where('jk', 'P')->where('cabang_id', $cabang)->where('tingkatan_id', 1)->get()->count();
+        $mc_dasar_jml = $mc_dasar_l + $mc_dasar_p;
+
+        return view('admin.dashboard-cabang', compact(
+            'pesilat_total', 
+            'pesilat_jenjang',
+            // data siswa
+            'mc4_l',
+            'mc4_p',
+            'mc4_jml',
+            'mc3_l',
+            'mc3_p',
+            'mc3_jml',
+            'mc2_l',
+            'mc2_p',
+            'mc2_jml',
+            'mc1_l',
+            'mc1_p',
+            'mc1_jml',
+            'mc_dasar_l',
+            'mc_dasar_p',
+            'mc_dasar_jml',
+        ));
     }
 
     public function dashboard_pesilat()
