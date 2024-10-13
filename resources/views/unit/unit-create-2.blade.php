@@ -30,6 +30,7 @@
     
             </div>
             <div class="mb-3 penanggung_jawab">
+                <label class="form-label" for="penanggung_jawab">Penanggung Jawab</label>
                 <select class="form-select multiple-select" name="penanggung_jawab[]" id="pananggung_jawab"
                     multiple="multiple">
                     <option value="">...</option>

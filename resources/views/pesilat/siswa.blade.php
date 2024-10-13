@@ -14,7 +14,7 @@
         <button class="btn btn-sm btn-outline-secondary shadow-sm mb-3" id="copy-button"><i class="bi bi-copy"></i> Copy link
             registrasi</button>
         {{-- <input type="hidden"  value=""> --}}
-         <div class="d-none" id="copy-text">https://pimda.tapaksuci177gowa.or.id/registrasi</div>
+        <div class="d-none" id="copy-text">https://pimda.tapaksuci177gowa.or.id/registrasi</div>
 
         <div class="card p-3">
             <div class="table-responsive">
@@ -43,6 +43,15 @@
                                 <td>
                                     <a href="{{ url('/pesilat/' . $item->id) }}" target="_blank"
                                         class="btn btn-sm btn-secondary shadow-sm"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ url('/pesilat/' . $item->id . '/edit') }}" target="_blank"
+                                        class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-pencil-square"></i></a>
+                                    <form action="{{ url('pesilat/' . $item->id) }}" method="post" class="d-inline-block">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-sm btn-danger shadow-sm delete-btn" type="submit"
+                                            data-bs-toggle="tooltip" data-bs-placment="top" title="Hapus"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @php

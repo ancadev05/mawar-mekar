@@ -56,12 +56,14 @@
                             <div class="d-flex">
                                 <div class="form-check me-3">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="L" {{ $pesilat->jk == 'L' ? 'checked' : '' }}>
+                                        name="jk" id="jk1" value="L"
+                                        {{ $pesilat->jk == 'L' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk2" value="P" {{ $pesilat->jk == 'P' ? 'checked' : '' }}>
+                                        name="jk" id="jk2" value="P"
+                                        {{ $pesilat->jk == 'P' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
                                 @error('jk')
@@ -170,7 +172,9 @@
                             <select class="form-select @error('tingkat_pendidikan') is-invalid @enderror"
                                 name="tingkat_pendidikan" id="tingkat_pendidikan">
                                 @foreach ($tingkat_pendidikan as $item)
-                                    <option value="{{ $item }}" {{ $pesilat->tingkat_pendidikan == $item ? 'selected' : '' }}>{{ $item }}</option>
+                                    <option value="{{ $item }}"
+                                        {{ $pesilat->tingkat_pendidikan == $item ? 'selected' : '' }}>{{ $item }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('tingkat_pendidikan')
@@ -187,8 +191,9 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="asal_sekolah_instansi">Asal Sekolah / Instansi</label>
-                            <input class="form-control @error('asal_sekolah_instansi') is-invalid @enderror" type="text"
-                                name="asal_sekolah_instansi" id="asal_sekolah_instansi" value="{{ $pesilat->asal_sekolah_instansi }}">
+                            <input class="form-control @error('asal_sekolah_instansi') is-invalid @enderror"
+                                type="text" name="asal_sekolah_instansi" id="asal_sekolah_instansi"
+                                value="{{ $pesilat->asal_sekolah_instansi }}">
                             @error('asal_sekolah_instansi')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -197,7 +202,8 @@
                             <label class="form-label" for="tahun_masuk_ts">Tahun Masuk Tapak Suci <span
                                     class="text-danger fw-bold">*</span></label>
                             <input class="form-control @error('tahun_masuk_ts') is-invalid @enderror" type="number"
-                                name="tahun_masuk_ts" id="tahun_masuk_ts" value="{{ $pesilat->tahun_masuk_ts }}" required>
+                                name="tahun_masuk_ts" id="tahun_masuk_ts" value="{{ $pesilat->tahun_masuk_ts }}"
+                                required>
                             @error('tahun_masuk_ts')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -225,7 +231,9 @@
                                 id="cabang_id" required>
                                 <option value="" selected>...</option>
                                 @foreach ($cabangs as $item)
-                                    <option value="{{ $item->id }}" {{ $pesilat->cabang_id == $item->id ? 'selected' : '' }}>{{ $item->cabang }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ $pesilat->cabang_id == $item->id ? 'selected' : '' }}>{{ $item->cabang }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('cabang_id')
@@ -239,7 +247,9 @@
                                 id="unit_id">
                                 <option value="" selected>...</option>
                                 @foreach ($units as $item)
-                                    <option value="{{ $item->id }}" {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('unit_id')
@@ -253,7 +263,9 @@
                                 id="tingkatan_id">
                                 <option value="" selected>...</option>
                                 @foreach ($tingkatans as $item)
-                                    <option value="{{ $item->id }}" {{ $pesilat->tingkatan_id == $item->id ? 'selected' : '' }}>{{ $item->tingkat . ' (' . $item->singkatan . ')' }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ $pesilat->tingkatan_id == $item->id ? 'selected' : '' }}>
+                                        {{ $item->tingkat . ' (' . $item->singkatan . ')' }}</option>
                                 @endforeach
                             </select>
                             @error('tingkatan_id')
@@ -278,8 +290,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="ukt_terakhir">UKT Terakhir</label>
-                            <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="text" name="ukt_terakhir"
-                                id="ukt_terakhir" value="{{ $pesilat->ukt_terakhir }}">
+                            <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="text"
+                                name="ukt_terakhir" id="ukt_terakhir" value="{{ $pesilat->ukt_terakhir }}">
                             @error('ukt_terakhir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -295,8 +307,8 @@
                             @error('foto-pesilat')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
-                            <img id="preview_foto" src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}" alt="Image Preview"
-                                style="width: 200px; height: auto;" class="mt-2">
+                            <img id="preview_foto" src="{{ url('storage/foto-pesilat/' . $pesilat->foto_pesilat) }}"
+                                alt="Image Preview" style="width: 200px; height: auto;" class="mt-2">
                         </div>
                     </div>
                 </div>
@@ -307,7 +319,15 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-danger shadow-sm mb-3 w-50">Simpan</button>
+                    <div>
+                        <button type="submit" class="btn btn-sm btn-primary shadow-sm me-2">Simpan</button>
+                    </div>
+                    {{-- menu kembali untuk admin cabang  --}}
+                    <div>
+                        @if (Auth::guard('web')->check())
+                            <a href="{{ url('/siswa') }}" class="btn btn-sm btn-danger shadow-sm me-2">Kembali</a>
+                        @endif
+                    </div>
                 </div>
 
             </form>

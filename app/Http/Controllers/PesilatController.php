@@ -347,7 +347,9 @@ class PesilatController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pesilat = Pesilat::where('id', $id)->delete();
+
+        return redirect('/siswa')->with('success', 'Data berhasil dihapus!');
     }
 
     // registrasi pesilat
