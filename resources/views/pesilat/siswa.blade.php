@@ -26,6 +26,7 @@
                             <th>Nama Siswa</th>
                             <th>Tingkatan</th>
                             <th>Cabang</th>
+                            <th>Approval</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -40,6 +41,13 @@
                                 <td>{{ $item->nama_pesilat }}</td>
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
+                                <td class="text-center">
+                                    @if ($item->validasi == 1)
+                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                    @else
+                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ url('/pesilat/' . $item->id) }}" target="_blank"
                                         class="btn btn-sm btn-secondary shadow-sm"><i class="bi bi-eye"></i></a>

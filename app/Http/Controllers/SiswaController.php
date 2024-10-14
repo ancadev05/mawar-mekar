@@ -16,13 +16,13 @@ class SiswaController extends Controller
             // mencari cabang id yang login
             $cabang_id = Auth::guard('web')->user()->cabang_id;
             // mengambil siswa sesuai cabang dan sudah di approve oleh pimda
-            $siswa = Pesilat::where('jenjang', 1)->where('validasi', 1)->where('cabang_id', $cabang_id)
+            $siswa = Pesilat::where('jenjang', 1)->where('cabang_id', $cabang_id)
             ->orderBy('tingkatan_id', 'desc')->get();
 
             return view('pesilat.siswa', compact('siswa'));
         } else {
             // menampilkan seluruh siswa jika yang login admin pimda
-            $siswa = Pesilat::where('jenjang', 1)->where('validasi', 1)
+            $siswa = Pesilat::where('jenjang', 1)
             ->orderBy('tingkatan_id', 'desc')->get();
 
             return view('pesilat.siswa', compact('siswa'));
