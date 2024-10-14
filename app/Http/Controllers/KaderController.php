@@ -26,7 +26,8 @@ class KaderController extends Controller
         } else {
             // menampilkan seluruh kader jika yang login admin pimda
             $kader = Pesilat::where('jenjang', 2)->where('validasi', 1)
-            ->orderBy('tingkatan_id', 'desc')->get();
+            ->orderBy('tingkatan_id', 'desc')->orderBy('tahun_masuk_ts', 'asc')
+            ->get();
 
             return view('pesilat.kader', compact('kader'));
         }
