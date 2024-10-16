@@ -382,6 +382,37 @@
                     }
                 });
             });
+
+            // manampilkan tingkatan sesuai jenjang yang dipilih
+            $('#jenjang').on('change', function() {
+                var jenjang = $(this).val();
+
+                // Kirim permintaan AJAX ke route Laravel untuk mendapatkan juri berdasarkan gelanggangId
+                $.ajax({
+                    url: "{{ url('/tingkatan') }}",
+                    method: 'get',
+                    data: {
+                        jenjang: jenjang
+                    },
+                    success: function(data) {
+                        // console.log('ok');
+                        // console.log(data);
+                        // Kosongkan select juri terlebih dahulu
+                        $('#tingkatan_id').empty();
+
+                        // Isi select juri dengan data yang diterima
+                        $.each(data, function(key, value) {
+                            $('#tingkatan_id').append('<option value="' + value.id +
+                                '">' +
+                                value.tingkat + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Terjadi kesalahan:', error);
+                        // console.log(data);
+                    }
+                });
+            });
         });
     </script>
 @endsection

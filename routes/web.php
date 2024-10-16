@@ -12,6 +12,7 @@ use App\Http\Controllers\CabangController;
 use App\Http\Controllers\IjazahController;
 use App\Http\Controllers\PesilatController;
 use App\Http\Controllers\PendekarController;
+use App\Http\Controllers\TingkatanController;
 use App\Http\Controllers\UserAdminController;
 
 /*
@@ -31,6 +32,10 @@ Route::get('/registrasi', [PesilatController::class, 'registrasi']);
 Route::get('/pesilat-create2', [PesilatController::class, 'create2']);
 Route::post('/pesilat-store2', [PesilatController::class, 'store2']);
 Route::get('/pesilat-show2/{id}', [PesilatController::class, 'show2']);
+
+// menampilkan data lewat ajax
+Route::get('/get-unit', [UnitController::class, 'getUnit']);
+Route::get('/tingkatan', [TingkatanController::class, 'getTingkatan']);
 
 // route bagi yang belum login
 Route::middleware(['guest'])->group(function () {
@@ -65,7 +70,6 @@ Route::middleware(['general'])->group(function () {
 
     // unit
     Route::post('/unit-import', [UnitController::class, 'unitimport']);
-    Route::get('/get-unit', [UnitController::class, 'getUnit']);
     Route::resource('/unit', UnitController::class);
 
     // ukt

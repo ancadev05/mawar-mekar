@@ -187,8 +187,9 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="asal_sekolah_instansi">Asal Sekolah / Instansi</label>
-                            <input class="form-control @error('asal_sekolah_instansi') is-invalid @enderror" type="text"
-                                name="asal_sekolah_instansi" id="asal_sekolah_instansi" value="{{ old('asal_sekolah_instansi') }}">
+                            <input class="form-control @error('asal_sekolah_instansi') is-invalid @enderror"
+                                type="text" name="asal_sekolah_instansi" id="asal_sekolah_instansi"
+                                value="{{ old('asal_sekolah_instansi') }}">
                             @error('asal_sekolah_instansi')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -207,6 +208,7 @@
                                     class="text-danger fw-bold">*</span></label>
                             <select class="form-select @error('jenjang') is-invalid @enderror" name="jenjang"
                                 id="jenjang" required>
+                                <option value="" selected>...</option>
                                 <option value="1" {{ old('jenjang') == '1' ? 'selected' : '' }}>Siswa
                                 <option value="2" {{ old('jenjang') == '2' ? 'selected' : '' }}>Kader
                                 <option value="3" {{ old('jenjang') == '3' ? 'selected' : '' }}>Pendekar
@@ -222,7 +224,8 @@
                                 id="cabang_id" required>
                                 <option value="" selected>...</option>
                                 @foreach ($cabangs as $item)
-                                    <option value="{{ $item->id }}" {{ old('cabang_id') == $item->id ? 'selected' : '' }}>{{ $item->cabang }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ old('cabang_id') == $item->id ? 'selected' : '' }}>{{ $item->cabang }}</option>
                                 @endforeach
                             </select>
                             @error('cabang_id')
@@ -248,9 +251,10 @@
                                     class="text-danger fw-bold">*</span></label>
                             <select class="form-select @error('tingkatan_id') is-invalid @enderror" name="tingkatan_id"
                                 id="tingkatan_id">
-                                @foreach ($tingkatans as $item)
+                                <option value="" selected>...</option>
+                                {{-- @foreach ($tingkatans as $item)
                                     <option value="{{ $item->id }}" {{ old('tingkatan_id') == $item->id ? 'selected' : '' }}>{{ $item->tingkat . ' (' . $item->singkatan . ')' }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                             @error('tingkatan_id')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -279,7 +283,9 @@
                                 id="ukt_terakhir">
                                 <option value="0" selected>Belum pernah</option>
                                 @foreach ($ukt as $item)
-                                    <option value="{{ $item->id }}" {{ old('ukt_terakhir') == $item->id ? 'selected' : '' }}>{{ $item->tempat . ', ' . $item->tgl_awal . '...' }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ old('ukt_terakhir') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->tempat . ', ' . $item->tgl_awal . '...' }}</option>
                                 @endforeach
                             </select>
                             @error('ukt_terakhir')
@@ -372,21 +378,22 @@
 
                 // Kirim permintaan AJAX ke route Laravel untuk mendapatkan juri berdasarkan gelanggangId
                 $.ajax({
-                    url: "{{ url('/get-unit') }}",
+                    url: "{{ url('/tingkatan') }}",
                     method: 'get',
                     data: {
-                        cabang_id: cabangId
+                        jenjang: jenjang
                     },
                     success: function(data) {
                         // console.log('ok');
                         // console.log(data);
                         // Kosongkan select juri terlebih dahulu
-                        $('#unit_id').empty();
+                        $('#tingkatan_id').empty();
 
                         // Isi select juri dengan data yang diterima
                         $.each(data, function(key, value) {
-                            $('#unit_id').append('<option value="' + value.id + '">' +
-                                value.unit + '</option>');
+                            $('#tingkatan_id').append('<option value="' + value.id +
+                                '">' +
+                                value.tingkat + '</option>');
                         });
                     },
                     error: function(xhr, status, error) {
