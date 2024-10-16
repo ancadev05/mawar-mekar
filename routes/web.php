@@ -65,6 +65,7 @@ Route::middleware(['general'])->group(function () {
 
     // unit
     Route::post('/unit-import', [UnitController::class, 'unitimport']);
+    Route::get('/get-unit', [UnitController::class, 'getUnit']);
     Route::resource('/unit', UnitController::class);
 
     // ukt

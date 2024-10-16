@@ -17,13 +17,14 @@ class UnitController extends Controller
      */
     public function index()
     {
+
         if (Auth::guard('web')->user()->level_akun_id == 3) {
             $cabang = Auth::guard('web')->user()->cabang_id;
 
             $units = Unit::where('cabang_id', $cabang)->get();
 
             return view('unit.index', compact('units', 'cabang'));
-        } 
+        }
 
         $units = Unit::orderBy('cabang_id', 'asc')->get();
 
@@ -40,7 +41,7 @@ class UnitController extends Controller
             $cabang = Cabang::where('id', $cabang_id)->first()->cabang;
             $kaders = Pesilat::where('cabang_id', $cabang_id)->get();
             return view('unit.unit-create-2', compact('cabang', 'kaders'));
-        } 
+        }
     }
 
     /**
@@ -99,7 +100,7 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if($request->penanggung_jawab) {
+        if ($request->penanggung_jawab) {
             $penanggung_jawab = $request->penanggung_jawab;
             $pelatih = $request->pelatih_lama . implode(' | ', $penanggung_jawab);
         } else {
@@ -137,5 +138,13 @@ class UnitController extends Controller
         }
 
         return redirect('/unit');
+    }
+
+    // menampilkan unit latihan berdasarkan cabang yang dipilih
+    public function getUnit(Request $request)
+    {
+        $cabang_id = $request->cabang_id;
+        $unit_latihan = Unit::where('cabang_id', $cabang_id)->get();
+        return response()->json([$unit_latihan][0]);
     }
 }
