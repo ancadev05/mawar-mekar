@@ -26,7 +26,11 @@
                             <th>No. Regis</th>
                             <th>Nama Siswa</th>
                             <th>Tingkatan</th>
-                            <th>Cabang</th>
+                            @if (Auth::guard('web')->user()->level_akun_id == 2)
+                                <th>Cabang</th>
+                            @else
+                                <th>Cabang</th>
+                            @endif
                             <th>Approval</th>
                             <th>Aksi</th>
                         </tr>
@@ -47,6 +51,11 @@
                                 <td>{{ $item->nama_pesilat }}</td>
                                 <td>{{ $item->tingkatan->tingkat }}</td>
                                 <td>{{ $item->cabang->cabang }}</td>
+                                {{-- @if (Auth::guard('web')->user()->level_akun_id == 2)
+                                    <td>{{ $item->cabang->cabang }}</td>
+                                @else
+                                    <td>{{ $item->unit->alamat }}</td>
+                                @endif --}}
                                 <td class="text-center">
                                     @if ($item->validasi == 1)
                                         <i class="bi bi-check-circle-fill text-success"></i>

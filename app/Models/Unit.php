@@ -20,7 +20,7 @@ class Unit extends Model
 
     // relasi ketabel pesilat satu ke banyak
     // satu unit dimiliki banyak pesilat
-    public function units()
+    public function pesilats()
     {
         return $this->hasMany(Pesilat::class);
     }
