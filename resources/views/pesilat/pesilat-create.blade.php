@@ -351,7 +351,37 @@
                         // console.log('ok');
                         // console.log(data);
                         // Kosongkan select juri terlebih dahulu
-                        // $('#unit_id').empty();
+                        $('#unit_id').empty();
+
+                        // Isi select juri dengan data yang diterima
+                        $.each(data, function(key, value) {
+                            $('#unit_id').append('<option value="' + value.id + '">' +
+                                value.unit + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Terjadi kesalahan:', error);
+                        // console.log(data);
+                    }
+                });
+            });
+
+            // manampilkan tingkatan sesuai jenjang yang dipilih
+            $('#jenjang').on('change', function() {
+                var jenjang = $(this).val();
+
+                // Kirim permintaan AJAX ke route Laravel untuk mendapatkan juri berdasarkan gelanggangId
+                $.ajax({
+                    url: "{{ url('/get-unit') }}",
+                    method: 'get',
+                    data: {
+                        cabang_id: cabangId
+                    },
+                    success: function(data) {
+                        // console.log('ok');
+                        // console.log(data);
+                        // Kosongkan select juri terlebih dahulu
+                        $('#unit_id').empty();
 
                         // Isi select juri dengan data yang diterima
                         $.each(data, function(key, value) {

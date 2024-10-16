@@ -247,10 +247,10 @@
                                 id="unit_id">
                                 <option value="" selected>...</option>
                                 @foreach ($units as $item)
-                                    <option value="{{ $item->id }}"
-                                        {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}
-                                    </option>
-                                @endforeach
+                                <option value="{{ $item->id }}"
+                                    {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}
+                                </option>
+                            @endforeach
                             </select>
                             @error('unit_id')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -353,13 +353,35 @@
                 }
             });
 
-            // pencarian pada inputan select
-            // $('.select2').select2();
+            // manampilkan daftar unit sesuai cabang yang dipilih
+            $('#cabang_id').on('change', function() {
+                var cabangId = $(this).val();
+
+                // Kirim permintaan AJAX ke route Laravel untuk mendapatkan juri berdasarkan gelanggangId
+                $.ajax({
+                    url: "{{ url('/get-unit') }}",
+                    method: 'get',
+                    data: {
+                        cabang_id: cabangId
+                    },
+                    success: function(data) {
+                        // console.log('ok');
+                        // console.log(data);
+                        // Kosongkan select juri terlebih dahulu
+                        $('#unit_id').empty();
+
+                        // Isi select juri dengan data yang diterima
+                        $.each(data, function(key, value) {
+                            $('#unit_id').append('<option value="' + value.id + '">' +
+                                value.unit + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Terjadi kesalahan:', error);
+                        // console.log(data);
+                    }
+                });
+            });
         });
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
-    </script> --}}
 @endsection
