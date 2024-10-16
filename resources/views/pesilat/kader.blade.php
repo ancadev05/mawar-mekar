@@ -59,6 +59,13 @@
                                 <td>
                                     @if (Auth::guard('web')->user()->level_akun_id == 2)
                                         <a href="{{ url('/pesilat/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning shadow-sm"><i class="bi bi-eye"></i></a>
+                                        <form action="{{ url('pesilat/' . $item->id) }}" method="post" class="d-inline-block">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-danger shadow-sm delete-btn" type="submit"
+                                                data-bs-toggle="tooltip" data-bs-placment="top" title="Hapus"><i
+                                                    class="bi bi-trash"></i></button>
+                                        </form>
                                     @else
                                         -
                                     @endif

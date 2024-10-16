@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ukt;
 use App\Models\Unit;
 use App\Models\Cabang;
 use App\Models\Pesilat;
 use App\Models\Tingkatan;
 use Illuminate\Http\Request;
 use App\Imports\PesilatImport;
-use App\Models\Ukt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 
@@ -349,7 +350,15 @@ class PesilatController extends Controller
     {
         $pesilat = Pesilat::where('id', $id)->delete();
 
-        return redirect('/siswa')->with('success', 'Data berhasil dihapus!');
+        // redirect pimda setelah hapus pesilat
+        if (Auth::guard('web')->user()->level_akun_id == 2) {
+            return redirect('/kader')->with('success', 'Data berhasil dihapus!');
+        }
+
+        // redirect cabang setelah hapus pesilat
+        if (Auth::guard('web')->user()->level_akun_id == 3) {
+            return redirect('/siswa')->with('success', 'Data berhasil dihapus!');
+        }
     }
 
     // registrasi pesilat
