@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Foto</th>
                             <th>No. Regis</th>
                             <th>Nama Siswa</th>
                             <th>Tingkatan</th>
@@ -37,6 +38,11 @@
                         @foreach ($siswa as $item)
                             <tr>
                                 <td>{{ $i }}</td>
+                                <td>
+                                    <a href="{{ url('storage/foto-pesilat/' . $item->foto_pesilat) }}" target="_blank" rel="noopener noreferrer">
+                                        <img src="{{ url('storage/foto-pesilat/' . $item->foto_pesilat) }}" alt="no_image" srcset="" width="50px">
+                                    </a>
+                                </td>
                                 <td>{{ $item->no_registrasi }}</td>
                                 <td>{{ $item->nama_pesilat }}</td>
                                 <td>{{ $item->tingkatan->tingkat }}</td>
