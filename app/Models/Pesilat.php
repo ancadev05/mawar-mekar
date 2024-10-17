@@ -29,7 +29,7 @@ class Pesilat extends Authenticatable
     }
 
     // relasi ke tabel unit - satu pesilat hanya memiliki satu unit
-    public function tempatLatihan()
+    public function unit()
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }
