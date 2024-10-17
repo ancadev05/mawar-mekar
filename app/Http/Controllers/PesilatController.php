@@ -72,7 +72,8 @@ class PesilatController extends Controller
             'alamat' => 'required',
             'tahun_masuk_ts' => 'required',
             'cabang_id' => 'required',
-            'tingkatan_id' => 'required'
+            'tingkatan_id' => 'required',
+            'foto_pesilat' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
         ]);
 
         // generate foto
@@ -163,7 +164,8 @@ class PesilatController extends Controller
             'alamat' => 'required',
             'tahun_masuk_ts' => 'required',
             'cabang_id' => 'required',
-            'tingkatan_id' => 'required'
+            'tingkatan_id' => 'required',
+            'foto_pesilat' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
         ]);
 
         // generate foto
@@ -288,6 +290,9 @@ class PesilatController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'foto_pesilat' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
+        ]);
 
         // Validasi gambar baru
         if ($request->hasFile('foto-pesilat')) { // Jika ada gambar baru
