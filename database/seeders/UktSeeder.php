@@ -15,6 +15,13 @@ class UktSeeder extends Seeder
     {
         $ukt= [
             [
+                'tempat' => 'Belum pernah',
+                'alamat' => 'null',
+                'tgl_awal' => '0000-00-00',
+                'tgl_akhir' => '0000-00-00',
+                'jenis_ukt' => 1,
+            ],
+            [
                 'tempat' => 'Ponpes Darul Fallah Unismuh',
                 'alamat' => 'Bissoloro, Kab. Gowa',
                 'tgl_awal' => '2021-12-17',
