@@ -33,4 +33,10 @@ class Pesilat extends Authenticatable
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }
+
+    // relasi ketabel ukt
+    public function uktTerakhir()
+    {
+        return $this->belongsTo(Ukt::class);
+    }
 }

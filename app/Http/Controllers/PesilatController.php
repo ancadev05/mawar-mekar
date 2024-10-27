@@ -270,6 +270,7 @@ class PesilatController extends Controller
      */
     public function edit(string $id)
     {
+        $ukt = Ukt::get();
         $cabangs = Cabang::get();
         $units = Unit::get();
         $tingkatans = Tingkatan::get();
@@ -277,6 +278,7 @@ class PesilatController extends Controller
         $tingkat_pendidikan = array('SD/MI', 'SMP/MTs', 'SMA/MA', 'S1', 'S2', 'S3', 'Lainnya');
 
         return view('pesilat.pesilat-edit', compact(
+            'ukt',
             'cabangs',
             'units',
             'tingkatans',

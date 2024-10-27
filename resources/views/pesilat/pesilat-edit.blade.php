@@ -247,10 +247,10 @@
                                 id="unit_id">
                                 <option value="" selected>...</option>
                                 @foreach ($units as $item)
-                                <option value="{{ $item->id }}"
-                                    {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}
-                                </option>
-                            @endforeach
+                                    <option value="{{ $item->id }}"
+                                        {{ $pesilat->unit_id == $item->id ? 'selected' : '' }}>{{ $item->unit }}
+                                    </option>
+                                @endforeach
                             </select>
                             @error('unit_id')
                                 <small class="invalid-feedback"> {{ $message }} </small>
@@ -289,9 +289,17 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="ukt_terakhir">UKT Terakhir</label>
-                            <input class="form-control @error('ukt_terakhir') is-invalid @enderror" type="text"
-                                name="ukt_terakhir" id="ukt_terakhir" value="{{ $pesilat->ukt_terakhir }}">
+                            <label class="form-label" for="ukt_terakhir">UKT Terakhir <span
+                                    class="text-danger fw-bold">*</span></label>
+                            <select class="form-select @error('ukt_terakhir') is-invalid @enderror" name="ukt_terakhir"
+                                id="ukt_terakhir">
+                                <option value="{{ $pesilat->ukt_terakhir }}" selected>{{ $pesilat->ukt_terakhir }}</option>
+                                @foreach ($ukt as $item)
+                                    <option value="{{ $item->id }}"
+                                        {{ old('ukt_terakhir') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->tempat . ', ' . $item->tgl_awal . '...' }}</option>
+                                @endforeach
+                            </select>
                             @error('ukt_terakhir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror

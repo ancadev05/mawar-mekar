@@ -9,4 +9,10 @@ class Ukt extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    // relasi ketabel pesilat
+    public function pesilats()
+    {
+        return $this->hasMany(Pesilat::class);
+    }
 }

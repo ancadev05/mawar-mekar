@@ -43,19 +43,21 @@
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>
-                                    <a href="{{ url('storage/foto-pesilat/' . $item->foto_pesilat) }}" target="_blank" rel="noopener noreferrer">
-                                        <img src="{{ url('storage/foto-pesilat/' . $item->foto_pesilat) }}" alt="no_image" srcset="" width="50px">
+                                    <a href="{{ url('storage/foto-pesilat/' . $item->foto_pesilat) }}" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <img src="{{ url('storage/foto-pesilat/' . $item->foto_pesilat) }}" alt="no_image"
+                                            srcset="" width="50px">
                                     </a>
                                 </td>
                                 <td>{{ $item->no_registrasi }}</td>
                                 <td>{{ $item->nama_pesilat }}</td>
                                 <td>{{ $item->tingkatan->tingkat }}</td>
-                                <td>{{ $item->cabang->cabang }}</td>
-                                {{-- @if (Auth::guard('web')->user()->level_akun_id == 2)
+                                @if (Auth::guard('web')->user()->level_akun_id == 2)
                                     <td>{{ $item->cabang->cabang }}</td>
                                 @else
-                                    <td>{{ $item->unit->alamat }}</td>
-                                @endif --}}
+                                    {{-- <td>{{ $item->unit->alamat }}</td> --}}
+                                    <td>{{ $item->unit->unit }}</td>
+                                @endif
                                 <td class="text-center">
                                     @if ($item->validasi == 1)
                                         <i class="bi bi-check-circle-fill text-success"></i>
