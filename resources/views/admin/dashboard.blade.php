@@ -106,6 +106,33 @@
             </div>
         </div>
 
+        {{-- data siswa percabang --}}
+        <section>
+            <div class="card p-3">
+                <div class="pagetitle mb-2">
+                    <h1>Jumlah Siswa Percabang</h1>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cabang</th>
+                                <th>Jumlah Siswa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($siswa_cabang as $item)
+                                <tr>
+                                    <td>{{ $item->cabang->cabang }}</td>
+                                    <td>{{ $item->total }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
 
     </section>
 @endsection

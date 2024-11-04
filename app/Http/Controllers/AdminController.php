@@ -48,6 +48,10 @@ class AdminController extends Controller
         $mc_dasar_p = DB::table('pesilats')->where('jk', 'P')->where('tingkatan_id', 1)->get()->count();
         $mc_dasar_jml = $mc_dasar_l + $mc_dasar_p;
 
+        // menampilkan jumlah siswa percabang
+        // $siswa_cabang = DB::table('pesilats')->select('cabang_id', DB::raw('count(*) as total'))->groupBy('cabang_id')->get();
+        $siswa_cabang = Pesilat::select('cabang_id', DB::raw('count(*) as total'))->groupBy('cabang_id')->get();
+
         return view('admin.dashboard', compact(
             'pesilat_total', 
             'pesilat_jenjang',
@@ -67,6 +71,7 @@ class AdminController extends Controller
             'mc_dasar_l',
             'mc_dasar_p',
             'mc_dasar_jml',
+            'siswa_cabang',
         ));
     }
 
