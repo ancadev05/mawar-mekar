@@ -50,7 +50,7 @@ class AdminController extends Controller
 
         // menampilkan jumlah siswa percabang
         // $siswa_cabang = DB::table('pesilats')->select('cabang_id', DB::raw('count(*) as total'))->groupBy('cabang_id')->get();
-        $siswa_cabang = Pesilat::select('cabang_id', DB::raw('count(*) as total'))->groupBy('cabang_id')->get();
+        $siswa_cabang = Pesilat::where('jenjang', 1)->where('validasi', 1)->orderBy('cabang_id', 'asc')->select('cabang_id', DB::raw('count(*) as total'))->groupBy('cabang_id')->get();
 
         return view('admin.dashboard', compact(
             'pesilat_total', 
