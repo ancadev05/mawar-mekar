@@ -46,6 +46,10 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/DataTables-1.13.8/css/dataTables.bootstrap5.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/Responsive-2.5.0/css/responsive.bootstrap5.css') }}"> --}}
 
+    {{-- jquery --}}
+    <script src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/html2canvas.min.js') }}"></script>
+
     {{-- select2 --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2-4.1.0/css/select2.min.css') }}" rel="stylesheet">
 
@@ -125,6 +129,9 @@
 
     {{-- sweetalert2 --}}
     <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    {{-- canvas --}}
+    {{-- <script src="{{ asset('assets/vendor/html2canvas.min.js') }}"></script> --}}
     
     {{-- coutum js --}}
     <script src="{{ asset('assets/costum-js/script.js') }}"></script>
