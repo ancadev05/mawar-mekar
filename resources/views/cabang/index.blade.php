@@ -6,17 +6,8 @@
 
 @section('content')
      <!-- Page header -->
-     <div class="page-header d-print-none">
-        <div class="container-xl">
-            <div class="row g-2 align-items-center">
-                <div class="col">
-                    <!-- Page pre-title -->
-                    <h2 class="page-title">
-                        Cabang
-                    </h2>
-                </div>
-            </div>
-        </div>
+     <div class="pagetitle">
+        <h1>Cabang</h1>
     </div>
 
     <div class="d-flex justify-content-end mb-2">
@@ -25,7 +16,7 @@
 
     <div class="card p-3">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover nowrap">
+            <table class="table table-sm table-striped table-hover nowrap datatable">
                 <thead>
                     <tr>
                         <th>No</th>

@@ -17,8 +17,8 @@ class UktSeeder extends Seeder
             [
                 'tempat' => 'Belum pernah',
                 'alamat' => 'null',
-                'tgl_awal' => '0000-00-00',
-                'tgl_akhir' => '0000-00-00',
+                'tgl_awal' => '1111-11-11',
+                'tgl_akhir' => '1111-11-11',
                 'jenis_ukt' => 1,
             ],
             [
