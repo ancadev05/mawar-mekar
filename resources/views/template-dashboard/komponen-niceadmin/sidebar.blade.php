@@ -54,12 +54,12 @@
                          </li>
                      </ul>
                  </li>
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
                      <a class="nav-link {{ Request::is('ukt') ? '' : 'collapsed' }}" href="{{ url('/ukt') }}">
                          <i class="bi bi-clipboard-data"></i>
                          <span>UKT</span>
                      </a>
-                 </li>
+                 </li> --}}
                  {{-- admin cabang --}}
                  <li class="nav-item">
                      <a class="nav-link {{ Request::is('pesilat-approve') ? '' : 'collapsed' }}"

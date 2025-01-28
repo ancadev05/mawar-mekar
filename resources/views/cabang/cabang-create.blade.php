@@ -53,7 +53,8 @@
             <small class="invalid-feedback"> {{ $message }} </small>
             @enderror
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="{{ url('/cabang') }}" class="btn btn-sm btn-danger" type="submit">Batal</a>
+        <button class="btn btn-sm btn-primary" type="submit">Submit</button>
     </form>
     </section>
 @endsection
