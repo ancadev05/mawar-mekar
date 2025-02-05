@@ -51,11 +51,11 @@
         </div>
 
         {{-- data kader --}}
-        <div class="card p-3">
+        {{-- <div class="card p-3">
             <div class="pagetitle">
                 <h1>Data Kader</h1>
             </div>
-        </div>
+        </div> --}}
 
         {{-- data siswa --}}
         <div class="card p-3">

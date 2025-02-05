@@ -76,7 +76,15 @@ Route::middleware(['general'])->group(function () {
     Route::resource('/ukt', UktController::class)->middleware('user.akses:2');
 
     // ijazah
-    Route::resource('/ijazah', IjazahController::class)->middleware('pesilat.akses:1');
+    // Route::group(['prefix' => 'ijazah'], function() {
+    //     Route::resource('/1', 'IjazahController@ijazahSatu')->middleware('pesilat.akses:1');
+
+    // });
+
+    Route::get('/ijazah/1', [IjazahController::class, 'ijazahSatu'])->middleware('pesilat.akses:1');
+    Route::get('/ijazah/2', [IjazahController::class, 'ijazahDua'])->middleware('pesilat.akses:1');
+    Route::get('/ijazah/3', [IjazahController::class, 'ijazahTiga'])->middleware('pesilat.akses:1');
+    Route::get('/ijazah/4', [IjazahController::class, 'ijazahEmpat'])->middleware('pesilat.akses:1');
 
     // user admin 
     Route::resource('/user', UserAdminController::class);

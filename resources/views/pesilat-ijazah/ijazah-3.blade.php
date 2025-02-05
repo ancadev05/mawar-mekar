@@ -12,13 +12,13 @@
     <nav class="mb-3">
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ url('/ijazah/1') }}">Siswa 1</a>
+                <a class="nav-link" href="{{ url('/ijazah/1') }}">Siswa 1</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/ijazah/2') }}">Siswa 2</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/ijazah/3') }}">Siswa 3</a>
+                <a class="nav-link active" href="{{ url('/ijazah/3') }}">Siswa 3</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/ijazah/4') }}">Siswa 4</a>
@@ -60,8 +60,8 @@
             <p>Telah mengikuti ujian kenaikan tingkat <b>SISWA DASAR</b> yang diselenggarakan pada tanggal <b>09 Februari
                     2024</b> s/d <b>11 Februari 2024</b> bertempat di <b>SMAN 4 Gowa</b> dan dinyatakan <b>LULUS</b>,
                 sehingga kepadanya diberikan hak menduduki tingkat:</p>
-            <h4 class="text-center fw-bold">== SISWA SATU ==</h4>
-            <img src="{{ url('assets/img/tanda-tingkat/s1.png') }}" alt="foto" height="25px" class="mb-1">
+            <h4 class="text-center fw-bold">== SISWA TIGA ==</h4>
+            <img src="{{ url('assets/img/tanda-tingkat/s3.png') }}" alt="foto" height="25px" class="mb-1">
         </div>
 
         <div class="table-responsive">

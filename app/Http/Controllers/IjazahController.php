@@ -61,4 +61,22 @@ class IjazahController extends Controller
     {
         //
     }
+
+    // menampilkan ijazah pertingkatan
+    public function ijazahSatu()
+    {
+        return view('pesilat-ijazah.index');
+    }
+    public function ijazahDua()
+    {
+        return view('pesilat-ijazah.ijazah-2');
+    }
+    public function ijazahTiga()
+    {
+        return view('pesilat-ijazah.ijazah-3');
+    }
+    public function ijazahEmpat()
+    {
+        return view('pesilat-ijazah.ijazah-4');
+    }
 }

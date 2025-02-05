@@ -137,17 +137,17 @@
                  </a>
              </li> --}}
              <li class="nav-item">
-                 <a class="nav-link {{ Request::is('ijazah') ? '' : 'collapsed' }}" href="{{ url('/ijazah') }}">
+                 <a class="nav-link {{ Request::is('ijazah/1') ? '' : 'collapsed' }}" href="{{ url('/ijazah/1') }}">
                      <i class="bi bi-folder2-open"></i>
                      <span>Ijazah</span>
                  </a>
              </li>
-             <li class="nav-item">
+             {{-- <li class="nav-item">
                  <a class="nav-link {{ Request::is('#') ? '' : 'collapsed' }}" href="#">
                      <i class="bi bi-folder2-open"></i>
                      <span>Materi</span>
                  </a>
-             </li>
+             </li> --}}
          @endif
 
 
