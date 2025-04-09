@@ -14,6 +14,7 @@ use App\Http\Controllers\PesilatController;
 use App\Http\Controllers\PendekarController;
 use App\Http\Controllers\TingkatanController;
 use App\Http\Controllers\UserAdminController;
+use App\Livewire\Raker\RakerIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,3 +93,6 @@ Route::middleware(['general'])->group(function () {
     // logout
     Route::get('/logout', [AdminLoginController::class, 'logout']);
 });
+
+// link raker
+Route::get('raker', RakerIndex::class)->name('raker');
