@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SoalController;
 use Maatwebsite\Excel\Row;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UktController;
@@ -96,3 +97,4 @@ Route::middleware(['general'])->group(function () {
 
 // link raker
 Route::get('raker', RakerIndex::class)->name('raker');
+Route::get('/tampilan-soal', [SoalController::class, 'tampilanSoal']);
