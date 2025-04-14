@@ -150,6 +150,25 @@
              </li> --}}
          @endif
 
+         {{-- menu untu panitia ukt --}}
+         @if (Auth::guard('web')->check())
+             @if (Auth::guard('web')->user()->level_akun_id == 4)
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('admin-ukt') ? '' : 'collapsed' }}" href="{{ url('/admin-ukt') }}">
+                        <i class="bi bi-house-door"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('peserta') ? '' : 'collapsed' }}" href="{{ url('/peserta-ukt') }}">
+                        <i class="bi bi-house-door"></i>
+                        <span>Peserta</span>
+                    </a>
+                </li>
+             @endif
+         @endif
+         {{-- /menu untu panitia ukt --}}
+
 
      </ul>
      {{-- <div class="position-absolute bottom-0 mb-2 bg-text seondary text-center" style="font-size: 15px"><span class="text-center"><u>Teknisi_ta' V-Beta 1.0</u></span></div> --}}

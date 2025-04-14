@@ -1,6 +1,5 @@
 <?php
 
-use Composer\Semver\Constraint\Constraint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('e_ijazahs', function (Blueprint $table) {
+        Schema::create('nilai_ukts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pesilat_id')->constrained();
-            $table->foreignId('data_ujian_id')->constrained();
+            $table->foreignId('peserta_ukt_id')->constrained();
             $table->integer('alislam_kemuhammadiyaan');
             $table->integer('pengetahuan_organisasi');
             $table->integer('kesehatann_olahraga');
             $table->integer('ilmu_pencak_silat');
             $table->integer('pembinaan_fisik_mental');
+            $table->integer('total');
             $table->string('ket')->nullable();
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('e_ijazahs');
+        Schema::dropIfExists('nilai_ukts');
     }
 };

@@ -39,4 +39,10 @@ class Pesilat extends Authenticatable
     {
         return $this->belongsTo(Ukt::class);
     }
+
+    // relasi ke tabel peserta ukt
+    public function pesertaUkt()
+    {
+        return $this->hasMany(PesertaUkt::class);
+    }
 }

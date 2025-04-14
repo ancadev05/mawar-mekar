@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('data_ujians', function (Blueprint $table) {
             $table->id();
+            $table->string('tempat');
+            $table->string('alamat');
+            $table->string('tgl_awal');
+            $table->string('tgl_akhir');
+            $table->enum('jenis_ukt', ['siswa', 'kader', 'pendekar'])->default('siswa');
+            $table->enum('status_ujian', ['on', 'off'])->default('off');
+            $table->string('ket')->nullable();
             $table->timestamps();
         });
     }

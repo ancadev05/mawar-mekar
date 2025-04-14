@@ -19,12 +19,18 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        // data dummy awal
+        // $this->call([
+        //     TingkatanSeeder::class,
+        //     CabangSeeder::class,
+        //     UktSeeder::class,
+        //     LevelAkunSeeder::class,
+        //     UserSeeder::class
+        // ]);
+
+        // data dummy fitur ukt
         $this->call([
-            TingkatanSeeder::class,
-            CabangSeeder::class,
-            UktSeeder::class,
-            LevelAkunSeeder::class,
-            UserSeeder::class
+            DataUjianSeeder::class,
         ]);
     }
 }

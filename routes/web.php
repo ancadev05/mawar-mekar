@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PendaftaranUktController;
 use App\Http\Controllers\SoalController;
 use Maatwebsite\Excel\Row;
 use Illuminate\Support\Facades\Route;
@@ -98,3 +99,11 @@ Route::middleware(['general'])->group(function () {
 // link raker
 Route::get('raker', RakerIndex::class)->name('raker');
 Route::get('/tampilan-soal', [SoalController::class, 'tampilanSoal']);
+
+Route::get('/pendaftaran-ukt', [PendaftaranUktController::class, 'index'])->name('pendaftaran.ukt');
+Route::post('/pendaftaran-ukt', [PendaftaranUktController::class, 'index']);
+Route::get('/ikuti-ujian/{id}', [PendaftaranUktController::class, 'ikutiUjian'])->name('ikuti.ujian');
+Route::get('/status-pendaftaran/{id}', [PendaftaranUktController::class, 'statusPendaftaran'])->name('status.pendaftaran');
+
+Route::get('/admin-ukt', [PendaftaranUktController::class, 'adminUkt']); // tampilan dashboard admin
+Route::get('/peserta-ukt', [PendaftaranUktController::class, 'pesertaUkt']);

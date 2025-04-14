@@ -38,6 +38,8 @@ class AdminLoginController extends Controller
                     return redirect('/mawar-mekar/pimda');
                 } elseif (Auth::guard('web')->user()->level_akun_id == 3) { // jika level cabang
                     return redirect('/mawar-mekar/cabang');
+                } elseif (Auth::guard('web')->user()->level_akun_id == 4) { // jika level panitia ukt
+                    return redirect('/admin-ukt');
                 }
             }
         }
