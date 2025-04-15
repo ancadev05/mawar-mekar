@@ -18,6 +18,7 @@
                 <h2>Total Pendaftar : {{ $total_pendaftar }}</h2>
             </div>
         </div>
+
         <div class="card">
             <div class="card-header">Peserta UKT</div>
             <div class="card-body">
@@ -31,7 +32,7 @@
                                 <th>Jumlah</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             <tr>
                                 <td>Siswa 4</td>
                                 <td>{{ $mc4_l }}</td>
@@ -62,7 +63,39 @@
                                 <td>{{ $mc_dasar_p }}</td>
                                 <td>{{ $mc_dasar_jml }}</td>
                             </tr>
-                        </tbody> --}}
+                            <tr class="fw-bold">
+                                <td>Total</td>
+                                <td>{{ $mc_dasar_l + $mc1_l + $mc2_l + $mc3_l + $mc4_l }}</td>
+                                <td>{{ $mc_dasar_p + $mc1_p + $mc2_p + $mc3_p + $mc4_p }}</td>
+                                <td>{{ $mc_dasar_jml + $mc1_jml + $mc2_jml + $mc3_jml + $mc4_jml }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Siswa Percabang
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cabang</th>
+                                <th>Jumlah Siswa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($siswa_cabang as $item)
+                                <tr>
+                                    <td>{{ $item->cabang->cabang }}</td>
+                                    <td>{{ $item->total }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

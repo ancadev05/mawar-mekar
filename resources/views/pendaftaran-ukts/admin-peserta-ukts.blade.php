@@ -41,7 +41,11 @@
                                     <td>{{ $item->ket }}</td>
                                     <td>
                                         <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                                        <form action="{{ url('/peserta-ukt/' . $item->id) }}" method="post" class="d-inline-block">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin hapus data?')">Hapus</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

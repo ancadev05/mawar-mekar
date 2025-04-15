@@ -94,6 +94,11 @@ Route::middleware(['general'])->group(function () {
 
     // logout
     Route::get('/logout', [AdminLoginController::class, 'logout']);
+
+    // route admin ukt
+    Route::get('/admin-ukt', [PendaftaranUktController::class, 'adminUkt']); // tampilan dashboard admin
+    Route::get('/peserta-ukt', [PendaftaranUktController::class, 'pesertaUkt']);
+    Route::delete('/peserta-ukt/{id}', [PendaftaranUktController::class, 'hapusPesertaUkt']);
 });
 
 // link raker
@@ -104,6 +109,3 @@ Route::get('/pendaftaran-ukt', [PendaftaranUktController::class, 'index'])->name
 Route::post('/pendaftaran-ukt', [PendaftaranUktController::class, 'index']);
 Route::get('/ikuti-ujian/{id}', [PendaftaranUktController::class, 'ikutiUjian'])->name('ikuti.ujian');
 Route::get('/status-pendaftaran/{id}', [PendaftaranUktController::class, 'statusPendaftaran'])->name('status.pendaftaran');
-
-Route::get('/admin-ukt', [PendaftaranUktController::class, 'adminUkt']); // tampilan dashboard admin
-Route::get('/peserta-ukt', [PendaftaranUktController::class, 'pesertaUkt']);
