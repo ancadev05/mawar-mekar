@@ -16,7 +16,7 @@
                             <td>: {{ $item->id }}</td>
                             <td rowspan="5">
                                 <img src="{{ url('storage/foto-pesilat/' . $item->pesilat->foto_pesilat) }}" alt=""
-                                    width="200px">
+                                    width="3cm">
                             </td>
                         </tr>
                         <tr>
