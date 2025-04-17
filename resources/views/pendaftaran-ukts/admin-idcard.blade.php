@@ -9,13 +9,19 @@
         <a href="{{ url('/cetak-idcard') }}" class="btn btn-sm btn-primary mb-3" target="_blank">Cetak Idcard</a>
         <div class="d-flex flex-wrap">
             @foreach ($idcard as $item)
-                <div style="width: 9cm; height: 6.5cm; font-size: 14px;" class="me-3 mb-3 px-2 border d-flex justify-content-center align-items-center">
+                <div style="width: 9cm; height: 6.5cm; font-size: 14px;"
+                    class="me-3 mb-3 px-2 border d-flex flex-column justify-content-center align-items-center">
+                    <div class="m-0 p-0 border-bottom w-100 text-center mb-2">
+                        <h6 class="m-0 p-0">Ujian Kenaikan Tingkat Siswa</h6>
+                        <p class="m-0 p-0">18 - 20 April 2025</p>
+                    </div>
                     <table class="w-100 me-3">
                         <tr>
                             <td>No. Peserta</td>
                             <td>: {{ $item->id }}</td>
                             <td rowspan="5" class="text-end">
-                                <img src="{{ url('storage/foto-pesilat/' . $item->pesilat->foto_pesilat) }}" alt="" style="width: 2cm">
+                                <img src="{{ url('storage/foto-pesilat/' . $item->pesilat->foto_pesilat) }}" alt=""
+                                    style="width: 2cm">
                                 {{-- <img src="{{ url('foto.jpg') }}" alt="" style="width: 3cm"> --}}
                             </td>
                         </tr>
