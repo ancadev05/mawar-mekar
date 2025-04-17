@@ -101,6 +101,8 @@ Route::middleware(['general'])->group(function () {
     Route::delete('/peserta-ukt/{id}', [PendaftaranUktController::class, 'hapusPesertaUkt']);
     Route::get('/registrasi/{id}', [PendaftaranUktController::class,'registrasi']);
     Route::put('/registrasi/{id}', [PendaftaranUktController::class,'registrasiUpdate']);
+    Route::get('/idcard', [PendaftaranUktController::class,'idcard']);
+    Route::get('/cetak-idcard', [PendaftaranUktController::class,'cetakIdcard']);
 });
 
 // link raker

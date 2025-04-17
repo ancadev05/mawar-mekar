@@ -134,8 +134,22 @@ class PendaftaranUktController extends Controller
         return redirect()->to('/peserta-ukt');
     }
 
+    public function idcard()
+    {
+        $idcard = PesertaUkt::where('status_pembayaran', 'lunas')->get();
+        return view('pendaftaran-ukts.admin-idcard', compact('idcard'));
+    }
+
+    public function cetakIdcard()
+    { 
+        $idcard = PesertaUkt::where('status_pembayaran', 'lunas')->get();
+        return view('pendaftaran-ukts.cetak-idcard', compact('idcard'));
+    }
+
     public function soalUkt()
     {
         return view('pendaftaran-ukts.soal-ukt');
     }
+
+
 }

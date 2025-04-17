@@ -162,6 +162,12 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('peserta') ? '' : 'collapsed' }}" href="{{ url('/peserta-ukt') }}">
                         <i class="bi bi-house-door"></i>
+                        <span>Registrasi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('idcard') ? '' : 'collapsed' }}" href="{{ url('/idcard') }}">
+                        <i class="bi bi-house-door"></i>
                         <span>Peserta</span>
                     </a>
                 </li>
