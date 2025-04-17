@@ -19,7 +19,8 @@
                     <table class="table table-sm datatable" >
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th>No.</th>
+                                <th>No. Registrasi</th>
                                 <th>Nama</th>
                                 <th>Tingkat</th>
                                 <th>Cabang</th>
@@ -33,6 +34,7 @@
                             @foreach ($peserta as $index => $item)
                                 <tr>
                                     <td>{{ ++$index }}</td>
+                                    <td>{{ $item->pesilat->no_registrasi }}</td>
                                     <td>{{ $item->pesilat->nama_pesilat }}</td>
                                     <td>{{ $item->pesilat->tingkatan->tingkat }}</td>
                                     <td>{{ $item->pesilat->cabang->cabang }}</td>
@@ -40,7 +42,7 @@
                                     <td>{{ $item->status_pembayaran }}</td>
                                     <td>{{ $item->ket }}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="{{ url('/registrasi/' . $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                         <form action="{{ url('/peserta-ukt/' . $item->id) }}" method="post" class="d-inline-block">
                                             @csrf
                                             @method('delete')
