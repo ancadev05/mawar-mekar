@@ -14,7 +14,7 @@
                         <tr>
                             <td>No. Peserta</td>
                             <td>: {{ $item->id }}</td>
-                            <td rowspan="5">
+                            <td rowspan="5" class="text-end">
                                 <img src="{{ url('storage/foto-pesilat/' . $item->pesilat->foto_pesilat) }}" alt="" style="width: 2cm">
                                 {{-- <img src="{{ url('foto.jpg') }}" alt="" style="width: 3cm"> --}}
                             </td>
