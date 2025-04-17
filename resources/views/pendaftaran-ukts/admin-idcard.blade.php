@@ -15,7 +15,7 @@
                         <h6 class="m-0 p-0">Ujian Kenaikan Tingkat Siswa</h6>
                         <p class="m-0 p-0">18 - 20 April 2025</p>
                     </div>
-                    <table class="w-100 me-3">
+                    <table class="w-100 ms-2 me-3">
                         <tr>
                             <td>No. Peserta</td>
                             <td>: {{ $item->id }}</td>
