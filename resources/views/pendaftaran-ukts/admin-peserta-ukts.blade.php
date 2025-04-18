@@ -43,11 +43,13 @@
                                     <td>{{ $item->ket }}</td>
                                     <td>
                                         <a href="{{ url('/registrasi/' . $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                        <form action="{{ url('/peserta-ukt/' . $item->id) }}" method="post" class="d-inline-block">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin hapus data?')">Hapus</button>
-                                        </form>
+                                        @if ($item->status_pembayaran == 'belum_lunas')
+                                            <form action="{{ url('/peserta-ukt/' . $item->id) }}" method="post" class="d-inline-block">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin hapus data?')">Hapus</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

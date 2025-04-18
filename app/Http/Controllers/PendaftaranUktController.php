@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pesilat;
 use App\Models\PesertaUkt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpParser\NodeVisitor\CommentAnnotatingVisitor;
 
@@ -36,13 +37,21 @@ class PendaftaranUktController extends Controller
 
     public function ikutiUjian($id)
     {
-        PesertaUkt::create([
-            'pesilat_id' => $id,
-            'data_ujian_id' => 1,
-            'pembayaran' => 0,
-        ]);
+        $peserta = PesertaUkt::where('pesilat_id', $id)->count();
 
-        return redirect()->route('status.pendaftaran', $id);
+        if ($peserta < 1) {
+            PesertaUkt::create([
+                'pesilat_id' => $id,
+                'data_ujian_id' => 1,
+                'pembayaran' => 0,
+            ]);
+    
+            return redirect()->route('status.pendaftaran', $id);
+        } else {
+            $status = PesertaUkt::where('pesilat_id', $id)->first();
+            return view('pendaftaran-ukts.index', compact('pesilat', 'status'));
+        }
+        
     }
 
     public function statusPendaftaran($id)
@@ -151,5 +160,57 @@ class PendaftaranUktController extends Controller
         return view('pendaftaran-ukts.soal-ukt');
     }
 
+    // akses cabang
+    public function pesertaUktCabang()
+    {
+        $cabang = Auth::user()->cabang;
+        // detail peserta ukt
+        // mc 4
+        $mc4_l = Pesilat::whereHas('pesertaUkt')->where('jk', 'L')->where('tingkatan_id', 5)->get()->count();
+        $mc4_p = Pesilat::whereHas('pesertaUkt')->where('jk', 'P')->where('tingkatan_id', 5)->get()->count();
+        $mc4_jml = $mc4_l + $mc4_p;
+        // mc 3
+        $mc3_l = Pesilat::whereHas('pesertaUkt')->where('jk', 'L')->where('tingkatan_id', 4)->get()->count();
+        $mc3_p = Pesilat::whereHas('pesertaUkt')->where('jk', 'P')->where('tingkatan_id', 4)->get()->count();
+        $mc3_jml = $mc3_l + $mc3_p;
+        // mc 2
+        $mc2_l = Pesilat::whereHas('pesertaUkt')->where('jk', 'L')->where('tingkatan_id', 3)->get()->count();
+        $mc2_p = Pesilat::whereHas('pesertaUkt')->where('jk', 'P')->where('tingkatan_id', 3)->get()->count();
+        $mc2_jml = $mc2_l + $mc2_p;
+        // mc 1
+        $mc1_l = Pesilat::whereHas('pesertaUkt')->where('jk', 'L')->where('tingkatan_id', 2)->get()->count();
+        $mc1_p = Pesilat::whereHas('pesertaUkt')->where('jk', 'P')->where('tingkatan_id', 2)->get()->count();
+        $mc1_jml = $mc1_l + $mc1_p;
+        // mc dasar
+        $mc_dasar_l = Pesilat::whereHas('pesertaUkt')->where('jk', 'L')->where('tingkatan_id', 1)->get()->count();
+        $mc_dasar_p = Pesilat::whereHas('pesertaUkt')->where('jk', 'P')->where('tingkatan_id', 1)->get()->count();
+        $mc_dasar_jml = $mc_dasar_l + $mc_dasar_p;
 
+        // menampilkan jumlah siswa percabang
+        $siswa_cabang = Pesilat::whereHas('pesertaUkt')->where('jenjang', 1)->orderBy('cabang_id', 'asc')->select('cabang_id', DB::raw('count(*) as total'))->groupBy('cabang_id')->get();
+
+        $total_pendaftar = PesertaUkt::count();
+        $peserta = PesertaUkt::all();
+        return view('pendaftaran-ukts.admin-cabang', compact(
+            'total_pendaftar',
+            'peserta',
+            // data siswa
+            'mc4_l',
+            'mc4_p',
+            'mc4_jml',
+            'mc3_l',
+            'mc3_p',
+            'mc3_jml',
+            'mc2_l',
+            'mc2_p',
+            'mc2_jml',
+            'mc1_l',
+            'mc1_p',
+            'mc1_jml',
+            'mc_dasar_l',
+            'mc_dasar_p',
+            'mc_dasar_jml',
+            'siswa_cabang',
+        ));
+    }
 }

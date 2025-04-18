@@ -118,6 +118,12 @@
                          </li>
                      </ul>
                  </li>
+                 <li class="nav-item">
+                    <a class="nav-link {{ Request::is('unit') ? '' : 'collapsed' }}" href="{{ url('/peserta-ukt-cabang') }}">
+                        <i class="bi bi-diagram-3"></i>
+                        <span>Peserta UKT</span>
+                    </a>
+                </li>
              @endif
          @endif
 

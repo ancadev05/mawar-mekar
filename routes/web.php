@@ -95,6 +95,8 @@ Route::middleware(['general'])->group(function () {
     // logout
     Route::get('/logout', [AdminLoginController::class, 'logout']);
 
+    
+    
     // route admin ukt
     Route::get('/admin-ukt', [PendaftaranUktController::class, 'adminUkt']); // tampilan dashboard admin
     Route::get('/peserta-ukt', [PendaftaranUktController::class, 'pesertaUkt']);
@@ -103,6 +105,9 @@ Route::middleware(['general'])->group(function () {
     Route::put('/registrasi/{id}', [PendaftaranUktController::class,'registrasiUpdate']);
     Route::get('/idcard', [PendaftaranUktController::class,'idcard']);
     Route::get('/cetak-idcard', [PendaftaranUktController::class,'cetakIdcard']);
+
+    // router ukt cabang
+    Route::get('/peserta-ukt-cabang', [PendaftaranUktController::class,'pesertaUktCabang']);
 });
 
 // link raker
